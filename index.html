@@ -259,7 +259,7 @@
       if (x >= W/2 - 110 && x <= W/2 + 110 && y >= 340 && y <= 394) {
         restartGame();
       }
-      // Return to normal line button bounds: X from W/2 - 110 to W/2 + 110. Y from 420 to 474
+      // Exit game button bounds: X from W/2 - 110 to W/2 + 110. Y from 420 to 474
       else if (x >= W/2 - 110 && x <= W/2 + 110 && y >= 420 && y <= 474) {
         window.location.href = "https://www.figma.com/design/FUkPM7VQLGC21QtSqBMbJt/Linorinth?node-id=1-10&t=nbSETHUmlXBUluo5-4";
       }
@@ -456,7 +456,7 @@
       ctx.fillStyle='#FCB075'; ctx.beginPath(); ctx.roundRect(W/2-110, 340, 220, 54, 16); ctx.roundRect(W/2-110, 420, 220, 54, 16); ctx.fill();
       ctx.fillStyle='#1C355E'; ctx.font='bold 16px Georgia,serif';
       ctx.fillText('REPLAY', W/2, 373);
-      ctx.font='15px Georgia,serif'; ctx.fillText('Return to normal line', W/2, 452);
+      ctx.font='15px Georgia,serif'; ctx.fillText('Exit game', W/2, 452);
     }
   }
 
