@@ -300,6 +300,18 @@
         return;
       }
 
+      // Floating Share Button boundaries (left of Pause)
+      const shareX = pauseX - btnSize - 8;
+      const shareY = QUEUE_H + 16;
+      if (x >= shareX - 6 && x <= shareX + btnSize + 6 && y >= shareY - 6 && y <= shareY + btnSize + 6) {
+        if (navigator.share) {
+          navigator.share({ title: 'Linorinth', url: window.location.href });
+        } else {
+          navigator.clipboard && navigator.clipboard.writeText(window.location.href);
+        }
+        return;
+      }
+
       // Floating Quit Button boundaries (Top Left)
       const quitX = 16;
       const quitY = QUEUE_H + 16;
@@ -512,6 +524,60 @@
     ctx.restore();
   }
 
+  function drawFloatingShareButton() {
+    const btnSize = Math.floor(CELL * 1.1);
+    const pauseX = W - btnSize - 16;
+    const btnX = pauseX - btnSize - 8;
+    const btnY = QUEUE_H + 16;
+
+    ctx.save();
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetY = 4;
+
+    ctx.fillStyle = 'rgba(28, 53, 94, 0.9)';
+    ctx.beginPath();
+    ctx.roundRect(btnX, btnY, btnSize, btnSize, 8);
+    ctx.fill();
+
+    ctx.strokeStyle = '#FCB075';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // iOS-style share icon: upward arrow from a box
+    ctx.strokeStyle = '#FCB075';
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    const cx = btnX + btnSize / 2;
+    const cy = btnY + btnSize / 2;
+    const s = btnSize * 0.28;
+
+    // Arrow stem (starts inside box, rises above it)
+    ctx.beginPath();
+    ctx.moveTo(cx, cy + s * 0.7);
+    ctx.lineTo(cx, cy - s * 0.9);
+    ctx.stroke();
+
+    // Arrow head (tip clearly above box top)
+    ctx.beginPath();
+    ctx.moveTo(cx - s * 0.6, cy - s * 0.3);
+    ctx.lineTo(cx, cy - s * 1.1);
+    ctx.lineTo(cx + s * 0.6, cy - s * 0.3);
+    ctx.stroke();
+
+    // Box (U-shape open at top where arrow exits)
+    ctx.beginPath();
+    ctx.moveTo(cx - s * 0.8, cy + s * 0.1);
+    ctx.lineTo(cx - s * 0.8, cy + s * 1.3);
+    ctx.lineTo(cx + s * 0.8, cy + s * 1.3);
+    ctx.lineTo(cx + s * 0.8, cy + s * 0.1);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
   function drawFloatingQuitButton() {
     const btnSize = Math.floor(CELL * 1.1);
     const btnX = 16;
@@ -690,6 +756,7 @@
     
     if (gameState === 'PLAYING') {
       drawFloatingPauseButton();
+      drawFloatingShareButton();
       drawFloatingQuitButton();
     }
   }
