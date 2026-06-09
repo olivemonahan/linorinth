@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Page - Virtual Queue</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f8;
+            font-family: 'IM Fell Double Pica', serif;
+        }
+
+        .info-page-container {
+            position: relative;
+            width: 361px;
+            height: 660px;
+            background: #C1DEE4;
+            overflow: hidden;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .blur-bg-ellipse {
+            position: absolute;
+            width: 227px;
+            left: calc(50% - 227px/2);
+            top: -178px;
+            bottom: 510px;
+            background: #D9D9D9;
+            filter: blur(150px);
+            pointer-events: none;
+        }
+
+        .inner-panel-card {
+            position: absolute;
+            width: 340px;
+            height: 633px;
+            left: 11px;
+            top: 10px;
+            background: #D3E8EC;
+            border-radius: 30px;
+        }
+
+        .logo-vector {
+            position: absolute;
+            width: 201.16px;
+            height: 54.35px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 49.28px;
+        }
+
+        .virtual-queue-title {
+            position: absolute;
+            width: 182px;
+            height: 30px;
+            left: calc(50% - 182px/2 + 0.5px);
+            top: 100px;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            color: #14325C;
+        }
+
+        .instruction-text {
+            position: absolute;
+            width: 240px;
+            height: 127px;
+            left: calc(50% - 240px/2 + 0.5px);
+            top: 155px;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+            color: #14325C;
+        }
+
+        .qr-code-graphic {
+            position: absolute;
+            width: 178px;
+            height: 100px;
+            left: calc(50% - 178px/2 + 0.5px);
+            top: 219px;
+            background-image: url('KnossosQRCode.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        .visitors-label {
+            position: absolute;
+            width: 126px;
+            height: 41px;
+            left: 54px;
+            top: 339px;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: right;
+            color: #14325C;
+        }
+
+        .dropdown-wrapper {
+            position: absolute;
+            width: 96px;
+            height: 37px;
+            left: 189px;
+            top: 339px;
+        }
+
+        .dropdown-menu-select {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding: 0 24px 0 8px;
+            background: #14325C;
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            border-radius: 5px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-size: 13px;
+            color: #D3E8EC;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D3E8EC'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 16px;
+        }
+
+        .join-button-action {
+            box-sizing: border-box;
+            position: absolute;
+            width: 228px;
+            height: 78px;
+            left: calc(50% - 228px/2 + 8.5px);
+            top: 403px;
+            background: #F9B271;
+            border: 5px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
+            border-radius: 18px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-size: 20px;
+            line-height: 25px;
+            color: #14325C;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .join-button-action:hover {
+            opacity: 0.9;
+        }
+
+        .queue-size-label {
+            position: absolute;
+            width: 158px;
+            height: 37px;
+            left: 76px;
+            top: 536px;
+            font-size: 16px;
+            line-height: 20px;
+            color: #14325C;
+        }
+
+        .queue-number-value {
+            position: absolute;
+            width: 82px;
+            height: 62px;
+            left: 219px;
+            top: 505px;
+            font-size: 48px;
+            line-height: 60px;
+            color: #B80D0D;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="info-page-container">
+        <div class="blur-bg-ellipse"></div>
+        
+        <div class="inner-panel-card">
+            <img src="logo.svg" alt="LINORINTH" class="logo-vector">
+            <div class="virtual-queue-title">Virtual Queue</div>
+            <div class="instruction-text">
+                Join the Virtual Line and wait until your position decreases to 1. Then, proceed to admissions gates.
+            </div>
+            <div class="qr-code-graphic"></div>
+            <div class="visitors-label">Number of Visitors in Your Group:</div>
+            <div class="dropdown-wrapper">
+                <select class="dropdown-menu-select">
+                    <option value="" disabled selected hidden>Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5+</option>
+                </select>
+            </div>
+            <a href="join-screen.html" class="join-button-action" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">JOIN VIRTUAL LINE</a>
+            <div class="queue-size-label">Current Queue Size:</div>
+            <div class="queue-number-value">53</div>
+        </div>
+    </div>
+
+</body>
+</html>

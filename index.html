@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selection</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@500&family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f8;
+        }
+
+        /* Language Screen Base Frame Canvas Wrapper */
+        .screen-container {
+            position: relative;
+            width: 361px;
+            height: 660px;
+            background: #C1DEE4;
+            overflow: hidden;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Ellipse 3 Background Blur */
+        .blur-bg {
+            position: absolute;
+            width: 227px;
+            left: calc(50% - 227px/2 + 3px);
+            top: -164px;
+            bottom: 496px;
+            background: #D9D9D9;
+            filter: blur(150px);
+            pointer-events: none;
+        }
+        
+        /* Inner Panel Card Component (Updated background to match info-page layout) */
+        .inner-card {
+            position: absolute;
+            width: 340px;
+            height: 633px;
+            left: 11px;
+            top: 10px;
+            background: #D3E8EC;
+            border-radius: 30px;
+        }
+
+        /* Vector Logo Header */
+        .logo-vector {
+            position: absolute;
+            width: 201.16px;
+            height: 54.35px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 49.28px;
+        }
+
+        /* Hidden Layout Layer from Specs */
+        .hidden-linorinth-header {
+            position: absolute;
+            visibility: hidden;
+            height: 44px;
+            left: 4px;
+            right: 3px;
+            top: 63px;
+            pointer-events: none;
+        }
+
+        /* WELCOME Header Typography Label */
+        .welcome-title {
+            position: absolute;
+            width: 257px;
+            height: 114px;
+            left: calc(50% - 257px/2);
+            top: 196px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 40px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #14325C;
+        }
+
+        /* Select your language Instruction Label */
+        .subtitle {
+            position: absolute;
+            width: 223px;
+            height: 123px;
+            left: calc(50% - 223px/2);
+            top: 230px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            color: #14325C;
+        }
+
+        /* Global Structural Language Action Option Reset Styles */
+        .lang-button {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+        .lang-button:hover {
+            opacity: 0.85;
+        }
+        .lang-button:active {
+            transform: scale(0.97);
+        }
+
+        /* Frame 4 Auto Layout Structure Container (English) */
+        .frame-english {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 21px;
+            position: absolute;
+            width: 93px;
+            height: 57px;
+            left: calc(50% - 93px/2 - 82px);
+            top: 302px;
+        }
+
+        /* Image 2 Background Property (Updated England asset placeholder) */
+        .flag-english {
+            width: 93px;
+            height: 56px;
+            background: url('England.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+        }
+
+        /* English Language Text Label */
+        .label-english {
+            width: 93px;
+            height: 30px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            color: #14325C;
+            flex: none;
+            order: 1;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+
+        /* Frame 5 Auto Layout Structure Container (Deutsch) */
+        .frame-germany {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 21px;
+            position: absolute;
+            width: 93px;
+            height: 57px;
+            left: calc(50% - 93px/2 - 82px);
+            top: 470px;
+        }
+
+        /* Flag of Germany Background Property (Updated Germany asset placeholder) */
+        .flag-germany {
+            margin: 0 auto;
+            width: 93px;
+            height: 56px;
+            background: url('Germany.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+
+        /* Deutsch Language Text Label */
+        .label-deutsch {
+            position: absolute;
+            width: 93px;
+            height: 28px;
+            left: 52px;
+            top: 543px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            color: #14325C;
+        }
+
+        /* Frame 14 Layout Container Wrapper (Français) */
+        .frame-france {
+            position: absolute;
+            width: 104px;
+            height: 118px;
+            left: 218px;
+            top: 465px;
+        }
+
+        /* Flag of France Image Backdrop Component (Updated France asset placeholder) */
+        .flag-france {
+            position: absolute;
+            width: 93px;
+            height: 57px;
+            left: 7px;
+            top: 5px;
+            background: url('France.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* Français Typography Option Component */
+        .label-français {
+            position: absolute;
+            width: 80px;
+            height: 30px;
+            left: 12px;
+            top: 78px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            color: #14325C;
+        }
+
+        /* Flag of Greece Structural Image Component (Updated Greece asset placeholder) */
+        .flag-greece {
+            position: absolute;
+            width: 93px;
+            height: 57px;
+            left: 225px;
+            top: 301px;
+            background: url('Greece.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* Ελληνικά Language Text Label Container */
+        .label-greece {
+            position: absolute;
+            width: 101px;
+            height: 78px;
+            left: 221px;
+            top: 376px;
+            font-family: 'Arima', system-ui;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 39px;
+            text-align: center;
+            color: #14325C;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="screen-container">
+        <div class="blur-bg"></div>
+        
+        <div class="inner-card">
+            
+            <img src="logo.svg" alt="LINORINTH" class="logo-vector">
+            
+            <h1 class="welcome-title">WELCOME</h1>
+            <p class="subtitle">Select your language</p>
+            
+            <div class="hidden-linorinth-header"></div>
+
+            <a href="info-page.html" class="lang-button frame-english">
+                <div class="flag-english"></div>
+                <div class="label-english">English</div>
+            </a>
+
+            <a href="info-page.html" class="lang-button">
+                <div class="flag-greece"></div>
+                <div class="label-greece">Ελληνικά</div>
+            </a>
+
+            <a href="info-page.html" class="lang-button frame-germany">
+                <div class="flag-germany"></div>
+            </a>
+            <a href="info-page.html" class="lang-button label-deutsch">Deutsch</a>
+
+            <a href="info-page.html" class="lang-button frame-france">
+                <div class="flag-france"></div>
+                <div class="label-français">Français</div>
+            </a>
+            
+        </div>
+    </div>
+
+</body>
+</html>

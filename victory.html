@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory!</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&family=IM+Fell+Double+Pica&family=Inter:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f8;
+            font-family: 'IM Fell Double Pica', serif;
+        }
+
+        /* Victory Canvas Frame Container */
+        .victory-container {
+            position: relative;
+            width: 361px;
+            height: 660px;
+            background: #C1DEE4;
+            overflow: hidden;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Ellipse 2 (Background Blur Glow) */
+        .blur-bg-ellipse {
+            position: absolute;
+            width: 227px;
+            left: calc(50% - 227px/2);
+            top: -178px;
+            bottom: 510px;
+            background: #D9D9D9;
+            filter: blur(150px);
+            pointer-events: none;
+        }
+        
+        /* Rectangle 5 Inner Content Card */
+        .inner-panel-card {
+            position: absolute;
+            width: 340px;
+            height: 633px;
+            left: 11px;
+            top: 10px;
+            background: #D3E8EC;
+            border-radius: 30px;
+        }
+
+        /* Vector Logo Header */
+        .logo-vector {
+            position: absolute;
+            width: 201.16px;
+            height: 54.35px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 49.28px;
+        }
+        
+        /* VICTORY! Main Header text */
+        .victory-main-title {
+            position: absolute;
+            width: 374px;
+            height: 114px;
+            left: calc(50% - 374px/2);
+            top: 115px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 45px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #14325C;
+        }
+
+        /* You made it to the end! Sub-title phrase */
+        .victory-sub-phrase {
+            position: absolute;
+            width: 223px;
+            height: 32px;
+            left: calc(50% - 223px/2);
+            top: 168px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 25px;
+            text-align: center;
+            color: #14325C;
+        }
+        
+        /* Rectangle 3 Green Admission Container Box */
+        .admission-ticket-box {
+            box-sizing: border-box;
+            position: absolute;
+            width: 296px;
+            height: 180px;
+            left: calc(50% - 296px/2);
+            top: 220px;
+            background: #9ACF71;
+            border: 5px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
+            border-radius: 34px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        /* Admission Instruction Text inside Box */
+        .admission-instruction-text {
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 30px;
+            text-align: center;
+            color: #14325C;
+        }
+
+        /* QR Code Footer Graphic Container */
+        .footer-qr-container {
+            position: absolute;
+            bottom: 30px;
+            left: calc(50% - 150px/2);
+            width: 150px;
+            height: 150px;
+            background-image: url('Untitled.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            /* White background fallback with dashed border so it stands out if image is missing */
+            background-color: #ffffff;
+            border: 3px dashed rgba(20, 50, 92, 0.2);
+            border-radius: 12px;
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.06);
+        }
+
+        /* Hidden Layer Fallbacks from Specs */
+        .hidden-figma-layer {
+            position: absolute;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="victory-container">
+        <div class="blur-bg-ellipse"></div>
+        
+        <div class="inner-panel-card">
+            
+            <img src="logo.svg" alt="LINORINTH" class="logo-vector">
+            
+            <h1 class="victory-main-title">VICTORY!</h1>
+            <p class="victory-sub-phrase">You made it to the end!</p>
+            
+            <div class="admission-ticket-box">
+                <div class="admission-instruction-text">
+                    Walk to the Palace Gates and show the staff this screen to enter!
+                </div>
+            </div>
+
+            <div class="footer-qr-container"></div>
+
+            <div class="hidden-figma-layer" style="top: 280px; font-family: 'Bigshot One'; font-size: 96px;">1</div>
+            <div class="hidden-figma-layer" style="top: 428px; font-size: 20px;">IN LINE</div>
+            
+        </div>
+    </div>
+
+</body>
+</html>
