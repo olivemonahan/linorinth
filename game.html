@@ -166,7 +166,7 @@
     height: 44px;
     right: 53px;
     top: 308px;
-    background: url('New Project(1).png');
+    background: url('decorative_assets/find_sword.png');
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -177,7 +177,7 @@
     height: 59px;
     left: calc(50% - 145px/2 - 39px);
     top: 374px;
-    background: url('New Project.png');
+    background: url('decorative_assets/kill_minotaur.png');
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -188,7 +188,7 @@
     height: 67px;
     right: 12px;
     top: 463px;
-    background: url('New Project(2).png');
+    background: url('decorative_assets/escape.png');
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -199,7 +199,7 @@
     height: 58px;
     left: calc(50% - 44px/2 - 89.5px);
     top: 556px;
-    background: url('New Project(3).png');
+    background: url('decorative_assets/enter_palace.png');
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -416,7 +416,7 @@
   function cellWalls(r, c) {
     const walls=[], x=c*CELL, y=r*CELL, cell=maze[idx(r,c)];
     if(!(cell&1)) walls.push([x,y,x+CELL,y]);
-    if(!(cell&2)) walls.push([x+CELL,y,x+CELL,y+CELL]);
+    if(!(cell&&2)) walls.push([x+CELL,y,x+CELL,y+CELL]);
     if(!(cell&4)) walls.push([x,y+CELL,x+CELL,y+CELL]);
     if(!(cell&8)) walls.push([x,y,x,y+CELL]);
     return walls;
