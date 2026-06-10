@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Selection</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arima:wght@500&family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
+
+    <script src="translations.js"></script>
 
     <style>
         * {
@@ -47,7 +49,7 @@
             z-index: 10;
         }
 
-        /* Inner Panel Card Component (Updated background to match info-page layout) */
+        /* FIX 1: Transformed card container into a flexible vertical column layout */
         .inner-card {
             position: absolute;
             width: 340px;
@@ -56,69 +58,63 @@
             top: 10px;
             background: #D3E8EC;
             border-radius: 30px;
+            font-family: 'IM Fell Double Pica', serif;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
         }
 
-        /* Vector Logo Header */
+        /* FIX 2: Normalized structural elements into native layout flow */
         .logo-vector {
-            position: absolute;
             width: 201px;
             height: 54px;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 49px;
+            margin-bottom: 14px;
+            flex-shrink: 0;
         }
 
-        /* Hidden Layout Layer from Specs */
-        .hidden-linorinth-header {
-            position: absolute;
-            visibility: hidden;
-            height: 44px;
-            left: 4px;
-            right: 3px;
-            top: 63px;
-            pointer-events: none;
-        }
-
-        /* WELCOME Header Typography Label */
+        /* FIX 3: Removed absolute positions and hardcoded limits from text structures */
         .welcome-title {
-            position: absolute;
-            width: 257px;
-            height: 114px;
-            left: calc(50% - 257px/2);
-            top: 196px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
             font-size: 32px;
-            line-height: 40px;
+            line-height: 38px;
             text-align: center;
             letter-spacing: 0.05em;
             color: #14325C;
+            margin-bottom: 4px;
+            font-weight: 400;
         }
 
-        /* Select your language Instruction Label */
         .subtitle {
-            position: absolute;
-            width: 223px;
-            height: 123px;
-            left: calc(50% - 223px/2);
-            top: 230px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 24px;
-            line-height: 30px;
+            font-size: 22px;
+            line-height: 28px;
             text-align: center;
             color: #14325C;
+            margin-bottom: 30px;
+        }
+
+        /* FIX 4: Created a safe 2x2 grid context for language choices */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px 16px;
+            width: 100%;
+            max-width: 280px;
+            margin-top: auto;
+            margin-bottom: auto; /* Centers the whole button grid dynamically in the available space */
         }
 
         /* Global Structural Language Action Option Reset Styles */
         .lang-button {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-decoration: none;
             color: inherit;
             cursor: pointer;
             transition: opacity 0.2s ease, transform 0.1s ease;
+            width: 100%;
         }
         .lang-button:hover {
             opacity: 0.85;
@@ -127,192 +123,81 @@
             transform: scale(0.97);
         }
 
-        /* Frame 4 Auto Layout Structure Container (English) */
-        .frame-english {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 0;
-            gap: 21px;
-            position: absolute;
+        /* FIX 5: Standardized flag graphics globally so they size evenly */
+        .flag-asset {
             width: 93px;
             height: 57px;
-            left: calc(50% - 93px/2 - 82px);
-            top: 302px;
-        }
-
-        /* Image 2 Background Property (Updated England asset placeholder) */
-        .flag-english {
-            width: 93px;
-            height: 56px;
             background-size: cover;
-            background: url('decorative_assets/England.png') no-repeat;
-            flex: none;
-            order: 0;
-            flex-grow: 0;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 4px;
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.08);
+            margin-bottom: 8px;
+            flex-shrink: 0;
         }
 
-        /* English Language Text Label */
-        .label-english {
-            width: 93px;
-            height: 30px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 24px;
-            line-height: 30px;
+        /* Assigning localized backdrops cleanly without absolute layout definitions */
+        .flag-english { background-image: url('decorative_assets/England.png'); }
+        .flag-greece  { background-image: url('decorative_assets/Greece.png'); }
+        .flag-germany { background-image: url('decorative_assets/Germany.png'); }
+        .flag-france  { background-image: url('decorative_assets/France.png'); }
+
+        /* FIX 6: Made labels flexible with text alignment to wrap cleanly inside grid cells */
+        .lang-label {
+            width: 100%;
+            font-size: 20px;
+            line-height: 24px;
             text-align: center;
             color: #14325C;
-            flex: none;
-            order: 1;
-            align-self: stretch;
-            flex-grow: 0;
+            white-space: normal; /* Permits wrapping if name lengths expand */
+            word-wrap: break-word;
         }
 
-        /* Frame 5 Auto Layout Structure Container (Deutsch) */
-        .frame-germany {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 0px;
-            gap: 21px;
-            position: absolute;
-            width: 93px;
-            height: 57px;
-            left: calc(50% - 93px/2 - 82px);
-            top: 470px;
-        }
-
-        /* Flag of Germany Background Property (Updated Germany asset placeholder) */
-        .flag-germany {
-            margin: 0 auto;
-            width: 93px;
-            height: 56px;
-            background-size: cover;
-            background: url('decorative_assets/Germany.png') no-repeat;
-            flex: none;
-            order: 0;
-            align-self: stretch;
-            flex-grow: 0;
-        }
-
-        /* Deutsch Language Text Label */
-        .label-deutsch {
-            position: absolute;
-            width: 93px;
-            height: 28px;
-            left: 52px;
-            top: 543px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 24px;
-            line-height: 30px;
-            text-align: center;
-            color: #14325C;
-        }
-
-        /* Frame 14 Layout Container Wrapper (Français) */
-        .frame-france {
-            position: absolute;
-            width: 104px;
-            height: 118px;
-            left: 218px;
-            top: 465px;
-        }
-
-        /* Flag of France Image Backdrop Component (Updated France asset placeholder) */
-        .flag-france {
-            position: absolute;
-            width: 93px;
-            height: 57px;
-            left: 7px;
-            top: 5px;
-            background-size: cover;
-            background: url('decorative_assets/France.png') no-repeat;
-        }
-
-        /* Français Typography Option Component */
-        .label-français {
-            position: absolute;
-            width: 80px;
-            height: 30px;
-            left: 12px;
-            top: 78px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 24px;
-            line-height: 30px;
-            text-align: center;
-            color: #14325C;
-        }
-
-        /* Flag of Greece Structural Image Component (Updated Greece asset placeholder) */
-        .flag-greece {
-            position: absolute;
-            width: 93px;
-            height: 57px;
-            left: 225px;
-            top: 301px;
-            background-size: cover;
-            background: url('decorative_assets/Greece.png') no-repeat;
-        }
-
-        /* Ελληνικά Language Text Label Container */
+        /* Customizing specialized typography overrides without absolute heights */
         .label-greece {
-            position: absolute;
-            width: 101px;
-            height: 78px;
-            left: 221px;
-            top: 376px;
             font-family: 'Arima', system-ui;
-            font-style: normal;
             font-weight: 500;
-            font-size: 24px;
-            line-height: 39px;
-            text-align: center;
-            color: #14325C;
         }
     </style>
 </head>
 <body>
 
-    <div class="screen-container">
-        <div class="blur-bg"></div>
-        
-        <div class="inner-card">
-            
-            <img src="logo.svg" alt="LINORINTH" class="logo-vector">
-            
-            <h1 class="welcome-title">WELCOME</h1>
-            <p class="subtitle">Select your language</p>
-            
-            <div class="hidden-linorinth-header"></div>
+<div class="screen-container">
+    <div class="blur-bg"></div>
 
-            <a href="info-page.html" class="lang-button frame-english">
-                <div class="flag-english"></div>
-                <div class="label-english">English</div>
+    <div class="inner-card">
+
+        <img src="logo.svg" alt="LINORINTH" class="logo-vector">
+
+        <h1 class="welcome-title" data-i18n="welcome">WELCOME</h1>
+        <p class="subtitle" data-i18n="select_lang">Select your language</p>
+
+        <div class="languages-grid">
+
+            <a href="info-page.html" class="lang-button" onclick="setLanguage('en')">
+                <div class="flag-asset flag-english"></div>
+                <div class="lang-label">English</div>
             </a>
 
-            <a href="info-page.html" class="lang-button">
-                <div class="flag-greece"></div>
-                <div class="label-greece">Ελληνικά</div>
+            <a href="info-page.html" class="lang-button" onclick="setLanguage('el')">
+                <div class="flag-asset flag-greece"></div>
+                <div class="lang-label label-greece">Ελληνικά</div>
             </a>
 
-            <a href="info-page.html" class="lang-button frame-germany">
-                <div class="flag-germany"></div>
+            <a href="info-page.html" class="lang-button" onclick="setLanguage('de')">
+                <div class="flag-asset flag-germany"></div>
+                <div class="lang-label">Deutsch</div>
             </a>
-            <a href="info-page.html" class="lang-button label-deutsch">Deutsch</a>
 
-            <a href="info-page.html" class="lang-button frame-france">
-                <div class="flag-france"></div>
-                <div class="label-français">Français</div>
+            <a href="info-page.html" class="lang-button" onclick="setLanguage('fr')">
+                <div class="flag-asset flag-france"></div>
+                <div class="lang-label">Français</div>
             </a>
-            
+
         </div>
+
     </div>
+</div>
 
 </body>
 </html>

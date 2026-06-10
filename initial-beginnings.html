@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Initial Beginnings - Rules & Play</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
-    
+
+    <script src="translations.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -48,7 +50,7 @@
             z-index: 10;
         }
 
-        /* Rectangle 5 (Inner Card Panel) */
+        /* MATCHED FIX 1: Unified auto layout vertical column container matching info-page */
         .inner-panel-card {
             position: absolute;
             width: 340px;
@@ -57,36 +59,48 @@
             top: 10px;
             background: #D3E8EC;
             border-radius: 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 20px 24px 20px;
+            box-sizing: border-box;
         }
 
-        /* Vector */
+        /* MATCHED FIX 2: Relativized and stabilized navigation banner */
+        .header-navigation-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+            margin-bottom: 14px;
+            height: 54px;
+            flex-shrink: 0;
+        }
+
         .logo-vector {
-            position: absolute;
             width: 201px;
             height: 54px;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 49px;
+            margin-bottom: 14px;
+            flex-shrink: 0;
         }
 
-        /* Unified Back Button Assembly (Rectangle 7 + Rectangle 8 + Left Arrow Text) */
         .back-nav-button {
             box-sizing: border-box;
             position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
             width: 32px;
             height: 34px;
-            left: calc(50% - 32px/2 - 101px);
-            top: 101px;
-            
             background: #F9B271;
             border: 5px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
             border-radius: 5px;
-            
             font-family: 'IM Fell Double Pica', serif;
             font-size: 16px;
             color: #14325C;
-            
             display: flex;
             justify-content: center;
             align-items: center;
@@ -100,145 +114,73 @@
         }
 
         /* =========================================================
-           STORY TUTORIAL STEPS & CORRESPONDING GRAPHIC LAYERS
+           FLEXIBLE STEP BLOCK LAYOUT (TEXT DIRECTLY ABOVE IMAGES)
            ========================================================= */
-        
-        /* STEP 1. FIND SWORD Text Frame */
-        .step-one-text {
-            position: absolute;
-            width: 188px;
-            height: 31px;
-            left: calc(50% - 188px/2 + 1px);
-            top: 122px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-size: 13px;
-            line-height: 16px;
-            text-align: right;
-            color: #14325C;
+
+        /* MATCHED FIX 3: Structured container items using native flow blocks */
+        .step-block {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 12px;
+            flex-shrink: 0;
         }
 
-        /* New Project(1) 1 Image Asset Frame */
-        .graphic-step-one {
-            position: absolute;
-            width: 125px;
-            height: 51px;
-            right: 66px;
-            top: 157px;
-            background-image: url('decorative_assets/find_sword.png');
+        /* MATCHED FIX 4: Flexible text sizing configuration preventing viewport clips */
+        .step-instruction-text {
+            font-family: 'IM Fell Double Pica', serif;
+            font-size: 14px;
+            line-height: 18px;
+            color: #14325C;
+            margin-bottom: 4px;
+            white-space: normal;
+            word-wrap: break-word;
+            font-weight: bold;
+        }
+
+        /* Text alignments map directly to your original design layout rules */
+        .text-align-right { text-align: right; padding-right: 12px; }
+        .text-align-left  { text-align: left; padding-left: 12px; }
+
+        /* Unified graphic component dimensions across step rows */
+        .graphic-step-frame {
+            height: 48px;
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: center;
+            flex-shrink: 0;
+            width: 100%;
         }
 
-        /* STEP 2. SLAY MINOTAUR Text Frame */
-        .step-two-text {
-            position: absolute;
-            width: 188px;
-            height: 31px;
-            left: calc(50% - 188px/2 - 12px);
-            top: 212px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-size: 13px;
-            line-height: 16px;
-            color: #14325C;
-        }
-
-        /* New Project 1 Image Asset Frame */
-        .graphic-step-two {
-            position: absolute;
-            width: 169px;
-            height: 68px;
-            left: calc(50% - 169px/2 - 25px);
-            top: 247px;
-            background-image: url('decorative_assets/kill_minotaur.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        /* STEP 3. ESCAPE LABYRINTH Text Frame */
-        .step-three-text {
-            position: absolute;
-            width: 188px;
-            height: 31px;
-            left: calc(50% - 188px/2 + 9px);
-            top: 315px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-size: 13px;
-            line-height: 16px;
-            text-align: right;
-            color: #14325C;
-        }
-
-        /* New Project(2) 1 Image Asset Frame */
-        .graphic-step-three {
-            position: absolute;
-            width: 191px;
-            height: 78px;
-            right: 14px;
-            top: 347px;
-            background-image: url('decorative_assets/escape.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        /* STEP 4. ENTER KNOSSOS PALACE Text Frame */
-        .step-four-text {
-            position: absolute;
-            width: 210px;
-            height: 38px;
-            left: calc(50% - 210px/2 - 1px);
-            top: 421px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-size: 13px;
-            line-height: 16px;
-            color: #14325C;
-        }
-
-        /* New Project(3) 1 Image Asset Frame */
-        .graphic-step-four {
-            position: absolute;
-            width: 51px;
-            height: 67px;
-            left: calc(50% - 51px/2 - 84px);
-            top: 459px;
-            background-image: url('decorative_assets/enter_palace.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
+        /* Preserved original design balance by maintaining image background alignments */
+        .graphic-step-one   { background-image: url('decorative_assets/find_sword.png'); background-position: right 46px center; }
+        .graphic-step-two   { background-image: url('decorative_assets/kill_minotaur.png'); background-position: left 32px center; }
+        .graphic-step-three { background-image: url('decorative_assets/escape.png'); background-position: right 14px center; }
+        .graphic-step-four  { background-image: url('decorative_assets/enter_palace.png'); background-position: left 54px center; }
 
         /* =========================================================
-           ACTION PLAY CTA COMPONENT (Rectangle 7 + PLAY)
+           MATCHED FIX 5: SYNCHRONIZED ACTION PLAY CTA COMPONENT
            ========================================================= */
         .play-game-action-btn {
             box-sizing: border-box;
-            position: absolute;
             width: 228px;
-            height: 78px;
-            left: calc(50% - 228px/2 + 1px);
-            top: 540px;
-            
+            height: 68px;
             background: #F9B271;
             border: 5px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
             border-radius: 18px;
-            
             font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
             font-size: 24px;
             line-height: 30px;
             color: #14325C;
-            
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            
+            text-decoration: none;
             cursor: pointer;
             transition: opacity 0.2s;
+            margin-top: auto; /* Pushes button downwards while preserving dynamic aspect ratios */
+            flex-shrink: 0;
         }
 
         .play-game-action-btn:hover {
@@ -248,31 +190,40 @@
 </head>
 <body>
 
-    <div class="initial-beginnings-container">
-        <div class="blur-bg-ellipse"></div>
-        
-        <div class="inner-panel-card">
-            
-            <img src="logo.svg" alt="LINORINTH" class="logo-vector">
-            
+<div class="initial-beginnings-container">
+    <div class="blur-bg-ellipse"></div>
+
+    <div class="inner-panel-card">
+
+        <div class="header-navigation-row">
             <a href="info-page.html" class="back-nav-button">←</a>
-            
-            <div class="step-one-text">STEP 1. FIND SWORD</div>
-            <div class="graphic-step-one"></div>
-            
-            <div class="step-two-text">STEP 2. SLAY MINOTAUR</div>
-            <div class="graphic-step-two"></div>
-            
-            <div class="step-three-text">STEP 3. ESCAPE LABYRINTH</div>
-            <div class="graphic-step-three"></div>
-            
-            <div class="step-four-text">STEP 4. ENTER KNOSSOS PALACE</div>
-            <div class="graphic-step-four"></div>
-            
-            <a href="game.html" class="play-game-action-btn" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">PLAY</a>
-            
+            <img src="logo.svg" alt="LINORINTH" class="logo-vector">
         </div>
+
+        <div class="step-block">
+            <div class="step-instruction-text text-align-right" data-i18n="step_one">STEP 1. FIND SWORD</div>
+            <div class="graphic-step-frame graphic-step-one"></div>
+        </div>
+
+        <div class="step-block">
+            <div class="step-instruction-text text-align-left" data-i18n="step_two">STEP 2. SLAY MINOTAUR</div>
+            <div class="graphic-step-frame graphic-step-two"></div>
+        </div>
+
+        <div class="step-block">
+            <div class="step-instruction-text text-align-right" data-i18n="step_three">STEP 3. ESCAPE LABYRINTH</div>
+            <div class="graphic-step-frame graphic-step-three"></div>
+        </div>
+
+        <div class="step-block">
+            <div class="step-instruction-text text-align-left" data-i18n="step_four">STEP 4. ENTER KNOSSOS PALACE</div>
+            <div class="graphic-step-frame graphic-step-four"></div>
+        </div>
+
+        <a href="game.html" class="play-game-action-btn" data-i18n="play_btn">PLAY</a>
+
     </div>
+</div>
 
 </body>
 </html>

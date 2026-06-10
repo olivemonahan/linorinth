@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Over</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
-    
+
+    <script src="translations.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -48,7 +50,7 @@
             z-index: 10;
         }
 
-        /* Rectangle 5 Inner Panel */
+        /* MATCHED FIX 1: Converted card panel into a vertical column flow matching info-page */
         .inner-panel-card {
             position: absolute;
             width: 340px;
@@ -57,108 +59,92 @@
             top: 10px;
             background: #D3E8EC;
             border-radius: 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 20px;
+            box-sizing: border-box;
         }
 
-        /* Logo Header */
+        /* MATCHED FIX 2: Relativized branding header asset */
         .logo-vector {
-            position: absolute;
-            width: 201.16px;
-            height: 54.35px;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 49.28px;
+            width: 201px;
+            height: 54px;
+            margin-bottom: 16px;
+            flex-shrink: 0;
         }
 
-        /* GAME OVER Header Text */
+        /* MATCHED FIX 3: Removed static limits to permit normal typographic wrapping */
         .game-over-title {
-            position: absolute;
-            width: 257px;
-            height: 114px;
-            left: calc(50% - 257px/2 + 0.5px);
-            top: 141px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
             font-size: 32px;
             line-height: 40px;
             text-align: center;
             letter-spacing: 0.05em;
             color: #14325C;
+            margin-bottom: 8px;
+            font-weight: 400;
         }
 
-        /* Defeat Status Informational Block */
+        /* MATCHED FIX 4: Structured text flow container block */
         .defeat-status-text {
-            position: absolute;
-            width: 223px;
-            height: 123px;
-            left: calc(50% - 223px/2 - 1.5px);
-            top: 194px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
             font-size: 16px;
             line-height: 20px;
             text-align: center;
             color: #14325C;
+            max-width: 240px;
+            margin-bottom: 16px;
         }
 
-        /* New Project 2 Graphic Frame */
+        /* MATCHED FIX 5: Relativized graphic layer block */
         .decorative-graphic-layer {
-            position: absolute;
             width: 201px;
             height: 82px;
-            left: calc(50% - 201px/2 + 0.5px);
-            top: 256px;
             background: url('decorative_assets/kill_minotaur.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
+            margin-bottom: auto; /* Pushes the subsequent menu button block to the baseline area */
+            flex-shrink: 0;
         }
 
-        /* Frame 2 - Auto Layout Button Group Wrapper */
+        /* MATCHED FIX 6: Centered layout column stack component using margin guidelines */
         .action-button-stack {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            padding: 0px;
-            gap: 10px;
-            
-            position: absolute;
+            align-items: center;
             width: 186px;
-            height: 166px; 
-            left: 86px;
-            top: 368px;
-            
+            gap: 10px;
+            margin-bottom: 10px;
             filter: drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.25));
+            flex-shrink: 0;
         }
 
         /* Unified Shared Button Link Tokens */
         .menu-action-btn {
             box-sizing: border-box;
             width: 186px;
-            height: 78px;
+            height: 68px; /* Slightly adjusted to cleanly balance twin vertical elements within 633px frame */
             background: #F9B271;
             border: 5px solid rgba(255, 255, 255, 0.15);
             border-radius: 18px;
-            
+
             font-family: 'IM Fell Double Pica', serif;
             font-style: normal;
             font-weight: 400;
             font-size: 20px;
             line-height: 25px;
             text-align: center;
-            text-decoration: none; /* Removes link underline */
+            text-decoration: none;
             color: #14325C;
-            
+
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             transition: opacity 0.2s;
-            
-            flex: none;
-            align-self: stretch;
-            flex-grow: 0;
+
+            flex-shrink: 0;
         }
 
         .menu-action-btn:hover {
@@ -168,26 +154,26 @@
 </head>
 <body>
 
-    <div class="game-over-container">
-        <div class="blur-bg-ellipse"></div>
-        
-        <div class="inner-panel-card">
-            
-            <img src="logo.svg" alt="LINORINTH" class="logo-vector">
-            
-            <h1 class="game-over-title">GAME OVER</h1>
-            <p class="defeat-status-text">The Minotaur has defeated you! Fight again or give up?</p>
-            
-            <div class="decorative-graphic-layer"></div>
-            
-            <div class="action-button-stack">
-                <a href="initial-beginnings.html" class="menu-action-btn">REPLAY</a>
-                
-                <a href="join-screen.html" class="menu-action-btn">Exit game</a>
-            </div>
-            
+<div class="game-over-container">
+    <div class="blur-bg-ellipse"></div>
+
+    <div class="inner-panel-card">
+
+        <img src="logo.svg" alt="LINORINTH" class="logo-vector">
+
+        <h1 class="game-over-title" data-i18n="game_over_title">GAME OVER</h1>
+
+        <p class="defeat-status-text" data-i18n="defeat_status">The Minotaur has defeated you! Fight again or give up?</p>
+
+        <div class="decorative-graphic-layer"></div>
+
+        <div class="action-button-stack">
+            <a href="initial-beginnings.html" class="menu-action-btn">REPLAY</a>
+            <a href="join-screen.html" class="menu-action-btn">Exit game</a>
         </div>
+
     </div>
+</div>
 
 </body>
 </html>

@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Screen - Virtual Queue Position</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
-    
+
+    <script src="translations.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -48,7 +50,7 @@
             z-index: 10;
         }
 
-        /* Rectangle 5 (Inner Panel Base Frame) */
+        /* MATCHED FIX 1: Auto layout vertical column container matching info-page */
         .inner-panel-card {
             position: absolute;
             width: 340px;
@@ -57,148 +59,141 @@
             top: 10px;
             background: #D3E8EC;
             border-radius: 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 20px;
+            box-sizing: border-box;
         }
 
-        /* Vector */
+        /* MATCHED FIX 2: Relativized Logo asset */
         .logo-vector {
-            position: absolute;
-            width: 201.16px;
-            height: 54.35px;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 49.28px;
+            width: 201px;
+            height: 54px;
+            margin-bottom: 14px;
+            flex-shrink: 0;
         }
 
-        /* YOU ARE POSITION Text Block */
+        /* MATCHED FIX 3: Cleaned text block for auto layout wrapping */
         .position-header-text {
-            position: absolute;
-            width: 223px;
-            height: 123px;
-            left: calc(50% - 223px/2 - 1px);
-            top: 130px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
             font-size: 20px;
             line-height: 25px;
             text-align: center;
             color: #14325C;
+            margin-bottom: 12px;
         }
 
-        /* Rectangle 4 (Red Queue Badge Frame) */
-        .queue-badge-box {
-            box-sizing: border-box;
-            position: absolute;
+        /* MATCHED FIX 4: Kept the structured visual container but removed position absolute */
+        .queue-badge-container {
+            position: relative; /* Allows number positioning context inside badge */
             width: 159px;
             height: 157px;
-            left: calc(50% - 159px/2 - 1px);
-            top: 157px;
+            margin-bottom: 16px;
+            flex-shrink: 0;
+        }
+
+        .queue-badge-box {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
             background: #C16868;
             border: 5px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
             border-radius: 30px;
         }
 
-        /* 54 (Queue Numeric Value Counter) */
         .queue-position-number {
             position: absolute;
-            width: 92px;
-            height: 120px;
-            left: calc(50% - 92px/2 - 3.5px);
-            top: 163px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-size: 96px;
-            line-height: 120px;
+            line-height: 96px;
             text-align: center;
             color: #410C0C;
             z-index: 2;
             pointer-events: none;
         }
 
-        /* IN LINE Play Linorinth Segment Promotional Text Wrapper */
+        /* MATCHED FIX 5: Standardized text wrapping block */
         .play-promo-text {
-            position: absolute;
-            width: 264px;
-            height: 150px;
-            left: calc(50% - 264px/2 - 0.5px);
-            top: 322px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
             font-size: 24px;
             line-height: 30px;
             text-align: center;
             color: #14325C;
+            max-width: 280px;
+            margin-bottom: 16px;
         }
 
-        /* Arrow 1 (Perfectly Centered Line Stem + Pointing Arrowhead) */
+        /* Combined visual assets row container for arrow + graphic */
+        .indicators-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        /* MATCHED FIX 6: Cleaned up Arrow metrics using modern centering instead of static pixel offsets */
         .indicator-arrow-line {
             box-sizing: border-box;
-            position: absolute;
             width: 45px;
             height: 0;
-            left: 50%;
-            top: 472px;
             border: 2px solid #000000;
-            transform: translateX(-50%) rotate(90deg);
+            transform: rotate(90deg);
+            position: relative;
         }
 
-        /* Dynamically injects the arrowhead triangle onto the end of the line stem */
         .indicator-arrow-line::after {
             content: '';
             position: absolute;
-            right: -10px; /* Positions arrowhead at the terminal end of the line */
-            top: -5px;   /* Centers the arrow tip vertically relative to the stem width */
+            right: -10px;
+            top: -5px;
             width: 0;
             height: 0;
             border-top: 5px solid transparent;
             border-bottom: 5px solid transparent;
-            border-left: 8px solid #000000; /* Matches exact line color settings */
+            border-left: 8px solid #000000;
         }
 
-        /* image 1 (Decorative Mini Asset Box Layer) */
         .decorative-image-layer {
             position: absolute;
+            right: 15px;
             width: 68px;
             height: 50px;
-            left: 243px;
-            top: 467px;
             background-image: url('decorative_assets/image.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
         }
 
-        /* Combined Rectangle 2 + Rectangle 6 + JOIN GAME Element */
+        /* MATCHED FIX 7: Synced button properties directly with info-page layout metrics */
         .join-game-action-btn {
             box-sizing: border-box;
-            position: absolute;
             width: 228px;
             height: 78px;
-            left: calc(50% - 228px/2 - 1.5px);
-            top: 517px;
-            
             background: #F9B271;
             border: 5px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
             border-radius: 18px;
-            
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
+
             font-size: 24px;
             line-height: 30px;
             color: #14325C;
-            
+
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            
+
             cursor: pointer;
             transition: opacity 0.2s;
+            text-decoration: none;
+            margin-bottom: auto; /* Pushes component balance naturally downwards */
+            flex-shrink: 0;
         }
 
         .join-game-action-btn:hover {
@@ -208,30 +203,33 @@
 </head>
 <body>
 
-    <div class="join-screen-container">
-        <div class="blur-bg-ellipse"></div>
-        
-        <div class="inner-panel-card">
-            
-            <img src="logo.svg" alt="LINORINTH" class="logo-vector">
-            
-            <div class="position-header-text">YOU ARE POSITION</div>
-            
+<div class="join-screen-container">
+    <div class="blur-bg-ellipse"></div>
+
+    <div class="inner-panel-card">
+
+        <img src="logo.svg" alt="LINORINTH" class="logo-vector">
+
+        <div class="position-header-text" data-i18n="position_header">YOU ARE POSITION</div>
+
+        <div class="queue-badge-container">
             <div class="queue-badge-box"></div>
             <div class="queue-position-number">54</div>
-            
-            <div class="play-promo-text">
-                IN LINE<br>Play Linorinth for an opportunity to win and SKIP THE LINE
-            </div>
-            
-            <div class="indicator-arrow-line"></div>
-            
-            <div class="decorative-image-layer"></div>
-            
-            <a href="initial-beginnings.html" class="join-game-action-btn" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">JOIN GAME</a>
-            
         </div>
+
+        <div class="play-promo-text" data-i18n="play_promo">
+            IN LINE<br>Play Linorinth for an opportunity to win and SKIP THE LINE
+        </div>
+
+        <div class="indicators-row">
+            <div class="indicator-arrow-line"></div>
+            <div class="decorative-image-layer"></div>
+        </div>
+
+        <a href="initial-beginnings.html" class="join-game-action-btn">JOIN GAME</a>
+
     </div>
+</div>
 
 </body>
 </html>

@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&family=IM+Fell+Double+Pica&family=Inter:wght@400&display=swap" rel="stylesheet">
 
+    <script src="translations.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -47,7 +49,7 @@
             pointer-events: none;
         }
 
-        /* Rectangle 5 Inner Content Card */
+        /* MATCHED FIX 1: Transformed container card into a vertical flex column layout */
         .inner-panel-card {
             position: absolute;
             width: 340px;
@@ -56,59 +58,48 @@
             top: 10px;
             background: #D3E8EC;
             border-radius: 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 20px;
+            box-sizing: border-box;
         }
 
-        /* Vector Logo Header */
+        /* MATCHED FIX 2: Relativized logo asset header */
         .logo-vector {
-            position: absolute;
-            width: 201.16px;
-            height: 54.35px;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 49.28px;
+            width: 201px;
+            height: 54px;
+            margin-bottom: 14px;
+            flex-shrink: 0;
         }
 
-        /* VICTORY! Main Header text */
+        /* MATCHED FIX 3: Removed static bounding box properties to allow native title flow */
         .victory-main-title {
-            position: absolute;
-            width: 374px;
-            height: 114px;
-            left: calc(50% - 374px/2);
-            top: 115px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
             font-size: 36px;
             line-height: 45px;
             text-align: center;
             letter-spacing: 0.05em;
             color: #14325C;
+            margin-bottom: 4px;
+            font-weight: 400;
         }
 
-        /* You made it to the end! Sub-title phrase */
+        /* MATCHED FIX 4: Cleaned text block for auto layout spacing */
         .victory-sub-phrase {
-            position: absolute;
-            width: 223px;
-            height: 32px;
-            left: calc(50% - 223px/2);
-            top: 168px;
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
             font-size: 18px;
             line-height: 25px;
             text-align: center;
             color: #14325C;
+            max-width: 260px;
+            margin-bottom: 20px;
         }
 
-        /* Rectangle 3 Green Admission Container Box */
+        /* MATCHED FIX 5: Relativized green ticket block container */
         .admission-ticket-box {
             box-sizing: border-box;
-            position: absolute;
             width: 296px;
-            height: 180px;
-            left: calc(50% - 296px/2);
-            top: 220px;
+            height: 140px;
             background: #9ACF71;
             border: 5px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
@@ -117,35 +108,32 @@
             justify-content: center;
             align-items: center;
             padding: 16px;
+            margin-bottom: auto; /* Dynamically pushes subsequent QR elements down uniformly */
+            flex-shrink: 0;
         }
 
         /* Admission Instruction Text inside Box */
         .admission-instruction-text {
-            font-family: 'IM Fell Double Pica', serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 22px;
-            line-height: 30px;
+            font-size: 20px;
+            line-height: 26px;
             text-align: center;
             color: #14325C;
         }
 
-        /* QR Code Footer Graphic Container */
+        /* MATCHED FIX 6: Integrated footer graphic safely into the flow without absolute layers */
         .footer-qr-container {
-            position: absolute;
-            bottom: 30px;
-            left: calc(50% - 150px/2);
             width: 150px;
             height: 150px;
             background-image: url('decorative_assets/default_QR.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
-            /* White background fallback with dashed border so it stands out if image is missing */
             background-color: #ffffff;
             border: 3px dashed rgba(20, 50, 92, 0.2);
             border-radius: 12px;
             box-shadow: 0px 6px 15px rgba(0,0,0,0.06);
+            margin-bottom: 10px;
+            flex-shrink: 0;
         }
 
         /* Hidden Layer Fallbacks from Specs */
@@ -165,11 +153,12 @@
 
         <img src="logo.svg" alt="LINORINTH" class="logo-vector">
 
-        <h1 class="victory-main-title">VICTORY!</h1>
-        <p class="victory-sub-phrase">You made it to the end!</p>
+        <h1 class="victory-main-title" data-i18n="victory_title">VICTORY!</h1>
+
+        <p class="victory-sub-phrase" data-i18n="victory_subtitle">You made it to the end!</p>
 
         <div class="admission-ticket-box">
-            <div class="admission-instruction-text">
+            <div class="admission-instruction-text" data-i18n="admission_instruction">
                 Walk to the Palace Gates and show the staff this screen to enter!
             </div>
         </div>

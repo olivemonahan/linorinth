@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info Page - Virtual Queue</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
-    
+    <script src="translations.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -25,6 +25,7 @@
             font-family: 'IM Fell Double Pica', serif;
         }
 
+        /* Base mobile frame */
         .info-page-container {
             position: relative;
             width: 361px;
@@ -46,6 +47,7 @@
             z-index: 10;
         }
 
+        /* FIX 1: Transformed container card into a vertical flex column layout */
         .inner-panel-card {
             position: absolute;
             width: 340px;
@@ -54,72 +56,77 @@
             top: 10px;
             background: #D3E8EC;
             border-radius: 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 20px;
+            box-sizing: border-box;
         }
 
+        /* FIX 2: Relativized assets so they fit cleanly in the document flow */
         .logo-vector {
-            position: absolute;
             width: 201px;
             height: 54px;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 49px;
+            margin-bottom: 12px;
+            flex-shrink: 0;
         }
 
+        /* FIX 3: Removed position: absolute, width, and height so text wraps natively */
         .virtual-queue-title {
-            position: absolute;
-            width: 182px;
-            height: 30px;
-            left: calc(50% - 182px/2 + 1px);
-            top: 100px;
             font-size: 24px;
             line-height: 30px;
             text-align: center;
             color: #14325C;
+            margin-bottom: 12px;
+            font-weight: bold;
         }
 
+        /* FIX 4: Allowed text blocks to scale heights organically */
         .instruction-text {
-            position: absolute;
-            width: 240px;
-            height: 127px;
-            left: calc(50% - 240px/2 + 1px);
-            top: 155px;
             font-size: 16px;
             line-height: 20px;
             text-align: center;
             color: #14325C;
+            max-width: 260px;
+            margin-bottom: 14px;
         }
 
         .qr-code-graphic {
-            position: absolute;
             width: 178px;
-            height: 100px;
-            left: calc(50% - 178px/2 + 1px);
-            top: 219px;
+            height: 90px;
             background-image: url('decorative_assets/people_in_line.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             border-radius: 10px;
+            margin-bottom: 18px;
+            flex-shrink: 0;
+        }
+
+        /* FIX 5: Combined label + selector drop wrapper into a horizontal row block */
+        .visitors-row-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 280px;
+            gap: 12px;
+            margin-bottom: 22px;
         }
 
         .visitors-label {
-            position: absolute;
-            width: 126px;
-            height: 41px;
-            left: 54px;
-            top: 339px;
-            font-size: 16px;
-            line-height: 20px;
+            flex: 1;
+            font-size: 15px;
+            line-height: 18px;
             text-align: right;
             color: #14325C;
         }
 
         .dropdown-wrapper {
-            position: absolute;
             width: 96px;
             height: 37px;
-            left: 189px;
-            top: 339px;
+            flex-shrink: 0;
         }
 
         .dropdown-menu-select {
@@ -139,20 +146,18 @@
             background-size: 16px;
         }
 
+        /* FIX 6: Cleaned button positioning and decoupled it from static offsets */
         .join-button-action {
             box-sizing: border-box;
-            position: absolute;
             width: 228px;
-            height: 78px;
-            left: calc(50% - 228px/2 + 9px);
-            top: 403px;
+            height: 68px;
             background: #F9B271;
             border: 5px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
             border-radius: 18px;
             font-family: 'IM Fell Double Pica', serif;
-            font-size: 20px;
-            line-height: 25px;
+            font-size: 18px;
+            line-height: 22px;
             color: #14325C;
             display: flex;
             justify-content: center;
@@ -160,52 +165,62 @@
             text-align: center;
             cursor: pointer;
             transition: opacity 0.2s;
+            text-decoration: none;
+            margin-bottom: auto; /* Automatically pushes subsequent queue size elements down */
+            flex-shrink: 0;
         }
 
         .join-button-action:hover {
             opacity: 0.9;
         }
 
+        /* FIX 7: Aligned bottom counter items inline to cleanly isolate layout growth */
+        .queue-counter-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
         .queue-size-label {
-            position: absolute;
-            width: 158px;
-            height: 37px;
-            left: 76px;
-            top: 536px;
             font-size: 16px;
             line-height: 20px;
             color: #14325C;
+            text-align: right;
         }
 
         .queue-number-value {
-            position: absolute;
-            width: 82px;
-            height: 62px;
-            left: 219px;
-            top: 505px;
-            font-size: 48px;
-            line-height: 60px;
+            font-size: 44px;
+            line-height: 44px;
             color: #B80D0D;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <div class="info-page-container">
-        <div class="blur-bg-ellipse"></div>
-        
-        <div class="inner-panel-card">
-            <img src="logo.svg" alt="LINORINTH" class="logo-vector">
-            <div class="virtual-queue-title">Virtual Queue</div>
-            <div class="instruction-text">
-                Join the Virtual Line and wait until your position decreases to 1. Then, proceed to admissions gates.
-            </div>
-            <div class="qr-code-graphic"></div>
-            <div class="visitors-label">Number of Visitors in Your Group:</div>
+<div class="info-page-container">
+    <div class="blur-bg-ellipse"></div>
+
+    <div class="inner-panel-card">
+        <img src="logo.svg" alt="LINORINTH" class="logo-vector">
+
+        <div class="virtual-queue-title" data-i18n="virtual_queue">Virtual Queue</div>
+
+        <div class="instruction-text" data-i18n="queue_instruction">
+            Join the Virtual Line and wait until your position decreases to 1. Then, proceed to admissions gates.
+        </div>
+
+        <div class="qr-code-graphic"></div>
+
+        <div class="visitors-row-container">
+            <div class="visitors-label" data-i18n="visitors_label">Number of Visitors in Your Group:</div>
             <div class="dropdown-wrapper">
                 <label>
                     <select class="dropdown-menu-select">
-                        <option value="" disabled selected hidden>Select</option>
+                        <option value="" disabled selected hidden data-i18n="select_placeholder">Select</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -214,11 +229,16 @@
                     </select>
                 </label>
             </div>
-            <a href="join-screen.html" class="join-button-action" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">JOIN VIRTUAL LINE</a>
-            <div class="queue-size-label">Current Queue Size:</div>
+        </div>
+
+        <a href="join-screen.html" class="join-button-action" data-i18n="join_line">JOIN VIRTUAL LINE</a>
+
+        <div class="queue-counter-row">
+            <div class="queue-size-label" data-i18n="queue_size">Current Queue Size:</div>
             <div class="queue-number-value">53</div>
         </div>
     </div>
+</div>
 
 </body>
 </html>
