@@ -30,7 +30,40 @@ const translations = {
         // victory.html
         "victory_title": "VICTORY!",
         "victory_subtitle": "You made it to the end!",
-        "admission_instruction": "Walk to the Palace Gates and show the staff this screen to enter!"
+        "admission_instruction": "Walk to the Palace Gates and show the staff this screen to enter!",
+
+        // game.html UI Elements
+        "game_paused": "Game Paused",
+        "view_key": "VIEW SYMBOLS KEY",
+        "tap_resume": "TAP ANYWHERE TO RESUME GAME",
+        "key_header": "KEY",
+        "key_sub": "TO GAME SYMBOLS",
+        "symbol_you": "YOU",
+        "symbol_minotaur": "MINOTAUR",
+        "symbol_traps": "TRAPS",
+        "symbol_sword": "SWORD",
+        "symbol_thread": "THREAD",
+        "trap_warning": "⚠ TRAP!",
+
+        // game.html Trivia Questions
+        "trivia": [
+            {
+                "q": "Who was the ruler of Crete in the myth of the labyrinth?",
+                "opts": ["Poseidon", "Theseus", "An Athenian", "King Minos"]
+            },
+            {
+                "q": "The Minotaur, according to myth, has...",
+                "opts": ["Body of a man, head of a bull", "Head of a man, body of a bull", "Head of a horse, body of a bull", "Head of a god, body of a man"]
+            },
+            {
+                "q": "RIDDLE: I am strong and horned, I appear in art and leap through air, I was sacred to the people here. What am I?",
+                "opts": ["Bull", "Deer", "Goat", "Rhino"]
+            },
+            {
+                "q": "RIDDLE: With trident raised, I stir the sea, Earthquakes follow easily. Who am I?",
+                "opts": ["Zeus", "Apollo", "Poseidon", "Hades"]
+            }
+        ]
     },
     el: {
         // index.html
@@ -63,7 +96,40 @@ const translations = {
         // victory.html
         "victory_title": "ΝΙΚΗ!",
         "victory_subtitle": "Τα καταφέρατε μέχρι το τέλος!",
-        "admission_instruction": "Πηγαίνετε στις Πύλες του Παλατιού και δείξτε αυτή την οθόνη στο προσωπικό για να μπείτε!"
+        "admission_instruction": "Πηγαίνετε στις Πύλες του Παλατιού και δείξτε αυτή την οθόνη στο προσωπικό για να μπείτε!",
+
+        // game.html UI Elements
+        "game_paused": "Παιχνίδι σε Παύση",
+        "view_key": "ΠΡΟΒΟΛΗ ΥΠΟΜΝΗΜΑΤΟΣ ΣΥΜΒΟΛΩΝ",
+        "tap_resume": "ΠΑΤΗΣΤΕ ΟΠΟΥΔΗΠΟΤΕ ΓΙΑ ΣΥΝΕΧΕΙΑ",
+        "key_header": "ΥΠΟΜΝΗΜΑ",
+        "key_sub": "ΣΥΜΒΟΛΩΝ ΠΑΙΧΝΙΔΙΟΥ",
+        "symbol_you": "ΕΣΕΙΣ",
+        "symbol_minotaur": "ΜΙΝΩΤΑΥΡΟΣ",
+        "symbol_traps": "ΠΑΓΙΔΕΣ",
+        "symbol_sword": "ΞΙΦΟΣ",
+        "symbol_thread": "ΜΙΤΟΣ",
+        "trap_warning": "⚠ ΠΑΓΙΔΑ!",
+
+        // game.html Trivia Questions
+        "trivia": [
+            {
+                "q": "Ποιος ήταν ο κυβερνήτης της Κρήτης στον μύθο του λαβυρίνθου;",
+                "opts": ["Ποσειδώνας", "Θησέας", "Ένας Αθηναίος", "Βασιλιάς Μίνωας"]
+            },
+            {
+                "q": "Ο Μινώταυρος, σύμφωνα με τον μύθο, έχει...",
+                "opts": ["Σώμα ανθρώπου, κεφάλι ταύρου", "Κεφάλι ανθρώπου, σώμα ταύρου", "Κεφάλι αλόγου, σώμα ταύρου", "Κεφάλι θεού, σώμα ανθρώπου"]
+            },
+            {
+                "q": "ΑΙΝΙΓΜΑ: Είμαι δυνατός με κέρατα, εμφανίζομαι στην τέχνη και πηδώ στον αέρα, ήμουν ιερός για τους ανθρώπους εδώ. Τι είμαι;",
+                "opts": ["Ταύρος", "Ελάφι", "Κατσίκα", "Ρινόκερος"]
+            },
+            {
+                "q": "ΑΙΝΙΓΜΑ: Με ανασηκωμένη τρίαινα, ταράζω τη θάλασσα, σεισμοί ακολουθούν εύκολα. Ποιος είμαι;",
+                "opts": ["Δίας", "Απόλλωνας", "Ποσειδώνας", "Άδης"]
+            }
+        ]
     },
     de: {
         // index.html
@@ -96,7 +162,40 @@ const translations = {
         // victory.html
         "victory_title": "SIEG!",
         "victory_subtitle": "Du hast es bis ans Ende geschafft!",
-        "admission_instruction": "Gehen Sie zu den Palasttoren und zeigen Sie dem Personal diesen Bildschirm, um eintreten zu können!"
+        "admission_instruction": "Gehen Sie zu den Palasttoren und zeigen Sie dem Personal diesen Bildschirm, um eintreten zu können!",
+
+        // game.html UI Elements
+        "game_paused": "Spiel Pausiert",
+        "view_key": "SYMBOLERKLÄRUNG ANZEIGEN",
+        "tap_resume": "ZUM FORTSETZEN ÜBERALL TIPPEN",
+        "key_header": "LEGENDE",
+        "key_sub": "DER SPIELSYMBOLE",
+        "symbol_you": "DU",
+        "symbol_minotaur": "MINOTAURUS",
+        "symbol_traps": "FALLEN",
+        "symbol_sword": "SCHWERT",
+        "symbol_thread": "FADEN",
+        "trap_warning": "⚠ FALLE!",
+
+        // game.html Trivia Questions
+        "trivia": [
+            {
+                "q": "Wer war der Herrscher von Kreta im Mythos des Labyrinths?",
+                "opts": ["Poseidon", "Theseus", "Ein Athener", "König Minos"]
+            },
+            {
+                "q": "Der Minotaurus hat dem Mythos nach...",
+                "opts": ["Körper eines Mannes, Kopf eines Stiers", "Kopf eines Mannes, Körper eines Stiers", "Kopf eines Pferdes, Körper eines Stiers", "Kopf eines Gottes, Körper eines Mannes"]
+            },
+            {
+                "q": "RÄTSEL: Ich bin stark und gehörnt, erscheine in der Kunst und springe durch die Luft, ich war den Menschen hier heilig. Was bin ich?",
+                "opts": ["Stier", "Hirsch", "Ziege", "Nashorn"]
+            },
+            {
+                "q": "RÄTSEL: Mit erhobenem Dreizack wühle ich das Meer auf, Erdbeben folgen leicht. Wer bin ich?",
+                "opts": ["Zeus", "Apollo", "Poseidon", "Hades"]
+            }
+        ]
     },
     fr: {
         // index.html
@@ -129,7 +228,40 @@ const translations = {
         // victory.html
         "victory_title": "VICTOIRE !",
         "victory_subtitle": "Vous êtes arrivé au bout !",
-        "admission_instruction": "Présentez-vous aux portes du palais et montrez cet écran au personnel pour entrer !"
+        "admission_instruction": "Présentez-vous aux portes du palais et montrez cet écran au personnel pour entrer !",
+
+        // game.html UI Elements
+        "game_paused": "Jeu en Pause",
+        "view_key": "VOIR LA LÉGENDE DES SYMBOLES",
+        "tap_resume": "TAPOTER N'IMPORTE OÙ POUR REPRENDRE",
+        "key_header": "LÉGENDE",
+        "key_sub": "DES SYMBOLES DU JEU",
+        "symbol_you": "VOUS",
+        "symbol_minotaur": "MINOTAURE",
+        "symbol_traps": "PIÈGES",
+        "symbol_sword": "ÉPÉE",
+        "symbol_thread": "FIL",
+        "trap_warning": "⚠ PIÈGE !",
+
+        // game.html Trivia Questions
+        "trivia": [
+            {
+                "q": "Qui était le souverain de Crête dans le mythe du labyrinthe ?",
+                "opts": ["Poséidon", "Thésée", "Un Athénien", "Roi Minos"]
+            },
+            {
+                "q": "Le Minotaure, selon le mythe, possède...",
+                "opts": ["Le corps d'un homme, la tête d'un taureau", "La tête d'un homme, le corps d'un taureau", "La tête d'un cheval, le corps d'un taureau", "La tête d'un dieu, le corps d'un homme"]
+            },
+            {
+                "q": "ÉNIGME : Je suis fort et cornu, j'apparais dans l'art et bondis dans les airs, j'étais sacré pour le peuple d'ici. Que suis-je ?",
+                "opts": ["Un taureau", "Un cerf", "Une chèvre", "Un rhinocéros"]
+            },
+            {
+                "q": "ÉNIGME : Mon trident levé, j'agite la mer, les tremblements de terre suivent facilement. Qui suis-je ?",
+                "opts": ["Zeus", "Apollon", "Poséidon", "Hadès"]
+            }
+        ]
     }
 };
 
