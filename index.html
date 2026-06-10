@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language Selection</title>
+    <title>Linorinth - Language Selection</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,6 @@
             z-index: 10;
         }
 
-        /* FIX 1: Transformed card container into a flexible vertical column layout */
         .inner-card {
             position: absolute;
             width: 340px;
@@ -67,7 +66,6 @@
             box-sizing: border-box;
         }
 
-        /* FIX 2: Normalized structural elements into native layout flow */
         .logo-vector {
             width: 201px;
             height: 54px;
@@ -75,7 +73,6 @@
             flex-shrink: 0;
         }
 
-        /* FIX 3: Removed absolute positions and hardcoded limits from text structures */
         .welcome-title {
             font-size: 32px;
             line-height: 38px;
@@ -94,7 +91,6 @@
             margin-bottom: 30px;
         }
 
-        /* FIX 4: Created a safe 2x2 grid context for language choices */
         .languages-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -136,24 +132,21 @@
             flex-shrink: 0;
         }
 
-        /* Assigning localized backdrops cleanly without absolute layout definitions */
         .flag-english { background-image: url('decorative_assets/England.png'); }
         .flag-greece  { background-image: url('decorative_assets/Greece.png'); }
         .flag-germany { background-image: url('decorative_assets/Germany.png'); }
         .flag-france  { background-image: url('decorative_assets/France.png'); }
 
-        /* FIX 6: Made labels flexible with text alignment to wrap cleanly inside grid cells */
         .lang-label {
             width: 100%;
             font-size: 20px;
             line-height: 24px;
             text-align: center;
             color: #14325C;
-            white-space: normal; /* Permits wrapping if name lengths expand */
+            white-space: normal;
             word-wrap: break-word;
         }
 
-        /* Customizing specialized typography overrides without absolute heights */
         .label-greece {
             font-family: 'Arima', system-ui;
             font-weight: 500;
