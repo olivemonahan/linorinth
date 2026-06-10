@@ -354,10 +354,10 @@
         <img src="logo.svg" alt="LINORINTH" class="logo-vector">
         <h1 class="game-paused-title" data-i18n="game_paused">Game Paused</h1>
         <div class="play-polygon-icon"></div>
-        <div class="step-1-text">STEP 1. FIND SWORD</div>
-        <div class="step-2-text">STEP 2. SLAY MINOTAUR</div>
-        <div class="step-3-text">STEP 3. ESCAPE LABYRINTH</div>
-        <div class="step-4-text">STEP 4. ENTER KNOSSOS PALACE</div>
+        <div class="step-1-text" data-i18n="step_one">STEP 1. FIND SWORD</div>
+        <div class="step-2-text" data-i18n="step_two">STEP 2. SLAY MINOTAUR</div>
+        <div class="step-3-text" data-i18n="step_three">STEP 3. ESCAPE LABYRINTH</div>
+        <div class="step-4-text" data-i18n="step_four">STEP 4. ENTER KNOSSOS PALACE</div>
         <div class="project-img-1"></div>
         <div class="project-img-2"></div>
         <div class="project-img-3"></div>
@@ -1245,14 +1245,16 @@
       // Phase-based instruction near bottom
       const elapsed = introAnim.elapsed;
       let line, color;
+      const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+      const langMap = translations[currentLang] || translations['en'];
       if (elapsed < 3.5) {
-        line  = 'The Minotaur hunts you through the maze...';
+        line  = langMap["hunt_line_1"] || 'The Minotaur hunts you through the maze...';
         color = `rgba(204, 34, 0, ${a})`;
       } else if (elapsed < 7.0) {
-        line  = 'Your heartbeat reveals how close it is!';
+        line  = langMap["hunt_line_2"] || 'Your heartbeat reveals how close it is!';
         color = `rgba(252, 176, 117, ${a})`;
       } else {
-        line  = 'The farther you run, the calmer your heart...';
+        line  = langMap["hunt_line_3"] || 'The farther you run, the calmer your heart...';
         color = `rgba(213, 230, 237, ${a})`;
       }
       // Phase text drawn in the bottom light-blue controls area, wrapped across multiple lines

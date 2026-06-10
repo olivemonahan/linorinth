@@ -45,6 +45,10 @@ const translations = {
         "symbol_thread": "THREAD",
         "trap_warning": "⚠ TRAP!",
 
+        "hunt_line_1": "The Minotaur hunts you through the maze...",
+        "hunt_line_2": "Your heartbeat reveals how close it is!",
+        "hunt_line_3": "The farther you run, the calmer your heart...",
+
         // game.html Trivia Questions
         "trivia": [
             { q: 'What does "labrys" refer to?', opts: ["Single-headed axe", "Double-headed axe", "Labyrinth", "Palace"], a: 1 },
@@ -110,6 +114,10 @@ const translations = {
         "symbol_sword": "ΞΙΦΟΣ",
         "symbol_thread": "ΜΙΤΟΣ",
         "trap_warning": "⚠ ΠΑΓΙΔΑ!",
+
+        "hunt_line_1": "Ο Μινώταυρος σας κυνηγάει μέσα στον λαβύρινθο...",
+        "hunt_line_2": "Ο χτύπος της καρδιάς σας μαρτυρά πόσο κοντά βρίσκεται!",
+        "hunt_line_3": "Όσο πιο μακριά τρέχετε, τόσο πιο ήρεμη η καρδιά σας...",
 
         // game.html Trivia Questions
         "trivia": [
@@ -177,6 +185,10 @@ const translations = {
         "symbol_thread": "FADEN",
         "trap_warning": "⚠ FALLE!",
 
+        "hunt_line_1": "Der Minotaurus jagt dich durch das Labyrinth...",
+        "hunt_line_2": "Dein Herzschlag verrät, wie nah er ist!",
+        "hunt_line_3": "Je weiter du läufst, desto ruhiger wird dein Herz...",
+
         // game.html Trivia Questions
         "trivia": [
             { q: 'Was bedeutet das Wort "Labrys"?', opts: ["Einseitige Axt", "Doppelaxt", "Labyrinth", "Palast"], a: 1 },
@@ -242,6 +254,10 @@ const translations = {
         "symbol_sword": "ÉPÉE",
         "symbol_thread": "FIL",
         "trap_warning": "⚠ PIÈGE !",
+
+        "hunt_line_1": "Le Minotaure vous traque à travers le labyrinthe...",
+        "hunt_line_2": "Votre rythme cardiaque révèle à quel point il est proche !",
+        "hunt_line_3": "Plus vous courez loin, plus votre cœur s'apaise...",
 
         // game.html Trivia Questions
         "trivia": [
