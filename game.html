@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Linorinth - Game</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap');
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: #111;
@@ -26,9 +28,6 @@
     flex-direction: column;
   }
   canvas { display: block; touch-action: none; }
-
-  /* --- PAUSE OVERLAY STYLES --- */
-  @import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap');
 
   .paused-container {
     position: relative;
@@ -336,25 +335,6 @@
     color: #14325C;
     letter-spacing: 0.05em;
   }
-
-  .key-footer-resume {
-    width: 271px;
-    height: 41px;
-    font-family: 'IM Fell Double Pica', serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 16px;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: rgba(20, 50, 92, 0.5);
-    margin-top: auto;
-    flex: none;
-    order: 3;
-    align-self: stretch;
-    flex-grow: 0;
-    cursor: pointer;
-  }
 </style>
 </head>
 <body>
@@ -397,23 +377,23 @@
 
         <div class="key-list-wrapper">
           <div class="key-row-item">
-            <div class="key-symbol-box" style="background-image: url('body_right 1.png');"></div>
+            <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/minitheseus.png');"></div>
             <span class="key-symbol-label">YOU</span>
           </div>
           <div class="key-row-item">
-            <div class="key-symbol-box" style="background-image: url('minotaur 1.png');"></div>
+            <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/minitaur.png');"></div>
             <span class="key-symbol-label">MINOTAUR</span>
           </div>
           <div class="key-row-item">
-            <div class="key-symbol-box" style="background-image: url('image 3.png');"></div>
+            <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/traps.png');"></div>
             <span class="key-symbol-label">TRAPS</span>
           </div>
           <div class="key-row-item">
-            <div class="key-symbol-box" style="background-image: url('image 4.png');"></div>
+            <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/sword.png');"></div>
             <span class="key-symbol-label">SWORD</span>
           </div>
           <div class="key-row-item">
-            <div class="key-symbol-box" style="background-image: url('image 5.png');"></div>
+            <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/thread.png');"></div>
             <span class="key-symbol-label">THREAD</span>
           </div>
         </div>
@@ -1538,5 +1518,6 @@
   }
   requestAnimationFrame(ts=>{lastTime=ts;requestAnimationFrame(loop);});
 </script>
+</div>
 </body>
 </html>
