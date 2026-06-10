@@ -216,6 +216,145 @@
     color: rgba(20, 50, 92, 0.6);
     letter-spacing: 0.05em;
   }
+
+  /* --- NEW KEY BUTTON & SYMBOLS OVERLAY STYLES --- */
+  /* --- RECONFIGURED SYMBOLS KEY STYLES (MATCHES PAUSE OVERLAY) --- */
+  .view-key-btn {
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 201px;
+    height: 36px;
+    background: #14325C;
+    color: #C1DEE4;
+    border: none;
+    border-radius: 18px;
+    font-family: 'IM Fell Double Pica', serif;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 130;
+  }
+
+  .view-key-btn:hover {
+    background: #1c437a;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* Structural wrapper matches .paused-container */
+  .key-page-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #C1DEE4;
+    overflow: hidden;
+    font-family: 'IM Fell Double Pica', serif;
+  }
+
+  /* Text header properties matching .game-paused-title */
+  .key-text-header {
+    position: absolute;
+    width: 218px;
+    height: 30px;
+    left: calc(50% - 218px/2);
+    top: 122px;
+    font-family: 'IM Fell Double Pica', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #14325C;
+  }
+
+  .key-text-sub {
+    position: absolute;
+    width: 218px;
+    height: 20px;
+    left: calc(50% - 218px/2);
+    top: 152px;
+    font-family: 'IM Fell Double Pica', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #14325C;
+  }
+
+  /* List Container absolute tracking positions (Matches your Step Texts vertical flow) */
+  .key-list-wrapper {
+    position: absolute;
+    width: 220px;
+    height: 370px;
+    left: calc(50% - 220px/2);
+    top: 195px;
+  }
+
+  /* Explicit item block rows separated symmetrically to handle labels cleanly */
+  .key-row-item {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Individual item offsets calculated to reflect standard layout grids */
+  .key-row-item:nth-child(1) { top: 0px; }
+  .key-row-item:nth-child(2) { top: 74px; }
+  .key-row-item:nth-child(3) { top: 148px; }
+  .key-row-item:nth-child(4) { top: 222px; }
+  .key-row-item:nth-child(5) { top: 296px; }
+
+  .key-symbol-box {
+    box-sizing: border-box;
+    width: 49px;
+    height: 49px;
+    border: 1px solid #14325C;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+  }
+
+  .key-symbol-label {
+    margin-left: 20px;
+    font-family: 'IM Fell Double Pica', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 39px;
+    color: #14325C;
+    letter-spacing: 0.05em;
+  }
+
+  .key-footer-resume {
+    width: 271px;
+    height: 41px;
+    font-family: 'IM Fell Double Pica', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: rgba(20, 50, 92, 0.5);
+    margin-top: auto;
+    flex: none;
+    order: 3;
+    align-self: stretch;
+    flex-grow: 0;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -224,7 +363,8 @@
   <canvas id="c"></canvas>
 
   <div id="pause-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 100;">
-    <div class="paused-container">
+
+    <div class="paused-container" id="pause-main-screen">
       <div class="resume-game-overlay-link" onclick="resumeMyGame()"></div>
       <div class="blur-bg-ellipse"></div>
       <div class="inner-panel-card">
@@ -239,11 +379,49 @@
         <div class="project-img-2"></div>
         <div class="project-img-3"></div>
         <div class="project-img-4"></div>
+
+        <button class="view-key-btn" onclick="openSymbolsKey(event)">VIEW SYMBOLS KEY</button>
+
+        <div class="resume-instruction">TAP ANYWHERE TO RESUME GAME</div>
+      </div>
+    </div>
+
+    <div class="key-page-container hidden" id="pause-symbols-screen">
+      <div class="resume-game-overlay-link" onclick="resumeMyGame()"></div>
+      <div class="blur-bg-ellipse"></div>
+      <div class="inner-panel-card">
+        <img src="logo.svg" alt="LINORINTH" class="logo-vector">
+
+        <div class="key-text-header">KEY</div>
+        <div class="key-text-sub">TO GAME SYMBOLS</div>
+
+        <div class="key-list-wrapper">
+          <div class="key-row-item">
+            <div class="key-symbol-box" style="background-image: url('body_right 1.png');"></div>
+            <span class="key-symbol-label">YOU</span>
+          </div>
+          <div class="key-row-item">
+            <div class="key-symbol-box" style="background-image: url('minotaur 1.png');"></div>
+            <span class="key-symbol-label">MINOTAUR</span>
+          </div>
+          <div class="key-row-item">
+            <div class="key-symbol-box" style="background-image: url('image 3.png');"></div>
+            <span class="key-symbol-label">TRAPS</span>
+          </div>
+          <div class="key-row-item">
+            <div class="key-symbol-box" style="background-image: url('image 4.png');"></div>
+            <span class="key-symbol-label">SWORD</span>
+          </div>
+          <div class="key-row-item">
+            <div class="key-symbol-box" style="background-image: url('image 5.png');"></div>
+            <span class="key-symbol-label">THREAD</span>
+          </div>
+        </div>
+
         <div class="resume-instruction">TAP ANYWHERE TO RESUME GAME</div>
       </div>
     </div>
   </div>
-</div>
 
 <script>
   'use strict';
@@ -366,7 +544,7 @@
     swordSpawn  = randomSpawn([playerSpawn], ROWS/3);
     minoSpawn   = randomSpawn([playerSpawn, swordSpawn], ROWS/4);
   }
-  
+
   function randomSpawn(others=[], minCells=0) {
     for (let a=0; a<2000; a++) {
       const r=Math.floor(Math.random()*ROWS), c=Math.floor(Math.random()*COLS);
@@ -447,7 +625,7 @@
 
   const pauseBtnImg = new Image();
   pauseBtnImg.onload = () => { pauseImgLoaded = true; };
-  pauseBtnImg.src = 'pause.png'; 
+  pauseBtnImg.src = 'pause.png';
 
   const instructionsImg = new Image();
   instructionsImg.onload = () => { instImgLoaded = true; };
@@ -550,9 +728,19 @@
 
   function restartGame(){initSpawns();initTraps();applySpawns();theseusTimer=0;gameState='PLAYING';triviaState=null;releaseJoy();}
 
+  function openSymbolsKey(event) {
+    if (event) event.stopPropagation(); // Prevents background click layer from firing immediately
+    document.getElementById('pause-main-screen').classList.add('hidden');
+    document.getElementById('pause-symbols-screen').classList.remove('hidden');
+  }
+
   function resumeMyGame() {
     gameState = 'PLAYING';
     document.getElementById('pause-overlay').style.display = 'none';
+
+    // Always reset view states back to default panel layout on close
+    document.getElementById('pause-main-screen').classList.remove('hidden');
+    document.getElementById('pause-symbols-screen').classList.add('hidden');
   }
 
   function handleEndScreenClick(x, y) {
