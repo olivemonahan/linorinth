@@ -47,22 +47,22 @@ const translations = {
 
         // game.html Trivia Questions
         "trivia": [
-            {
-                "q": "Who was the ruler of Crete in the myth of the labyrinth?",
-                "opts": ["Poseidon", "Theseus", "An Athenian", "King Minos"]
-            },
-            {
-                "q": "The Minotaur, according to myth, has...",
-                "opts": ["Body of a man, head of a bull", "Head of a man, body of a bull", "Head of a horse, body of a bull", "Head of a god, body of a man"]
-            },
-            {
-                "q": "RIDDLE: I am strong and horned, I appear in art and leap through air, I was sacred to the people here. What am I?",
-                "opts": ["Bull", "Deer", "Goat", "Rhino"]
-            },
-            {
-                "q": "RIDDLE: With trident raised, I stir the sea, Earthquakes follow easily. Who am I?",
-                "opts": ["Zeus", "Apollo", "Poseidon", "Hades"]
-            }
+            { q: 'What does "labrys" refer to?', opts: ["Single-headed axe", "Double-headed axe", "Labyrinth", "Palace"], a: 1 },
+            { q: "Which animal held the greatest symbolic and religious significance to the Minoans?", opts: ["Bull", "Horse", "Bobcat", "Boar"], a: 0 },
+            { q: "From which mountain did the inhabitants of Knossos Palace obtain fresh water through aqueducts?", opts: ["Mount Zeus", "Mount Ida", "Mount Juktas", "Mount Olympus"], a: 2 },
+            { q: "During what period was Knossos Palace first built?", opts: ["Stone Age", "Bronze Age", "Dark Ages", "Classical Period"], a: 1 },
+            { q: "How many main entrance points did Knossos Palace have?", opts: ["1", "2", "3", "4"], a: 3 },
+            { q: "About how old is Knossos Palace (in years)?", opts: ["2,000", "4,000", "5,000", "8,000"], a: 1 },
+            { q: "Who built Knossos Palace?", opts: ["Minoans", "Spartans", "Athenians", "Sumerians"], a: 0 },
+            { q: "What was the reason for the second construction of the palace in 1700 BCE?", opts: ["Earthquake", "Tsunami", "Flood", "Avalanche"], a: 0 },
+            { q: "What room is this in Knossos Palace?", opts: ["Throne Room", "Queen's Megaron", "The Washroom", "The Dining Room"], a: 0 },
+            { q: "What room is this in Knossos Palace?", opts: ["Throne Room", "Queen's Megaron", "The Washroom", "The Dining Room"], a: 1 },
+            { q: "Who was the ruler of the Minoans?", opts: ["King Minos", "Zeus", "The Minotaur", "Poseidon"], a: 0 },
+            { q: "Who was the ruler of Crete in the myth of the labyrinth?", opts: ["Poseidon", "Theseus", "An Athenian", "King Minos"], a: 3 },
+            { q: "Who eventually slays the Minotaur in the myth of the labyrinth?", opts: ["Poseidon", "Theseus", "An Athenian", "King Minos"], a: 1 },
+            { q: "The Minotaur, according to myth, has...", opts: ["Body of a man, head of a bull", "Head of a man, body of a bull", "Head of a horse, body of a bull", "Head of a god, body of a man"], a: 0 },
+            { q: "RIDDLE: I am strong and horned, I appear in art and leap through air, I was sacred to the people here. What am I?", opts: ["Bull", "Deer", "Goat", "Rhino"], a: 0 },
+            { q: "RIDDLE: With trident raised, I stir the sea, Earthquakes follow easily. Who am I?", opts: ["Poseidon", "Zeus", "Theseus", "Apollo"], a: 0 }
         ]
     },
     el: {
@@ -113,22 +113,22 @@ const translations = {
 
         // game.html Trivia Questions
         "trivia": [
-            {
-                "q": "Ποιος ήταν ο κυβερνήτης της Κρήτης στον μύθο του λαβυρίνθου;",
-                "opts": ["Ποσειδώνας", "Θησέας", "Ένας Αθηναίος", "Βασιλιάς Μίνωας"]
-            },
-            {
-                "q": "Ο Μινώταυρος, σύμφωνα με τον μύθο, έχει...",
-                "opts": ["Σώμα ανθρώπου, κεφάλι ταύρου", "Κεφάλι ανθρώπου, σώμα ταύρου", "Κεφάλι αλόγου, σώμα ταύρου", "Κεφάλι θεού, σώμα ανθρώπου"]
-            },
-            {
-                "q": "ΑΙΝΙΓΜΑ: Είμαι δυνατός με κέρατα, εμφανίζομαι στην τέχνη και πηδώ στον αέρα, ήμουν ιερός για τους ανθρώπους εδώ. Τι είμαι;",
-                "opts": ["Ταύρος", "Ελάφι", "Κατσίκα", "Ρινόκερος"]
-            },
-            {
-                "q": "ΑΙΝΙΓΜΑ: Με ανασηκωμένη τρίαινα, ταράζω τη θάλασσα, σεισμοί ακολουθούν εύκολα. Ποιος είμαι;",
-                "opts": ["Δίας", "Απόλλωνας", "Ποσειδώνας", "Άδης"]
-            }
+            { q: "Τι σημαίνει η λέξη «λάβρυς»;", opts: ["Πέλεκυς μονής κεφαλής", "Διπλός πέλεκυς", "Λαβύρινθος", "Παλάτι"], a: 1 },
+            { q: "Ποιο ζώο είχε τη μεγαλύτερη συμβολική και θρησκευτική σημασία για τους Μινωίτες;", opts: ["Ταύρος", "Άλογο", "Αγριόγατα", "Αγριογούρουνο"], a: 0 },
+            { q: "Από ποιο βουνό υδροδοτούνταν το ανάκτορο της Κνωσού μέσω υδραγωγείων;", opts: ["Γιούχτας (Όρος Ζευς)", "Ψηλορείτης (Όρος Ίδη)", "Όρος Γιούχτας", "Όρος Όλυμπος"], a: 2 },
+            { q: "Κατά ποια περίοδο χτίστηκε αρχικά το ανάκτορο της Κνωσού;", opts: ["Λίθινη Εποχή", "Εποχή του Χαλκού", "Σκοτεινοί Αιώνες", "Κλασική Περίοδος"], a: 1 },
+            { q: "Πόσες κύριες εισόδους είχε το ανάκτορο της Κνωσού;", opts: ["1", "2", "3", "4"], a: 3 },
+            { q: "Πόσο χρονών είναι περίπου το ανάκτορο της Κνωσού (σε έτη);", opts: ["2.000", "4.000", "5.000", "8.000"], a: 1 },
+            { q: "Ποιος έχτισε το ανάκτορο της Κνωσού;", opts: ["Μινωίτες", "Σπαρτιάτες", "Αθηναίοι", "Σουμέριοι"], a: 0 },
+            { q: "Ποιος ήταν ο λόγος για τη δεύτερη οικοδόμηση του ανακτόρου το 1700 π.Χ.;", opts: ["Σεισμός", "Τσουνάμι", "Πλημμύρα", "Χιονοστιβάδα"], a: 0 },
+            { q: "Ποιο δωμάτιο είναι αυτό στο ανάκτορο της Κνωσού;", opts: ["Αίθουσα του Θρόνου", "Μέγαρο της Βασίλισσας", "Το Λουτρό", "Η Τραπεζαρία"], a: 0 },
+            { q: "Ποιο δωμάτιο είναι αυτό στο ανάκτορο της Κνωσού;", opts: ["Αίθουσα του Θρόνου", "Μέγαρο της Βασίλισσας", "Το Λουτρό", "Η Τραπεζαρία"], a: 1 },
+            { q: "Ποιος ήταν ο κυβερνήτης των Μινωιτών;", opts: ["Βασιλιάς Μίνωας", "Δίας", "Μινώταυρος", "Ποσειδώνας"], a: 0 },
+            { q: "Ποιος ήταν ο κυβερνήτης της Κρήτης στον μύθο του λαβυρίνθου;", opts: ["Ποσειδώνας", "Θησέας", "Ένας Αθηναίος", "Βασιλιάς Μίνωας"], a: 3 },
+            { q: "Ποιος σκοτώνει τελικά τον Μινώταυρο στον μύθο του λαβυρίνθου;", opts: ["Ποσειδώνας", "Θησέας", "Ένας Αθηναίος", "Βασιλιάς Μίνωας"], a: 1 },
+            { q: "Ο Μινώταυρος, σύμφωνα με τον μύθο, έχει...", opts: ["Σώμα ανθρώπου, κεφάλι ταύρου", "Κεφάλι ανθρώπου, σώμα ταύρου", "Κεφάλι αλόγου, σώμα ταύρου", "Κεφάλι θεού, σώμα ανθρώπου"], a: 0 },
+            { q: "ΑΙΝΙΓΜΑ: Είμαι δυνατός με κέρατα, εμφανίζομαι στην τέχνη και πηδώ στον αέρα, ήμουν ιερός για τους ανθρώπους εδώ. Τι είμαι;", opts: ["Ταύρος", "Ελάφι", "Κατσίκα", "Ρινόκερος"], a: 0 },
+            { q: "ΑΙΝΙΓΜΑ: Με ανασηκωμένη τρίαινα, ταράζω τη θάλασσα, σεισμοί ακολουθούν εύκολα. Ποιος είμαι;", opts: ["Ποσειδώνας", "Δίας", "Θησέας", "Απόλλωνας"], a: 0 }
         ]
     },
     de: {
@@ -179,22 +179,22 @@ const translations = {
 
         // game.html Trivia Questions
         "trivia": [
-            {
-                "q": "Wer war der Herrscher von Kreta im Mythos des Labyrinths?",
-                "opts": ["Poseidon", "Theseus", "Ein Athener", "König Minos"]
-            },
-            {
-                "q": "Der Minotaurus hat dem Mythos nach...",
-                "opts": ["Körper eines Mannes, Kopf eines Stiers", "Kopf eines Mannes, Körper eines Stiers", "Kopf eines Pferdes, Körper eines Stiers", "Kopf eines Gottes, Körper eines Mannes"]
-            },
-            {
-                "q": "RÄTSEL: Ich bin stark und gehörnt, erscheine in der Kunst und springe durch die Luft, ich war den Menschen hier heilig. Was bin ich?",
-                "opts": ["Stier", "Hirsch", "Ziege", "Nashorn"]
-            },
-            {
-                "q": "RÄTSEL: Mit erhobenem Dreizack wühle ich das Meer auf, Erdbeben folgen leicht. Wer bin ich?",
-                "opts": ["Zeus", "Apollo", "Poseidon", "Hades"]
-            }
+            { q: 'Was bedeutet das Wort "Labrys"?', opts: ["Einseitige Axt", "Doppelaxt", "Labyrinth", "Palast"], a: 1 },
+            { q: "Welches Tier hatte für die Minoer die größte symbolische und religiöse Bedeutung?", opts: ["Stier", "Pferd", "Rotluchs", "Wildschwein"], a: 0 },
+            { q: "Von welchem Berg erhielten die Bewohner des Knossos-Palastes über Aquädukte frisches Wasser?", opts: ["Berg Zeus", "Berg Ida", "Berg Juktas", "Berg Olymp"], a: 2 },
+            { q: "In welcher Epoche wurde der Palast von Knossos erbaut?", opts: ["Steinzeit", "Bronzezeit", "Dunkle Jahrhunderte", "Klassische Antike"], a: 1 },
+            { q: "Wie viele Haupteingänge hatte der Palast von Knossos?", opts: ["1", "2", "3", "4"], a: 3 },
+            { q: "Wie alt ist der Palast von Knossos ungefähr (in Jahren)?", opts: ["2.000", "4.000", "5.000", "8.000"], a: 1 },
+            { q: "Wer hat den Palast von Knossos erbaut?", opts: ["Minoer", "Spartaner", "Athener", "Sumerer"], a: 0 },
+            { q: "Was war der Grund für den zweiten Bau des Palastes im Jahr 1700 v. Chr.?", opts: ["Erdbeben", "Tsunami", "Überschwemmung", "Lawine"], a: 0 },
+            { q: "Welcher Raum im Palast von Knossos ist das?", opts: ["Thronsaal", "Megaron der Königin", "Das Badezimmer", "Der Speisesaal"], a: 0 },
+            { q: "Welcher Raum im Palast von Knossos ist das?", opts: ["Thronsaal", "Megaron der Königin", "Das Badezimmer", "Der Speisesaal"], a: 1 },
+            { q: "Wer war der Herrscher der Minoer?", opts: ["König Minos", "Zeus", "Der Minotaurus", "Poseidon"], a: 0 },
+            { q: "Wer war der Herrscher von Kreta im Mythos des Labyrinths?", opts: ["Poseidon", "Theseus", "Ein Athener", "König Minos"], a: 3 },
+            { q: "Wer besiegt letztendlich den Minotaurus im Mythos des Labyrinths?", opts: ["Poseidon", "Theseus", "Ein Athener", "König Minos"], a: 1 },
+            { q: "Der Minotaurus hat dem Mythos nach...", opts: ["Körper eines Mannes, Kopf eines Stiers", "Kopf eines Mannes, Körper eines Stiers", "Kopf eines Pferdes, Körper eines Stiers", "Kopf eines Gottes, Körper eines Mannes"], a: 0 },
+            { q: "RÄTSEL: Ich bin stark und gehörnt, erscheine in der Kunst und springe durch die Luft, ich war den Menschen hier heilig. Was bin ich?", opts: ["Stier", "Hirsch", "Ziege", "Nashorn"], a: 0 },
+            { q: "RÄTSEL: Mit erhobenem Dreizack wühle ich das Meer auf, Erdbeben folgen leicht. Wer bin ich?", opts: ["Poseidon", "Zeus", "Theseus", "Apollo"], a: 0 }
         ]
     },
     fr: {
@@ -245,22 +245,22 @@ const translations = {
 
         // game.html Trivia Questions
         "trivia": [
-            {
-                "q": "Qui était le souverain de Crête dans le mythe du labyrinthe ?",
-                "opts": ["Poséidon", "Thésée", "Un Athénien", "Roi Minos"]
-            },
-            {
-                "q": "Le Minotaure, selon le mythe, possède...",
-                "opts": ["Le corps d'un homme, la tête d'un taureau", "La tête d'un homme, le corps d'un taureau", "La tête d'un cheval, le corps d'un taureau", "La tête d'un dieu, le corps d'un homme"]
-            },
-            {
-                "q": "ÉNIGME : Je suis fort et cornu, j'apparais dans l'art et bondis dans les airs, j'étais sacré pour le peuple d'ici. Que suis-je ?",
-                "opts": ["Un taureau", "Un cerf", "Une chèvre", "Un rhinocéros"]
-            },
-            {
-                "q": "ÉNIGME : Mon trident levé, j'agite la mer, les tremblements de terre suivent facilement. Qui suis-je ?",
-                "opts": ["Zeus", "Apollon", "Poséidon", "Hadès"]
-            }
+            { q: 'À quoi fait référence le mot "labrys" ?', opts: ["Hache à un tranchant", "Hache à double tranchant", "Labyrinthe", "Palais"], a: 1 },
+            { q: "Quel animal revêtait la plus grande importance symbolique et religieuse pour les Minoens ?", opts: ["Taureau", "Cheval", "Lys", "Sanglier"], a: 0 },
+            { q: "De quelle montagne les habitants du palais de Knossos obtenaient-ils de l'eau fraîche via des aqueducs ?", opts: ["Mont Zeus", "Mont Ida", "Mont Juktas", "Mont Olympe"], a: 2 },
+            { q: "À quelle époque le palais de Knossos a-t-il été construit pour la première fois ?", opts: ["Âge de pierre", "Âge du bronze", "Âges sombres", "Époque classique"], a: 1 },
+            { q: "Combien de points d'entrée principaux le palais de Knossos comptait-il ?", opts: ["1", "2", "3", "4"], a: 3 },
+            { q: "Quel âge a environ le palais de Knossos (en années) ?", opts: ["2 000", "4 000", "5 000", "8 000"], a: 1 },
+            { q: "Qui a construit le palais de Knossos ?", opts: ["Minoens", "Spartiates", "Athéniens", "Sumériens"], a: 0 },
+            { q: "Quelle a été la raison de la seconde construction du palais en 1700 avant J.-C. ?", opts: ["Tremblement de terre", "Tsunami", "Inondation", "Avalanche"], a: 0 },
+            { q: "De quelle pièce s'agit-il dans le palais de Knossos ?", opts: ["Salle du Trône", "Mégaron de la Reine", "La salle de bain", "La salle à manger"], a: 0 },
+            { q: "De quelle pièce s'agit-il dans le palais de Knossos ?", opts: ["Salle du Trône", "Mégaron de la Reine", "La salle de bain", "La salle à manger"], a: 1 },
+            { q: "Qui était le souverain des Minoens ?", opts: ["Roi Minos", "Zeus", "Le Minotaure", "Poséidon"], a: 0 },
+            { q: "Qui était le souverain de Crête dans le mythe du labyrinthe ?", opts: ["Poséidon", "Thésée", "Un Athénien", "Roi Minos"], a: 3 },
+            { q: "Qui finit par tuer le Minotaure dans le mythe du labyrinthe ?", opts: ["Poséidon", "Thésée", "Un Athénien", "Roi Minos"], a: 1 },
+            { q: "Le Minotaure, selon le mythe, possède...", opts: ["Le corps d'un homme, la tête d'un taureau", "La tête d'un homme, le corps d'un taureau", "La tête d'un cheval, le corps d'un taureau", "La tête d'un dieu, le corps d'un homme"], a: 0 },
+            { q: "ÉNIGME : Je suis fort et cornu, j'apparais dans l'art et bondis dans les airs, j'étais sacré pour le peuple d'ici. Que suis-je ?", opts: ["Un taureau", "Un cerf", "Une chèvre", "Un rhinocéros"], a: 0 },
+            { q: "ÉNIGME : Mon trident levé, j'agite la mer, les tremblements de terre suivent facilement. Qui suis-je ?", opts: ["Poséidon", "Zeus", "Thésée", "Apollon"], a: 0 }
         ]
     }
 };

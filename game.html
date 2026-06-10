@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Linorinth - Game</title>
-<style>
+
+  <script src="translations.js"></script>
+
+  <style>
   @import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -349,7 +352,7 @@
       <div class="blur-bg-ellipse"></div>
       <div class="inner-panel-card">
         <img src="logo.svg" alt="LINORINTH" class="logo-vector">
-        <h1 class="game-paused-title">Game Paused</h1>
+        <h1 class="game-paused-title" data-i18n="game_paused">Game Paused</h1>
         <div class="play-polygon-icon"></div>
         <div class="step-1-text">STEP 1. FIND SWORD</div>
         <div class="step-2-text">STEP 2. SLAY MINOTAUR</div>
@@ -360,9 +363,9 @@
         <div class="project-img-3"></div>
         <div class="project-img-4"></div>
 
-        <button class="view-key-btn" onclick="openSymbolsKey(event)">VIEW SYMBOLS KEY</button>
+        <button class="view-key-btn" onclick="openSymbolsKey(event)" data-i18n="view_key">VIEW SYMBOLS KEY</button>
 
-        <div class="resume-instruction">TAP ANYWHERE TO RESUME GAME</div>
+        <div class="resume-instruction" data-i18n="tap_resume" >TAP ANYWHERE TO RESUME GAME</div>
       </div>
     </div>
 
@@ -372,33 +375,33 @@
       <div class="inner-panel-card">
         <img src="logo.svg" alt="LINORINTH" class="logo-vector">
 
-        <div class="key-text-header">KEY</div>
-        <div class="key-text-sub">TO GAME SYMBOLS</div>
+        <div class="key-text-header" data-i18n="key_header">KEY</div>
+        <div class="key-text-sub" data-i18n="key_sub">TO GAME SYMBOLS</div>
 
         <div class="key-list-wrapper">
           <div class="key-row-item">
             <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/minitheseus.png');"></div>
-            <span class="key-symbol-label">YOU</span>
+            <span class="key-symbol-label" data-i18n="symbol_you">YOU</span>
           </div>
           <div class="key-row-item">
             <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/minitaur.png');"></div>
-            <span class="key-symbol-label">MINOTAUR</span>
+            <span class="key-symbol-label" data-i18n="symbol_minotaur">MINOTAUR</span>
           </div>
           <div class="key-row-item">
             <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/traps.png');"></div>
-            <span class="key-symbol-label">TRAPS</span>
+            <span class="key-symbol-label" data-i18n="symbol_traps">TRAPS</span>
           </div>
           <div class="key-row-item">
             <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/sword.png');"></div>
-            <span class="key-symbol-label">SWORD</span>
+            <span class="key-symbol-label" data-i18n="symbol_sword">SWORD</span>
           </div>
           <div class="key-row-item">
             <div class="key-symbol-box" style="background-image: url('decorative_assets/symbols_assets/thread.png');"></div>
-            <span class="key-symbol-label">THREAD</span>
+            <span class="key-symbol-label" data-i18n="symbol_thread">THREAD</span>
           </div>
         </div>
 
-        <div class="resume-instruction">TAP ANYWHERE TO RESUME GAME</div>
+        <div class="resume-instruction" data-i18n="tap_resume">TAP ANYWHERE TO RESUME GAME</div>
       </div>
     </div>
   </div>
@@ -1088,8 +1091,30 @@
         for (let i = 0; i < traps.length; i++) {
           const t = traps[i];
           if (!t.cleared && dist(player.x, player.y, t.x, t.y) < CELL * 0.55) {
+            // 1. Pick the random index
             const qIdx = Math.floor(Math.random() * TRIVIA_QUESTIONS.length);
-            triviaState = { trapIndex: i, question: TRIVIA_QUESTIONS[qIdx], selectedIdx: -1, answered: false, correct: false, attempts: 0, btnRects: null, continueBtnRect: null };
+
+            // 2. Get the current active language
+            const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+
+            // 3. Fallback to base English, but overwrite with translation if it exists
+            let selectedQuestion = TRIVIA_QUESTIONS[qIdx];
+            if (translations[currentLang] && translations[currentLang].trivia && translations[currentLang].trivia[qIdx]) {
+              selectedQuestion = translations[currentLang].trivia[qIdx];
+            }
+
+            // 4. Assign the translated question to your state
+            triviaState = {
+              trapIndex: i,
+              question: selectedQuestion,
+              selectedIdx: -1,
+              answered: false,
+              correct: false,
+              attempts: 0,
+              btnRects: null,
+              continueBtnRect: null
+            };
+
             gameState = 'TRIVIA';
             releaseJoy();
             return;
