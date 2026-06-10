@@ -428,8 +428,20 @@
     resizeAppFrame();
 
     const QUEUE_H = Math.max(24, Math.floor(H * 0.034));
-    const GAME_H = Math.floor(H * 0.7525);
-    const CTRL_H = H - GAME_H;
+    const GAME_H_CUTSCENE = Math.floor(H * 0.7525);
+    const GAME_H_FULL = H;
+
+    let GAME_H = GAME_H_CUTSCENE;
+    let CTRL_H = H - GAME_H;
+
+    function updateLayout(){
+      GAME_H =
+              (gameState === 'INTRO' || gameState === 'ARIADNE')
+                      ? GAME_H_CUTSCENE
+                      : GAME_H_FULL;
+
+      CTRL_H = H - GAME_H;
+    }
     const CELL = Math.floor(W / 11);
     const COLS = 23, ROWS = 23;
     const MAZE_W = COLS * CELL, MAZE_H = ROWS * CELL;
@@ -514,6 +526,29 @@
       return bfs(mr, mc, tr, tc);
     }
 
+    function releaseJoy(){
+      dragInput.active = false;
+    }
+
+    function drawTheseusFigure(x,y,s,facing,isTheseus,walkPhase=0){
+      const img = isTheseus
+              ? (facing==='left' ? swordLeftImg : swordRightImg)
+              : (facing==='left' ? bodyLeftImg  : bodyRightImg);
+      const loaded = isTheseus
+              ? (facing==='left' ? swordLeftLoaded : swordRightLoaded)
+              : (facing==='left' ? bodyLeftLoaded  : bodyRightLoaded);
+
+      if (!loaded) {
+        drawStickFigure(x,y,s,'#D5E6ED',walkPhase);
+        if (isTheseus) drawSwordOnFigure(x,y,s);
+        return;
+      }
+
+      const h = s*5;
+      const w = h * (img.naturalWidth / img.naturalHeight);
+      ctx.drawImage(img, x - w/2, y + s*1.5 - h, w, h);
+    }
+
     function cellCenter(r,c) { return {x:c*CELL+CELL/2, y:r*CELL+CELL/2}; }
     function worldToCell(x,y) {
       return {r:Math.max(0,Math.min(ROWS-1,Math.floor(y/CELL))), c:Math.max(0,Math.min(COLS-1,Math.floor(x/CELL)))};
@@ -592,11 +627,12 @@
     }
     initTraps();
 
-    const player = {x:0,y:0,r:PLAYER_R,isTheseus:false};
+    const player = {x:0,y:0,r:PLAYER_R,isTheseus:false, facing:'right'};
     const mino   = {x:0,y:0,r:MINO_R,path:[],pathTimer:0};
     let SWORD_X=0, SWORD_Y=0, swordCollected=false;
 
     let gameState='INTRO', theseusTimer=0, lastTime=0, heartPhase=0, minoKilled=false, killFlashTimer=0;
+    updateLayout();
     let introAnim = null;
     let screenFadeAlpha = 0;
     let threadPath=[], threadPlayerCell={r:-1,c:-1};
@@ -619,6 +655,23 @@
     const quitBtnImg = new Image();
     quitBtnImg.onload = () => { quitImgLoaded = true; };
     quitBtnImg.src = 'quit.png';
+
+    let bodyLeftLoaded = false, bodyRightLoaded = false, swordLeftLoaded = false, swordRightLoaded = false;
+    const bodyLeftImg = new Image();
+    bodyLeftImg.onload = () => { bodyLeftLoaded = true; };
+    bodyLeftImg.src = 'theseus_assets/body_left.png';
+
+    const bodyRightImg = new Image();
+    bodyRightImg.onload = () => { bodyRightLoaded = true; };
+    bodyRightImg.src = 'theseus_assets/body_right.png';
+
+    const swordLeftImg = new Image();
+    swordLeftImg.onload = () => { swordLeftLoaded = true; };
+    swordLeftImg.src = 'theseus_assets/sword_left.png';
+
+    const swordRightImg = new Image();
+    swordRightImg.onload = () => { swordRightLoaded = true; };
+    swordRightImg.src = 'theseus_assets/sword_right.png';
 
     let ariadne = {x:0, y:0, r:PLAYER_R, path:[], pathTimer:0};
     let ariadnePhase = null; // null | 'approach' | 'escape'
@@ -652,8 +705,6 @@
     applySpawns();
     startIntro();
 
-    const dpad = {up:false,down:false,left:false,right:false};
-    const dpadTouches = new Map();
     let queuePos = Math.floor(Math.random() * 21) + 20;
     let queueTimer = 15 + Math.random() * 25;
 
@@ -706,26 +757,20 @@
       const rect=canvas.getBoundingClientRect();
       return{x:(cx-rect.left)*(W/rect.width),y:(cy-rect.top)*(H/rect.height)};
     }
-    function getDpadLayout(){
-      const bs=Math.floor(CTRL_H*0.27), gap=50;
-      const cx=W/2, cy=GAME_H+CTRL_H/2;
-      return {bs,
-        up:   {x:cx-bs/2,         y:cy-bs-gap/2, w:bs,h:bs},
-        down: {x:cx-bs/2,         y:cy+gap/2,    w:bs,h:bs},
-        left: {x:cx-bs-gap/2,      y:cy-bs/2,     w:bs,h:bs},
-        right:{x:cx+gap/2,         y:cy-bs/2,     w:bs,h:bs},
-      };
-    }
-    function hitDpad(x,y){
-      const l=getDpadLayout();
-      for(const d of ['up','down','left','right']){const b=l[d];if(x>=b.x&&x<=b.x+b.w&&y>=b.y&&y<=b.y+b.h)return d;}
-      return null;
-    }
-    function startDpad(x,y,id){const d=hitDpad(x,y);if(d){dpad[d]=true;dpadTouches.set(id,d);}}
-    function endDpad(id){const d=dpadTouches.get(id);if(d!==undefined){dpad[d]=false;dpadTouches.delete(id);}}
-    function releaseJoy(){dpad.up=false;dpad.down=false;dpad.left=false;dpad.right=false;dpadTouches.clear();}
+    // function getDpadLayout(){
+    //   const bs=Math.floor(CTRL_H*0.27), gap=50;
+    //   const cx=W/2, cy=GAME_H+CTRL_H/2;
+    //   return {bs,
+    //     up:   {x:cx-bs/2,         y:cy-bs-gap/2, w:bs,h:bs},
+    //     down: {x:cx-bs/2,         y:cy+gap/2,    w:bs,h:bs},
+    //     left: {x:cx-bs-gap/2,      y:cy-bs/2,     w:bs,h:bs},
+    //     right:{x:cx+gap/2,         y:cy-bs/2,     w:bs,h:bs},
+    //   };
+    // }
 
-    function restartGame(){initSpawns();initTraps();applySpawns();theseusTimer=0;gameState='PLAYING';triviaState=null;releaseJoy();}
+    function restartGame(){initSpawns();initTraps();applySpawns();theseusTimer=0;gameState='PLAYING';
+      updateLayout();
+      triviaState=null;dragInput.active = false;}
 
     function startIntro() {
       const entryR = spawnRoom.r0 + 1, entryC = spawnRoom.c0 + 1;
@@ -769,6 +814,7 @@
 
     function resumeMyGame() {
       gameState = 'PLAYING';
+      updateLayout();
       document.getElementById('pause-overlay').style.display = 'none';
 
       // Always reset view states back to default panel layout on close
@@ -791,11 +837,39 @@
 
     function handleInteraction(x, y, isTouch, touchId) {
       if (gameState === 'INTRO') {
-        applySpawns();
-        zoom = 1;
-        gameState = 'PLAYING';
-        introAnim = null;
-        screenFadeAlpha = 0;
+
+        const skipBtn = getIntroSkipButton();
+
+        if (
+                x >= skipBtn.x &&
+                x <= skipBtn.x + skipBtn.w &&
+                y >= skipBtn.y &&
+                y <= skipBtn.y + skipBtn.h
+        ) {
+          applySpawns();
+          zoom = 1;
+          gameState = 'PLAYING';
+          updateLayout();
+          introAnim = null;
+          screenFadeAlpha = 0;
+        }
+
+        return;
+
+        if (
+                x >= skipX &&
+                x <= skipX + skipW &&
+                y >= skipY &&
+                y <= skipY + skipH
+        ) {
+          applySpawns();
+          zoom = 1;
+          gameState = 'PLAYING';
+          updateLayout();
+          introAnim = null;
+          screenFadeAlpha = 0;
+        }
+
         return;
       }
       if (gameState === 'TRIVIA') {
@@ -815,6 +889,7 @@
         const pauseY = QUEUE_H + 16;
         if (x >= pauseX - 6 && x <= pauseX + btnSize + 6 && y >= pauseY - 6 && y <= pauseY + btnSize + 6) {
           gameState = 'PAUSED';
+          updateLayout();
           document.getElementById('pause-overlay').style.display = 'block';
           releaseJoy();
           return;
@@ -825,7 +900,7 @@
         const shareY = QUEUE_H + 16;
         if (x >= shareX - 6 && x <= shareX + btnSize + 6 && y >= shareY - 6 && y <= shareY + btnSize + 6) {
           if (navigator.share) {
-            navigator.share({ title: 'Linorinth', url: window.location.href });
+            navigator.share({title: 'Linorinth', url: window.location.href});
           } else {
             navigator.clipboard && navigator.clipboard.writeText(window.location.href);
           }
@@ -840,12 +915,12 @@
           return;
         }
 
-        if (y > GAME_H) {
-          if (isTouch) { startDpad(x, y, touchId); }
-          else { mouseDown=true; startDpad(x, y, 'mouse'); }
+        if (isTouch) {
+          startDrag(x, y, touchId);
+        } else {
+          mouseDown = true;
+          startDrag(x, y, 'mouse');
         }
-      } else {
-        handleEndScreenClick(x, y);
       }
     }
 
@@ -854,31 +929,43 @@
       for(const t of e.changedTouches){const{x,y}=getPos(t.clientX,t.clientY);handleInteraction(x,y,true,t.identifier);}
       // }
     },{passive:false});
-    canvas.addEventListener('touchmove',e=>{
-      e.preventDefault();
-      // dpad has no drag behaviour
-    },{passive:false});
-    canvas.addEventListener('touchend',e=>{
-      // if(pinchActive && e.touches.length<2) pinchActive=false;
-      for(const t of e.changedTouches)endDpad(t.identifier);
-    });
+      canvas.addEventListener('touchmove',e=>{
+        e.preventDefault();
+
+        for(const t of e.changedTouches){
+          const {x,y}=getPos(t.clientX,t.clientY);
+          moveDrag(x,y,t.identifier);
+        }
+      },{passive:false});
+
+      canvas.addEventListener('touchend',e=>{
+        for(const t of e.changedTouches){
+          endDrag(t.identifier);
+        }
+      });
 
     let mouseDown=false;
     canvas.addEventListener('mousedown',e=>{
       const{x,y}=getPos(e.clientX,e.clientY);
       handleInteraction(x, y, false, null);
     });
-    window.addEventListener('mouseup',()=>{mouseDown=false;endDpad('mouse');});
-    // canvas.addEventListener('wheel',e=>{
-    //   e.preventDefault();
-    //   const minZoom=Math.min(W/MAZE_W, GAME_H/MAZE_H);
-    //   zoom=Math.max(minZoom, Math.min(1.0, zoom - e.deltaY * 0.001));
-    // },{passive:false});
+      window.addEventListener('mouseup',()=>{
+        mouseDown=false;
+        endDrag('mouse');
+      });
+      window.addEventListener('mousemove',e=>{
+        if(mouseDown){
+          const {x,y}=getPos(e.clientX,e.clientY);
+          moveDrag(x,y,'mouse');
+        }
+      });
 
     const keys={};
     window.addEventListener('keydown',e=>{
       keys[e.key]=true; if(e.key===' ')e.preventDefault();
-      if(gameState==='INTRO') { applySpawns(); zoom=1; gameState='PLAYING'; introAnim=null; screenFadeAlpha=0; return; }
+      if(gameState==='INTRO') { applySpawns(); zoom=1; gameState='PLAYING';
+        updateLayout();
+        introAnim=null; screenFadeAlpha=0; return; }
       if(gameState==='PAUSED') { resumeMyGame(); return; }
       if(gameState!=='PLAYING'&&gameState!=='ARIADNE'&&(e.key===' '||e.key==='Enter'))restartGame();
     });
@@ -1056,7 +1143,7 @@
         if (anim.blackHold >= 0.7) {
           applySpawns();
           zoom = 1;
-          gameState = 'PLAYING';
+          gameState = 'PLAYING'; updateLayout();
           introAnim = null;
           screenFadeAlpha = 1;
         }
@@ -1069,23 +1156,55 @@
       if(gameState!=='PLAYING' && gameState!=='TRIVIA') return;
 
       if(gameState==='PLAYING'){
-        let kx=0,ky=0;
-        if(keys['ArrowLeft']||keys['a']||keys['A']||dpad.left)kx-=1;
-        if(keys['ArrowRight']||keys['d']||keys['D']||dpad.right)kx+=1;
-        if(keys['ArrowUp']||keys['w']||keys['W']||dpad.up)ky-=1;
-        if(keys['ArrowDown']||keys['s']||keys['S']||dpad.down)ky+=1;
-        const kl=Math.hypot(kx,ky); if(kl>0){kx/=kl;ky/=kl;}
-        player.x+=kx*PLAYER_SPEED*dt;
-        player.y+=ky*PLAYER_SPEED*dt;
+        let kx = 0;
+        let ky = 0;
+
+        if(dragInput.active){
+          const dx = dragInput.curX - dragInput.startX;
+          const dy = dragInput.curY - dragInput.startY;
+
+          const len = Math.hypot(dx, dy);
+
+          if(len > DRAG_DEADZONE){
+            kx = dx / len;
+            ky = dy / len;
+          }
+        }
+
+        const kl = Math.hypot(kx, ky);
+
+        if(kl > 0){
+          kx /= kl;
+          ky /= kl;
+
+          if(kx < -0.05) player.facing = 'left';
+          if(kx >  0.05) player.facing = 'right';
+        }
+
+        player.x += kx * PLAYER_SPEED * dt;
+        player.y += ky * PLAYER_SPEED * dt;
+
         resolveWalls(player);
       }
       if(gameState==='PLAYING'){
-        let kx=0,ky=0;
-        if(keys['ArrowLeft']||keys['a']||keys['A'])kx-=1;
-        if(keys['ArrowRight']||keys['d']||keys['D'])kx+=1;
-        if(keys['ArrowUp']||keys['w']||keys['W'])ky-=1;
-        if(keys['ArrowDown']||keys['s']||keys['S'])ky+=1;
-        const kl=Math.hypot(kx,ky); if(kl>0){kx/=kl;ky/=kl;}
+        let kx = 0;
+        let ky = 0;
+
+        if(keys['ArrowLeft'] || keys['a'] || keys['A']) kx -= 1;
+        if(keys['ArrowRight'] || keys['d'] || keys['D']) kx += 1;
+        if(keys['ArrowUp'] || keys['w'] || keys['W']) ky -= 1;
+        if(keys['ArrowDown'] || keys['s'] || keys['S']) ky += 1;
+
+        const kl = Math.hypot(kx, ky);
+
+        if(kl > 0){
+          kx /= kl;
+          ky /= kl;
+
+          if(kx < -0.05) player.facing = 'left';
+          if(kx >  0.05) player.facing = 'right';
+        }
+
         resolveWalls(player);
 
         for (let i = 0; i < traps.length; i++) {
@@ -1116,6 +1235,7 @@
             };
 
             gameState = 'TRIVIA';
+            updateLayout();
             releaseJoy();
             return;
           }
@@ -1137,7 +1257,7 @@
         triviaState.resultTimer -= dt;
         if(triviaState.resultTimer <= 0){
           if(triviaState.correct){
-            triviaState = null; gameState = 'PLAYING';
+            triviaState = null; gameState = 'PLAYING'; updateLayout();
           } else if(triviaState.attempts < 2){
             triviaState.wrongIdx = triviaState.selectedIdx;
             triviaState.answered = false; triviaState.selectedIdx = -1;
@@ -1181,7 +1301,7 @@
             }
             const pick=nearby.length ? nearby[Math.floor(Math.random()*nearby.length)] : {r:pr,c:pc};
             const tc=cellCenter(pick.r,pick.c); threadItemX=tc.x; threadItemY=tc.y;
-            if(gameState==='TRIVIA'){ triviaState=null; gameState='PLAYING'; }
+            if(gameState==='TRIVIA'){ triviaState=null; gameState='PLAYING'; updateLayout();}
           } else { gameState='DEAD'; triviaState=null; }
         }
       }
@@ -1228,6 +1348,13 @@
       }
     }
 
+    function getIntroSkipButton() {
+      const btnW = W * 0.22, btnH = Math.floor(CTRL_H * 0.22);
+      const x = W - btnW - 16;
+      const y = GAME_H - btnH - 16;
+      return {x, y, w: btnW, h: btnH};
+    }
+
     function drawIntroOverlay() {
       if (!introAnim) return;
       const a = introAnim.textAlpha;
@@ -1241,6 +1368,27 @@
       ctx.fillStyle = `rgba(213, 230, 237, ${a})`;
       ctx.font = `bold ${Math.floor(W * 0.042)}px Georgia,serif`;
       ctx.fillText('— THE LABYRINTH —', W / 2, ty);
+
+      const skipBtn = getIntroSkipButton();
+
+      ctx.fillStyle = `rgba(252, 176, 117, ${a})`;
+      ctx.beginPath();
+      ctx.roundRect(
+              skipBtn.x,
+              skipBtn.y,
+              skipBtn.w,
+              skipBtn.h,
+              10
+      );
+      ctx.fill();
+
+      ctx.fillStyle = `rgba(28, 53, 94, ${a})`;
+      ctx.font = `bold ${Math.floor(W * 0.030)}px Georgia,serif`;
+      ctx.fillText(
+              'SKIP',
+              skipBtn.x + skipBtn.w / 2,
+              skipBtn.y + skipBtn.h / 2 + Math.floor(W * 0.030 * 0.35)
+      );
 
       // Phase-based instruction near bottom
       const elapsed = introAnim.elapsed;
@@ -1572,25 +1720,60 @@
       ctx.strokeStyle='#1C355E';ctx.lineWidth=3;ctx.strokeRect(0,0,MAZE_W,MAZE_H);
     }
 
-    function drawControls(){
-      ctx.strokeStyle='rgba(28,53,94,0.15)';ctx.lineWidth=1;
-      ctx.beginPath();ctx.moveTo(0,GAME_H);ctx.lineTo(W,GAME_H);ctx.stroke();
-      const l=getDpadLayout(), bs=l.bs;
-      for(const dir of ['up','down','left','right']){
-        const b=l[dir], pressed=dpad[dir];
-        const rad=Math.min(b.w,b.h)*0.18;
-        ctx.beginPath();ctx.roundRect(b.x,b.y,b.w,b.h,rad);
-        ctx.fillStyle=pressed?'rgba(28,53,94,0.18)':'rgba(28,53,94,0.52)';
-        ctx.fill();
-        ctx.strokeStyle='rgba(28,53,94,0.65)';ctx.lineWidth=1.5;ctx.stroke();
-        const cx=b.x+b.w/2, cy=b.y+b.h/2, as=bs*0.27;
-        ctx.fillStyle=pressed?'rgba(213,230,237,0.4)':'rgba(213,230,237,0.9)';
-        ctx.beginPath();
-        if(dir==='up'){   ctx.moveTo(cx,cy-as);ctx.lineTo(cx+as,cy+as*0.62);ctx.lineTo(cx-as,cy+as*0.62);}
-        else if(dir==='down'){ ctx.moveTo(cx,cy+as);ctx.lineTo(cx-as,cy-as*0.62);ctx.lineTo(cx+as,cy-as*0.62);}
-        else if(dir==='left'){ ctx.moveTo(cx-as,cy);ctx.lineTo(cx+as*0.62,cy-as);ctx.lineTo(cx+as*0.62,cy+as);}
-        else{              ctx.moveTo(cx+as,cy);ctx.lineTo(cx-as*0.62,cy-as);ctx.lineTo(cx-as*0.62,cy+as);}
-        ctx.closePath();ctx.fill();
+    // function drawControls(){
+    //   ctx.strokeStyle='rgba(28,53,94,0.15)';ctx.lineWidth=1;
+    //   ctx.beginPath();ctx.moveTo(0,GAME_H);ctx.lineTo(W,GAME_H);ctx.stroke();
+    //   const l=getDpadLayout(), bs=l.bs;
+    //   for(const dir of ['up','down','left','right']){
+    //     const b=l[dir], pressed=dpad[dir];
+    //     const rad=Math.min(b.w,b.h)*0.18;
+    //     ctx.beginPath();ctx.roundRect(b.x,b.y,b.w,b.h,rad);
+    //     ctx.fillStyle=pressed?'rgba(28,53,94,0.18)':'rgba(28,53,94,0.52)';
+    //     ctx.fill();
+    //     ctx.strokeStyle='rgba(28,53,94,0.65)';ctx.lineWidth=1.5;ctx.stroke();
+    //     const cx=b.x+b.w/2, cy=b.y+b.h/2, as=bs*0.27;
+    //     ctx.fillStyle=pressed?'rgba(213,230,237,0.4)':'rgba(213,230,237,0.9)';
+    //     ctx.beginPath();
+    //     if(dir==='up'){   ctx.moveTo(cx,cy-as);ctx.lineTo(cx+as,cy+as*0.62);ctx.lineTo(cx-as,cy+as*0.62);}
+    //     else if(dir==='down'){ ctx.moveTo(cx,cy+as);ctx.lineTo(cx-as,cy-as*0.62);ctx.lineTo(cx+as,cy-as*0.62);}
+    //     else if(dir==='left'){ ctx.moveTo(cx-as,cy);ctx.lineTo(cx+as*0.62,cy-as);ctx.lineTo(cx+as*0.62,cy+as);}
+    //     else{              ctx.moveTo(cx+as,cy);ctx.lineTo(cx-as*0.62,cy-as);ctx.lineTo(cx-as*0.62,cy+as);}
+    //     ctx.closePath();ctx.fill();
+    //   }
+    // }
+
+    const DRAG_DEADZONE = 12;
+
+    let dragInput = {
+      active:false,
+      id:null,
+      startX:0,
+      startY:0,
+      curX:0,
+      curY:0
+    };
+
+    function startDrag(x,y,id){
+      dragInput = {
+        active:true,
+        id,
+        startX:x,
+        startY:y,
+        curX:x,
+        curY:y
+      };
+    }
+
+    function moveDrag(x,y,id){
+      if(dragInput.active && dragInput.id===id){
+        dragInput.curX=x;
+        dragInput.curY=y;
+      }
+    }
+
+    function endDrag(id){
+      if(dragInput.active && dragInput.id===id){
+        dragInput.active=false;
       }
     }
 
@@ -1831,8 +2014,16 @@
         ctx.restore();
       }
       if(ariadnePhase) drawAriadne(ariadne.x,ariadne.y,CELL*0.38,escapeWalkPhase);
-      drawStickFigure(player.x,player.y,CELL*0.38,'#D5E6ED',ariadnePhase==='escape'?escapeWalkPhase:0);
-      if(player.isTheseus) drawSwordOnFigure(player.x,player.y,CELL*0.38);
+      drawTheseusFigure(
+              player.x,
+              player.y,
+              CELL*0.38,
+              player.facing || 'right',
+              player.isTheseus,
+              ariadnePhase === 'escape'
+                      ? escapeWalkPhase
+                      : 0
+      );
 
       ctx.restore();
 
@@ -1868,9 +2059,10 @@
         ctx.fillText('Ariadne has come to save you!',W/2,by+bh*0.72);
       }
 
-      ctx.fillStyle='#D5E6ED';ctx.fillRect(0,GAME_H,W,CTRL_H);
-      if(gameState==='PLAYING') drawControls();
-      if (gameState !== 'INTRO') drawControls();
+      if (CTRL_H > 0) {
+        ctx.fillStyle='#D5E6ED';
+        ctx.fillRect(0,GAME_H,W,CTRL_H);
+      }
 
       if (gameState === 'WIN') {
         window.location.href = 'victory.html';
