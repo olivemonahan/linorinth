@@ -5,7 +5,7 @@ const translations = {
         "select_lang": "Select your language",
 
         // info-page.html
-        "virtual_queue": "Virtual Queue",
+        "virtual_queue": "Virtual Line",
         "queue_instruction": "Join the Virtual Line and wait until your position decreases to 1. Then, proceed to admissions gates.",
         "visitors_label": "Number of Visitors in Your Group:",
         "select_placeholder": "Select",
