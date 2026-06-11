@@ -82,19 +82,19 @@
       top: 49.28px;
     }
 
-    .game-paused-title {
-      position: absolute;
-      width: 218px;
-      height: 43px;
-      left: calc(50% - 218px/2 + 0.5px);
-      top: 137px;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 30px;
-      text-align: center;
-      color: #14325C;
-    }
+  .game-paused-title {
+    position: absolute;
+    width: 260px;
+    height: 50px;
+    left: calc(50% - 260px/2);
+    top: 130px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    color: #14325C;
+  }
 
     .play-polygon-icon {
       box-sizing: border-box;
@@ -111,134 +111,109 @@
 
     /* --- ADJUSTED PAUSE OVERLAY STYLES --- */
 
-    .step-1-text {
-      position: absolute;
-      width: 110px;
-      height: 38px;
-      left: calc(50% - 110px/2 + 59.5px);
-      top: 275px; /* Shifted slightly down */
-      font-style: normal;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 16px;
-      text-align: right;
-      color: #14325C;
-    }
+  .tutorial-steps {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 250px;
+  }
 
-    .step-2-text {
-      position: absolute;
-      width: 162px;
-      height: 26px;
-      left: calc(50% - 162px/2 - 30.5px);
-      top: 355px; /* Shifted down to clear Step 1 */
-      font-style: normal;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 16px;
-      color: #14325C;
-    }
+  .tutorial-row {
+    position: relative;
+    min-height: 80px;
+  }
 
-    .step-3-text {
-      position: absolute;
-      width: 249px;
-      height: 27px;
-      left: calc(50% - 249px/2 - 6px);
-      top: 440px; /* Shifted down to clear Step 2 */
-      font-style: normal;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 16px;
-      text-align: right;
-      color: #14325C;
-    }
+  .step-text {
+    position: absolute;
+    width: 250px;
+    font-size: 15px;
+    line-height: 70px;
+    color: #14325C;
+    white-space: nowrap;
+  }
 
-    .step-4-text {
-      position: absolute;
-      width: 230px;
-      height: 28px;
-      left: calc(50% - 230px/2 + 3.5px);
-      top: 525px; /* Shifted down to clear Step 3 */
-      font-style: normal;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 16px;
-      color: #14325C;
-    }
+  .tutorial-row.left .step-text {
+    left: 30px;
+    text-align: left;
+  }
 
-    .project-img-1 {
-      position: absolute;
-      width: 108px;
-      height: 44px;
-      right: 53px;
-      top: 308px; /* Aligned properly with Step 1 text */
-      background: url('decorative_assets/find_sword.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
+  .tutorial-row.right .step-text {
+    right: 30px;
+    text-align: right;
+  }
 
-    .project-img-2 {
-      position: absolute;
-      width: 145px;
-      height: 59px;
-      left: calc(50% - 145px/2 - 39px);
-      top: 380px; /* Adjusted to sit under Step 2 text */
-      background: url('decorative_assets/kill_minotaur.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
+  .tutorial-row.right .project-img-1,
+  .tutorial-row.right .project-img-3 {
+    position: absolute;
+    right: 30px;
+    top: 40px;
+  }
 
-    .project-img-3 {
-      position: absolute;
-      width: 165px;
-      height: 77px;
-      right: 12px;
-      top: 458px; /* Adjusted to sit under Step 3 text */
-      background: url('decorative_assets/escape.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
+  .tutorial-row.left .project-img-2,
+  .tutorial-row.left .project-img-4 {
+    position: absolute;
+    left: 30px;
+    top: 40px;
+  }
 
-    .project-img-4 {
-      position: absolute;
-      width: 44px;
-      height: 58px;
-      left: calc(50% - 44px/2 - 89.5px);
-      top: 555px; /* Adjusted to sit under Step 4 text */
-      background: url('decorative_assets/enter_palace.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
+  .project-img-1 {
+    width: 108px;
+    height: 44px;
+    flex-shrink: 0;
+    background: url('decorative_assets/find_sword.png') center/contain no-repeat;
+  }
 
-    .resume-instruction {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      text-align: center;
-      font-size: 11px;
-      color: rgba(20, 50, 92, 0.6);
-      letter-spacing: 0.05em;
-    }
+  .project-img-2 {
+    width: 145px;
+    height: 59px;
+    flex-shrink: 0;
+    background: url('decorative_assets/kill_minotaur.png') center/contain no-repeat;
+  }
+
+  .project-img-3 {
+    width: 165px;
+    height: 77px;
+    flex-shrink: 0;
+    background: url('decorative_assets/escape.png') center/contain no-repeat;
+  }
+
+  .project-img-4 {
+    width: 44px;
+    height: 58px;
+    flex-shrink: 0;
+    background: url('decorative_assets/enter_palace.png') center/contain no-repeat;
+  }
+
+  .resume-instruction {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(20, 50, 92, 0.6);
+    letter-spacing: 0.05em;
+  }
 
     /* --- NEW KEY BUTTON & SYMBOLS OVERLAY STYLES --- */
     /* --- RECONFIGURED SYMBOLS KEY STYLES (MATCHES PAUSE OVERLAY) --- */
-    .view-key-btn {
-      position: absolute;
-      bottom: 55px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 201px;
-      height: 36px;
-      background: #14325C;
-      color: #C1DEE4;
-      border: none;
-      border-radius: 18px;
-      font-family: 'IM Fell Double Pica', serif;
-      font-size: 13px;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      z-index: 130;
-    }
+  .view-key-btn {
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 44px;
+    background: #14325C;
+    color: #C1DEE4;
+    border: none;
+    border-radius: 22px;
+    font-family: 'IM Fell Double Pica', serif;
+    font-size: 17px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 130;
+  }
 
     .view-key-btn:hover {
       background: #1c437a;
@@ -259,85 +234,84 @@
     }
 
     /* Text header properties matching .game-paused-title */
-    .key-text-header {
-      position: absolute;
-      width: 218px;
-      height: 30px;
-      left: calc(50% - 218px/2);
-      top: 122px;
-      font-family: 'IM Fell Double Pica', serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 30px;
-      text-align: center;
-      letter-spacing: 0.05em;
-      color: #14325C;
-    }
+  .key-text-header {
+    position: absolute;
+    width: 260px;
+    height: 40px;
+    left: calc(50% - 260px/2);
+    top: 115px;
+    font-family: 'IM Fell Double Pica', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #14325C;
+  }
 
-    .key-text-sub {
-      position: absolute;
-      width: 218px;
-      height: 20px;
-      left: calc(50% - 218px/2);
-      top: 152px;
-      font-family: 'IM Fell Double Pica', serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 20px;
-      text-align: center;
-      letter-spacing: 0.05em;
-      color: #14325C;
-    }
+  .key-text-sub {
+    position: absolute;
+    width: 260px;
+    height: 25px;
+    left: calc(50% - 260px/2);
+    top: 160px;
+    font-family: 'IM Fell Double Pica', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #14325C;
+  }
 
     /* List Container absolute tracking positions (Matches your Step Texts vertical flow) */
-    .key-list-wrapper {
-      position: absolute;
-      width: 220px;
-      height: 370px;
-      left: calc(50% - 220px/2);
-      top: 195px;
-    }
+  .key-list-wrapper {
+    position: absolute;
+    width: 260px;
+    height: 430px;
+    left: calc(50% - 260px/2);
+    top: 220px;
+  }
 
     /* Explicit item block rows separated symmetrically to handle labels cleanly */
-    .key-row-item {
-      position: absolute;
-      width: 100%;
-      height: 50px;
-      display: flex;
-      align-items: center;
-    }
+  .key-row-item {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
 
     /* Individual item offsets calculated to reflect standard layout grids */
-    .key-row-item:nth-child(1) { top: 0; }
-    .key-row-item:nth-child(2) { top: 74px; }
-    .key-row-item:nth-child(3) { top: 148px; }
-    .key-row-item:nth-child(4) { top: 222px; }
-    .key-row-item:nth-child(5) { top: 296px; }
+  .key-row-item:nth-child(1) { top: 0; }
+  .key-row-item:nth-child(2) { top: 86px; }
+  .key-row-item:nth-child(3) { top: 172px; }
+  .key-row-item:nth-child(4) { top: 258px; }
+  .key-row-item:nth-child(5) { top: 344px; }
 
-    .key-symbol-box {
-      box-sizing: border-box;
-      width: 49px;
-      height: 49px;
-      border: 1px solid #14325C;
+  .key-symbol-box {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #14325C;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+  }
 
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-origin: content-box;
-    }
-
-    .key-symbol-label {
-      margin-left: 20px;
-      font-family: 'IM Fell Double Pica', serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 39px;
-      color: #14325C;
-      letter-spacing: 0.05em;
-    }
+  .key-symbol-label {
+    margin-left: 24px;
+    font-family: 'IM Fell Double Pica', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 60px;
+    color: #14325C;
+    letter-spacing: 0.05em;
+  }
   </style>
 </head>
 <body>
@@ -354,14 +328,29 @@
         <img src="logo.svg" alt="LINORINTH" class="logo-vector">
         <h1 class="game-paused-title" data-i18n="game_paused">Game Paused</h1>
         <div class="play-polygon-icon"></div>
-        <div class="step-1-text" data-i18n="step_one">STEP 1. FIND SWORD</div>
-        <div class="step-2-text" data-i18n="step_two">STEP 2. SLAY MINOTAUR</div>
-        <div class="step-3-text" data-i18n="step_three">STEP 3. ESCAPE LABYRINTH</div>
-        <div class="step-4-text" data-i18n="step_four">STEP 4. ENTER KNOSSOS PALACE</div>
-        <div class="project-img-1"></div>
-        <div class="project-img-2"></div>
-        <div class="project-img-3"></div>
-        <div class="project-img-4"></div>
+
+        <div class="tutorial-steps">
+
+          <div class="tutorial-row right">
+            <div class="step-text">STEP 1. FIND SWORD</div>
+            <div class="project-img-1"></div>
+          </div>
+
+          <div class="tutorial-row left">
+            <div class="step-text">STEP 2. SLAY MINOTAUR</div>
+            <div class="project-img-2"></div>
+          </div>
+
+          <div class="tutorial-row right">
+            <div class="step-text">STEP 3. ESCAPE LABYRINTH</div>
+            <div class="project-img-3"></div>
+          </div>
+
+          <div class="tutorial-row left">
+            <div class="step-text">STEP 4. ENTER KNOSSOS PALACE</div>
+            <div class="project-img-4"></div>
+          </div>
+        </div>
 
         <button class="view-key-btn" onclick="openSymbolsKey(event)" data-i18n="view_key">VIEW SYMBOLS KEY</button>
 
@@ -1349,10 +1338,11 @@
     }
 
     function getIntroSkipButton() {
-      const btnW = W * 0.22, btnH = Math.floor(CTRL_H * 0.22);
+      const btnW = W * 0.28;
+      const btnH = Math.floor(CTRL_H * 0.30);
       const x = W - btnW - 16;
       const y = GAME_H - btnH - 16;
-      return {x, y, w: btnW, h: btnH};
+      return { x, y, w: btnW, h: btnH };
     }
 
     function drawIntroOverlay() {
@@ -1364,10 +1354,13 @@
       // Title banner at top
       const ty = QUEUE_H + Math.floor(GAME_H * 0.075);
       ctx.fillStyle = `rgba(10, 20, 38, ${a * 0.78})`;
-      ctx.beginPath(); ctx.roundRect(W * 0.05, ty - 26, W * 0.90, 38, 10); ctx.fill();
+      ctx.beginPath();
+      ctx.roundRect(W * 0.05, ty - 34, W * 0.90, 52, 10);
+      ctx.fill();
+
       ctx.fillStyle = `rgba(213, 230, 237, ${a})`;
-      ctx.font = `bold ${Math.floor(W * 0.042)}px Georgia,serif`;
-      ctx.fillText('— THE LABYRINTH —', W / 2, ty);
+      ctx.font = `bold ${Math.floor(W * 0.055)}px Georgia,serif`;
+      ctx.fillText('— CUTSCENE —', W / 2, ty);
 
       const skipBtn = getIntroSkipButton();
 
@@ -1383,11 +1376,11 @@
       ctx.fill();
 
       ctx.fillStyle = `rgba(28, 53, 94, ${a})`;
-      ctx.font = `bold ${Math.floor(W * 0.030)}px Georgia,serif`;
+      ctx.font = `bold ${Math.floor(W * 0.055)}px Georgia,serif`;
       ctx.fillText(
               'SKIP',
               skipBtn.x + skipBtn.w / 2,
-              skipBtn.y + skipBtn.h / 2 + Math.floor(W * 0.030 * 0.35)
+              skipBtn.y + skipBtn.h / 2 + Math.floor(W * 0.055 * 0.35)
       );
 
       // Phase-based instruction near bottom
@@ -1402,36 +1395,44 @@
         line  = langMap["hunt_line_2"] || 'Your heartbeat reveals how close it is!';
         color = `rgba(252, 176, 117, ${a})`;
       } else {
-        line  = langMap["hunt_line_3"] || 'The farther you run, the calmer your heart...';
+        line = langMap["hunt_line_3"] || 'The farther you run, the calmer your heart...';
         color = `rgba(213, 230, 237, ${a})`;
       }
-      // Phase text drawn in the bottom light-blue controls area, wrapped across multiple lines
-      const fontSize = Math.floor(W * 0.076);
-      const lineH    = Math.floor(fontSize * 1.28);
-      const maxW     = W * 0.84;
+
+      const fontSize = Math.floor(W * 0.090);
+      const lineH = Math.floor(fontSize * 1.35);
+      const maxW = W * 0.90;
+
       ctx.fillStyle = color;
       ctx.font = `bold ${fontSize}px Georgia,serif`;
 
-      // Measure how many lines the text will produce so we can vertically centre it
       const words = line.split(' ');
       const lines = [];
       let cur = '';
+
       for (const w of words) {
         const test = cur ? cur + ' ' + w : w;
-        if (ctx.measureText(test).width > maxW && cur) { lines.push(cur); cur = w; }
-        else cur = test;
+
+        if (ctx.measureText(test).width > maxW && cur) {
+          lines.push(cur);
+          cur = w;
+        } else {
+          cur = test;
+        }
       }
+
       if (cur) lines.push(cur);
 
-      const blockH  = lines.length * lineH;
+      const blockH = lines.length * lineH;
       const areaTop = GAME_H;
-      const areaH   = CTRL_H;
-      let textY = areaTop + (areaH - blockH) / 2 + lineH * 0.8;
-      for (const l of lines) { ctx.fillText(l, W / 2, textY); textY += lineH; }
+      const areaH = CTRL_H;
 
-      ctx.fillStyle = `rgba(28, 53, 94, ${a * 0.55})`;
-      ctx.font = `italic ${Math.floor(W * 0.030)}px Georgia,serif`;
-      ctx.fillText('Tap anywhere to skip', W / 2, areaTop + areaH * 0.92);
+      let textY = areaTop + (areaH - blockH) / 2 + lineH * 0.8;
+
+      for (const l of lines) {
+        ctx.fillText(l, W / 2, textY);
+        textY += lineH;
+      }
     }
 
     function drawTrap(x, y) {
@@ -1476,6 +1477,7 @@
 
     function drawTriviaOverlay() {
       if (!triviaState) return;
+
       const { question, selectedIdx, answered } = triviaState;
       const pad = W * 0.06;
       const maxW = W - pad * 2;
@@ -1485,85 +1487,191 @@
       ctx.fillRect(0, QUEUE_H, W, GAME_H - QUEUE_H);
 
       ctx.textAlign = 'center';
+
       let y = QUEUE_H + Math.floor(GAME_H * 0.04);
 
       ctx.fillStyle = '#cc2200';
-      ctx.font = `bold ${Math.floor(W * 0.062)}px Georgia,serif`;
+      ctx.font = `bold ${Math.floor(W * 0.078)}px Georgia,serif`;
       ctx.fillText('⚠  TRAP!', W / 2, y + 22);
-      y += 44;
+
+      y += 56;
 
       ctx.fillStyle = '#D5E6ED';
-      ctx.font = `${Math.floor(W * 0.036)}px Georgia,serif`;
+      ctx.font = `${Math.floor(W * 0.046)}px Georgia,serif`;
+
       if (!(answered && triviaState.correct)) {
         const attemptsLeft = 2 - triviaState.attempts;
-        ctx.fillText(attemptsLeft === 2 ? 'Answer correctly to escape!' : '⚠ Last chance — wrong answer restarts the game!', W / 2, y);
+
+        ctx.fillText(
+                attemptsLeft === 2
+                        ? 'Answer correctly to escape!'
+                        : '⚠ Last chance — wrong answer restarts the game!',
+                W / 2,
+                y
+        );
       }
+
       y += Math.floor(GAME_H * 0.03);
 
       ctx.fillStyle = '#FCB075';
+
       const hasImg = !!question.img;
-      ctx.font = `bold ${Math.floor(W * (hasImg ? 0.038 : 0.042))}px Georgia,serif`;
-      y = wrapText(question.q, maxW, Math.floor(W * (hasImg ? 0.046 : 0.05)), y);
+
+      ctx.font = `bold ${Math.floor(
+              W * (hasImg ? 0.050 : 0.056)
+      )}px Georgia,serif`;
+
+      y = wrapText(
+              question.q,
+              maxW,
+              Math.floor(W * (hasImg ? 0.060 : 0.066)),
+              y
+      );
+
       y += Math.floor(GAME_H * (hasImg ? 0.010 : 0.018));
 
       if (hasImg) {
         const entry = getTriviaImg(question.img);
+
         const imgH = Math.floor(GAME_H * 0.22);
         const imgW = maxW;
+
         ctx.fillStyle = 'rgba(0,0,0,0.3)';
-        ctx.beginPath(); ctx.roundRect(pad, y, imgW, imgH, 8); ctx.fill();
-        const imgReady = entry.loaded || (!entry.error && entry.img.complete && entry.img.naturalWidth > 0);
+        ctx.beginPath();
+        ctx.roundRect(pad, y, imgW, imgH, 8);
+        ctx.fill();
+
+        const imgReady =
+                entry.loaded ||
+                (!entry.error &&
+                        entry.img.complete &&
+                        entry.img.naturalWidth > 0);
+
         if (imgReady) {
-          const scale = Math.min(imgW / entry.img.naturalWidth, imgH / entry.img.naturalHeight);
-          const dw = entry.img.naturalWidth * scale, dh = entry.img.naturalHeight * scale;
-          ctx.drawImage(entry.img, pad + (imgW - dw) / 2, y + (imgH - dh) / 2, dw, dh);
+          const scale = Math.min(
+                  imgW / entry.img.naturalWidth,
+                  imgH / entry.img.naturalHeight
+          );
+
+          const dw = entry.img.naturalWidth * scale;
+          const dh = entry.img.naturalHeight * scale;
+
+          ctx.drawImage(
+                  entry.img,
+                  pad + (imgW - dw) / 2,
+                  y + (imgH - dh) / 2,
+                  dw,
+                  dh
+          );
         } else {
           ctx.fillStyle = 'rgba(213,230,237,0.4)';
-          ctx.font = `${Math.floor(W * 0.034)}px Georgia,serif`;
-          ctx.fillText(entry.error ? `[ failed: ${question.img} ]` : `[ loading: ${question.img} ]`, W / 2, y + imgH / 2);
+          ctx.font = `${Math.floor(W * 0.040)}px Georgia,serif`;
+
+          ctx.fillText(
+                  entry.error
+                          ? `[ failed: ${question.img} ]`
+                          : `[ loading: ${question.img} ]`,
+                  W / 2,
+                  y + imgH / 2
+          );
         }
+
         y += imgH + Math.floor(GAME_H * 0.012);
       }
 
-      const btnH = Math.floor(GAME_H * (hasImg ? 0.082 : 0.098));
+      const btnH = Math.floor(
+              GAME_H * (hasImg ? 0.105 : 0.118)
+      );
+
       const btnGap = Math.floor(GAME_H * 0.016);
+
       triviaState.btnRects = [];
 
       for (let i = 0; i < 4; i++) {
-        const bx = pad, by = y;
-        triviaState.btnRects.push({ x: bx, y: by, w: maxW, h: btnH });
+        const bx = pad;
+        const by = y;
 
-        let bg = 'rgba(28, 53, 94, 0.78)', border = '#556B85', tc = '#D5E6ED';
+        triviaState.btnRects.push({
+          x: bx,
+          y: by,
+          w: maxW,
+          h: btnH
+        });
+
+        let bg = 'rgba(28, 53, 94, 0.78)';
+        let border = '#556B85';
+        let tc = '#D5E6ED';
+
         if (answered) {
-          if (triviaState.correct && i === question.a) { bg = 'rgba(20, 110, 55, 0.82)'; border = '#4CAF50'; tc = '#fff'; }
-          else if (i === selectedIdx && i !== question.a) { bg = 'rgba(150, 28, 28, 0.82)'; border = '#cc2200'; tc = '#fff'; }
+          if (triviaState.correct && i === question.a) {
+            bg = 'rgba(20, 110, 55, 0.82)';
+            border = '#4CAF50';
+            tc = '#fff';
+          } else if (i === selectedIdx && i !== question.a) {
+            bg = 'rgba(150, 28, 28, 0.82)';
+            border = '#cc2200';
+            tc = '#fff';
+          }
         } else if (i === selectedIdx) {
-          bg = 'rgba(55, 88, 140, 0.85)'; border = '#FCB075';
+          bg = 'rgba(55, 88, 140, 0.85)';
+          border = '#FCB075';
         } else if (i === triviaState.wrongIdx) {
-          bg = 'rgba(150, 28, 28, 0.82)'; border = '#cc2200'; tc = '#fff';
+          bg = 'rgba(150, 28, 28, 0.82)';
+          border = '#cc2200';
+          tc = '#fff';
         }
 
         ctx.fillStyle = bg;
-        ctx.beginPath(); ctx.roundRect(bx, by, maxW, btnH, 10); ctx.fill();
-        ctx.strokeStyle = border; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.roundRect(bx, by, maxW, btnH, 10); ctx.stroke();
+        ctx.beginPath();
+        ctx.roundRect(bx, by, maxW, btnH, 10);
+        ctx.fill();
+
+        ctx.strokeStyle = border;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(bx, by, maxW, btnH, 10);
+        ctx.stroke();
 
         ctx.fillStyle = tc;
-        ctx.font = `${Math.floor(W * 0.038)}px Georgia,serif`;
-        ctx.fillText(question.opts[i], W / 2, by + btnH * 0.63);
+        ctx.font = `${Math.floor(W * 0.048)}px Georgia,serif`;
+
+        ctx.fillText(
+                question.opts[i],
+                W / 2,
+                by + btnH * 0.68
+        );
+
         y += btnH + btnGap;
       }
 
-      if (answered && !triviaState.correct && triviaState.attempts >= 2) {
+      if (
+              answered &&
+              !triviaState.correct &&
+              triviaState.attempts >= 2
+      ) {
         y += 4;
-        const cbtnH = Math.floor(GAME_H * 0.09);
+
+        const cbtnH = Math.floor(GAME_H * 0.11);
+
         ctx.fillStyle = 'rgba(100, 35, 35, 0.82)';
-        ctx.beginPath(); ctx.roundRect(pad, y, maxW, cbtnH, 10); ctx.fill();
-        ctx.strokeStyle = '#cc2200'; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.roundRect(pad, y, maxW, cbtnH, 10); ctx.stroke();
+        ctx.beginPath();
+        ctx.roundRect(pad, y, maxW, cbtnH, 10);
+        ctx.fill();
+
+        ctx.strokeStyle = '#cc2200';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(pad, y, maxW, cbtnH, 10);
+        ctx.stroke();
+
         ctx.fillStyle = '#fff';
-        ctx.font = `bold ${Math.floor(W * 0.04)}px Georgia,serif`;
-        ctx.fillText('✗  Restarting...', W / 2, y + cbtnH * 0.63);
+        ctx.font = `bold ${Math.floor(W * 0.052)}px Georgia,serif`;
+
+        ctx.fillText(
+                '✗  Restarting...',
+                W / 2,
+                y + cbtnH * 0.68
+        );
       }
     }
 
@@ -1782,14 +1890,20 @@
       ctx.fillRect(0,0,W,QUEUE_H);
       ctx.fillStyle='#FCB075';
       ctx.textAlign='center';
-      ctx.font=`bold ${Math.floor(QUEUE_H*0.58)}px Georgia,serif`;
-      ctx.fillText(`Virtual Queue Position: ${queuePos}`,W/2,QUEUE_H*0.72);
+
+      ctx.font=`bold ${Math.floor(QUEUE_H*0.72)}px Georgia,serif`;
+
+      ctx.fillText(
+              `Virtual Queue Position: ${queuePos}`,
+              W/2,
+              QUEUE_H*0.76
+      );
     }
 
     function drawFloatingPauseButton() {
-      const btnSize = Math.floor(CELL * 1.1);
-      const btnX = W - btnSize - 16;
-      const btnY = QUEUE_H + 16;
+      const btnSize = Math.floor(CELL * 1.45);
+      const btnX = W - btnSize - 12;
+      const btnY = QUEUE_H + 20;
 
       ctx.save();
       ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
@@ -1801,19 +1915,21 @@
       } else {
         ctx.fillStyle = 'rgba(28, 53, 94, 0.9)';
         ctx.beginPath();
-        ctx.roundRect(btnX, btnY, btnSize, btnSize, 8);
+        ctx.roundRect(btnX, btnY, btnSize, btnSize, 10);
         ctx.fill();
 
         ctx.strokeStyle = '#FCB075';
-        ctx.lineWidth = 2.5;
+        ctx.lineWidth = 3;
         ctx.stroke();
 
         ctx.fillStyle = '#FCB075';
-        const pw = btnSize * 0.18;
-        const ph = btnSize * 0.5;
+
+        const pw = btnSize * 0.26;
+        const ph = btnSize * 0.66;
+
         const py = btnY + (btnSize - ph) / 2;
-        const px1 = btnX + (btnSize - pw * 2.6) / 2;
-        const px2 = px1 + pw * 1.6;
+        const px1 = btnX + (btnSize - pw * 2.9) / 2;
+        const px2 = px1 + pw * 1.9;
 
         ctx.fillRect(px1, py, pw, ph);
         ctx.fillRect(px2, py, pw, ph);
@@ -1822,49 +1938,49 @@
     }
 
     function drawFloatingShareButton() {
-      const btnSize = Math.floor(CELL * 1.1);
-      const pauseX = W - btnSize - 16;
-      const btnX = pauseX - btnSize - 8;
-      const btnY = QUEUE_H + 16;
+      const btnSize = Math.floor(CELL * 1.45);
+      const pauseX = W - btnSize - 20;
+      const btnX = pauseX - btnSize - 12;
+      const btnY = QUEUE_H + 20;
 
       ctx.save();
       ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
-      ctx.shadowBlur = 8;
-      ctx.shadowOffsetY = 4;
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetY = 5;
 
       ctx.fillStyle = 'rgba(28, 53, 94, 0.9)';
       ctx.beginPath();
-      ctx.roundRect(btnX, btnY, btnSize, btnSize, 8);
+      ctx.roundRect(btnX, btnY, btnSize, btnSize, 10);
       ctx.fill();
 
       ctx.strokeStyle = '#FCB075';
-      ctx.lineWidth = 2.5;
+      ctx.lineWidth = 3;
       ctx.stroke();
 
       // iOS-style share icon: upward arrow from a box
       ctx.strokeStyle = '#FCB075';
-      ctx.lineWidth = 2.5;
+      ctx.lineWidth = 3;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
       const cx = btnX + btnSize / 2;
       const cy = btnY + btnSize / 2;
-      const s = btnSize * 0.28;
+      const s = btnSize * 0.30;
 
-      // Arrow stem (starts inside box, rises above it)
+      // Arrow stem
       ctx.beginPath();
       ctx.moveTo(cx, cy + s * 0.7);
       ctx.lineTo(cx, cy - s * 0.9);
       ctx.stroke();
 
-      // Arrow head (tip clearly above box top)
+      // Arrow head
       ctx.beginPath();
       ctx.moveTo(cx - s * 0.6, cy - s * 0.3);
       ctx.lineTo(cx, cy - s * 1.1);
       ctx.lineTo(cx + s * 0.6, cy - s * 0.3);
       ctx.stroke();
 
-      // Box (U-shape open at top where arrow exits)
+      // Box
       ctx.beginPath();
       ctx.moveTo(cx - s * 0.8, cy + s * 0.1);
       ctx.lineTo(cx - s * 0.8, cy + s * 1.3);
@@ -1876,14 +1992,14 @@
     }
 
     function drawFloatingQuitButton() {
-      const btnSize = Math.floor(CELL * 1.1);
-      const btnX = 16;
-      const btnY = QUEUE_H + 16;
+      const btnSize = Math.floor(CELL * 1.45);
+      const btnX = 20;
+      const btnY = QUEUE_H + 20;
 
       ctx.save();
       ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
-      ctx.shadowBlur = 8;
-      ctx.shadowOffsetY = 4;
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetY = 5;
 
       let quitImgLoaded;
       if (quitImgLoaded) {
@@ -1891,15 +2007,15 @@
       } else {
         ctx.fillStyle = 'rgba(28, 53, 94, 0.9)';
         ctx.beginPath();
-        ctx.roundRect(btnX, btnY, btnSize, btnSize, 8);
+        ctx.roundRect(btnX, btnY, btnSize, btnSize, 10);
         ctx.fill();
 
         ctx.strokeStyle = '#FCB075';
-        ctx.lineWidth = 2.5;
+        ctx.lineWidth = 3;
         ctx.stroke();
 
         ctx.strokeStyle = '#FCB075';
-        ctx.lineWidth = 3.5;
+        ctx.lineWidth = 4;
         ctx.lineCap = 'round';
 
         const pad = btnSize * 0.28;
@@ -2029,34 +2145,49 @@
 
       if(theseusTimer>0){
         const a=Math.min(1,theseusTimer);
-        const bx=W*0.05,by=GAME_H*0.38,bw=W*0.9,bh=GAME_H*0.20;
-        ctx.fillStyle=`rgba(28, 53, 94, ${a*0.85})`;ctx.fillRect(bx,by,bw,bh);
-        ctx.fillStyle=`rgba(252, 176, 117, ${a})`;ctx.textAlign='center';
-        ctx.font=`bold ${Math.floor(W*0.056)}px Georgia,serif`;
-        ctx.fillText('You have now become',W/2,by+bh*0.44);
-        ctx.fillText('Theseus!',W/2,by+bh*0.82);
+        const bx=W*0.04,by=GAME_H*0.34,bw=W*0.92,bh=GAME_H*0.24;
+        ctx.fillStyle=`rgba(28, 53, 94, ${a*0.85})`;
+        ctx.fillRect(bx,by,bw,bh);
+
+        ctx.fillStyle=`rgba(252, 176, 117, ${a})`;
+        ctx.textAlign='center';
+
+        ctx.font=`bold ${Math.floor(W*0.072)}px Georgia,serif`;
+        ctx.fillText('You have now become',W/2,by+bh*0.42);
+        ctx.fillText('Theseus!',W/2,by+bh*0.78);
       }
 
       if(killFlashTimer>0){
         const a=Math.min(1,killFlashTimer);
-        const bx=W*0.05,by=GAME_H*0.35,bw=W*0.9,bh=GAME_H*0.24;
-        ctx.fillStyle=`rgba(28, 53, 94, ${a*0.88})`;ctx.fillRect(bx,by,bw,bh);
-        ctx.fillStyle=`rgba(220, 50, 50, ${a})`;ctx.textAlign='center';
-        ctx.font=`bold ${Math.floor(W*0.047)}px Georgia,serif`;
+        const bx=W*0.04,by=GAME_H*0.32,bw=W*0.92,bh=GAME_H*0.28;
+
+        ctx.fillStyle=`rgba(28, 53, 94, ${a*0.88})`;
+        ctx.fillRect(bx,by,bw,bh);
+
+        ctx.fillStyle=`rgba(220, 50, 50, ${a})`;
+        ctx.textAlign='center';
+        ctx.font=`bold ${Math.floor(W*0.060)}px Georgia,serif`;
         ctx.fillText('You killed the Minotaur.',W/2,by+bh*0.38);
+
         ctx.fillStyle=`rgba(213, 230, 237, ${a})`;
-        ctx.font=`${Math.floor(W*0.042)}px Georgia,serif`;
-        ctx.fillText('Now exit the maze!',W/2,by+bh*0.72);
+        ctx.font=`${Math.floor(W*0.054)}px Georgia,serif`;
+        ctx.fillText('Now exit the maze!',W/2,by+bh*0.74);
       }
 
       if(ariadnePhase==='approach'){
-        const bx=W*0.05,by=GAME_H*0.28,bw=W*0.9,bh=GAME_H*0.24;
-        ctx.fillStyle='rgba(28, 53, 94, 0.88)';ctx.fillRect(bx,by,bw,bh);
-        ctx.fillStyle='#FCB075';ctx.textAlign='center';
-        ctx.font=`bold ${Math.floor(W*0.044)}px Georgia,serif`;
+        const bx=W*0.04,by=GAME_H*0.24,bw=W*0.92,bh=GAME_H*0.30;
+
+        ctx.fillStyle='rgba(28, 53, 94, 0.88)';
+        ctx.fillRect(bx,by,bw,bh);
+
+        ctx.fillStyle='#FCB075';
+        ctx.textAlign='center';
+
+        ctx.font=`bold ${Math.floor(W*0.056)}px Georgia,serif`;
         ctx.fillText("You're now at the front of the line!",W/2,by+bh*0.38);
-        ctx.font=`${Math.floor(W*0.038)}px Georgia,serif`;
-        ctx.fillText('Ariadne has come to save you!',W/2,by+bh*0.72);
+
+        ctx.font=`${Math.floor(W*0.050)}px Georgia,serif`;
+        ctx.fillText('Ariadne has come to save you!',W/2,by+bh*0.74);
       }
 
       if (CTRL_H > 0) {
