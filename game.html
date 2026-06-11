@@ -12,29 +12,29 @@
   <script src="translations.js"></script>
 
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap');
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    font-family: 'IM Fell Double Pica', serif;
-    color: #1C355E;
-  }
-  #app-frame {
-    position: relative;
-    background-color: #D5E6ED;
-    border-radius: 36px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  canvas { display: block; touch-action: none; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'IM Fell Double Pica', serif;
+      color: #1C355E;
+    }
+    #app-frame {
+      position: relative;
+      background-color: #D5E6ED;
+      border-radius: 36px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    canvas { display: block; touch-action: none; }
 
     .paused-container {
       position: relative;
@@ -86,19 +86,19 @@
       top: 49.28px;
     }
 
-  .game-paused-title {
-    position: absolute;
-    width: 260px;
-    height: 50px;
-    left: calc(50% - 260px/2);
-    top: 130px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 40px;
-    text-align: center;
-    color: #14325C;
-  }
+    .game-paused-title {
+      position: absolute;
+      width: 260px;
+      height: 50px;
+      left: calc(50% - 260px/2);
+      top: 130px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 40px;
+      text-align: center;
+      color: #14325C;
+    }
 
     .play-polygon-icon {
       box-sizing: border-box;
@@ -115,50 +115,50 @@
 
     /* --- ADJUSTED PAUSE OVERLAY STYLES --- */
 
-  .tutorial-steps {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    top: 250px;
-  }
+    .tutorial-steps {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 250px;
+    }
 
-  .tutorial-row {
-    position: relative;
-    min-height: 80px;
-  }
+    .tutorial-row {
+      position: relative;
+      min-height: 80px;
+    }
 
-  .step-text {
-    position: absolute;
-    width: 250px;
-    font-size: 15px;
-    line-height: 70px;
-    color: #14325C;
-    white-space: nowrap;
-  }
+    .step-text {
+      position: absolute;
+      width: 250px;
+      font-size: 15px;
+      line-height: 70px;
+      color: #14325C;
+      white-space: nowrap;
+    }
 
-  .tutorial-row.left .step-text {
-    left: 30px;
-    text-align: left;
-  }
+    .tutorial-row.left .step-text {
+      left: 30px;
+      text-align: left;
+    }
 
-  .tutorial-row.right .step-text {
-    right: 30px;
-    text-align: right;
-  }
+    .tutorial-row.right .step-text {
+      right: 30px;
+      text-align: right;
+    }
 
-  .tutorial-row.right .project-img-1,
-  .tutorial-row.right .project-img-3 {
-    position: absolute;
-    right: 30px;
-    top: 40px;
-  }
+    .tutorial-row.right .project-img-1,
+    .tutorial-row.right .project-img-3 {
+      position: absolute;
+      right: 30px;
+      top: 40px;
+    }
 
-  .tutorial-row.left .project-img-2,
-  .tutorial-row.left .project-img-4 {
-    position: absolute;
-    left: 30px;
-    top: 40px;
-  }
+    .tutorial-row.left .project-img-2,
+    .tutorial-row.left .project-img-4 {
+      position: absolute;
+      left: 30px;
+      top: 40px;
+    }
 
   .project-img-1 {
     width: 108px;
@@ -188,36 +188,36 @@
     background: url('decorative_assets/enter_palace.png') center/contain no-repeat;
   }
 
-  .resume-instruction {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    color: rgba(20, 50, 92, 0.6);
-    letter-spacing: 0.05em;
-  }
+    .resume-instruction {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(20, 50, 92, 0.6);
+      letter-spacing: 0.05em;
+    }
 
     /* --- NEW KEY BUTTON & SYMBOLS OVERLAY STYLES --- */
     /* --- RECONFIGURED SYMBOLS KEY STYLES (MATCHES PAUSE OVERLAY) --- */
-  .view-key-btn {
-    position: absolute;
-    bottom: 65px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 240px;
-    height: 44px;
-    background: #14325C;
-    color: #C1DEE4;
-    border: none;
-    border-radius: 22px;
-    font-family: 'IM Fell Double Pica', serif;
-    font-size: 17px;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    z-index: 130;
-  }
+    .view-key-btn {
+      position: absolute;
+      bottom: 65px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      height: 44px;
+      background: #14325C;
+      color: #C1DEE4;
+      border: none;
+      border-radius: 22px;
+      font-family: 'IM Fell Double Pica', serif;
+      font-size: 17px;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      z-index: 130;
+    }
 
     .view-key-btn:hover {
       background: #1c437a;
@@ -238,84 +238,84 @@
     }
 
     /* Text header properties matching .game-paused-title */
-  .key-text-header {
-    position: absolute;
-    width: 260px;
-    height: 40px;
-    left: calc(50% - 260px/2);
-    top: 115px;
-    font-family: 'IM Fell Double Pica', serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 40px;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #14325C;
-  }
+    .key-text-header {
+      position: absolute;
+      width: 260px;
+      height: 40px;
+      left: calc(50% - 260px/2);
+      top: 115px;
+      font-family: 'IM Fell Double Pica', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 40px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      color: #14325C;
+    }
 
-  .key-text-sub {
-    position: absolute;
-    width: 260px;
-    height: 25px;
-    left: calc(50% - 260px/2);
-    top: 160px;
-    font-family: 'IM Fell Double Pica', serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 25px;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #14325C;
-  }
+    .key-text-sub {
+      position: absolute;
+      width: 260px;
+      height: 25px;
+      left: calc(50% - 260px/2);
+      top: 160px;
+      font-family: 'IM Fell Double Pica', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 25px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      color: #14325C;
+    }
 
     /* List Container absolute tracking positions (Matches your Step Texts vertical flow) */
-  .key-list-wrapper {
-    position: absolute;
-    width: 260px;
-    height: 430px;
-    left: calc(50% - 260px/2);
-    top: 220px;
-  }
+    .key-list-wrapper {
+      position: absolute;
+      width: 260px;
+      height: 430px;
+      left: calc(50% - 260px/2);
+      top: 220px;
+    }
 
     /* Explicit item block rows separated symmetrically to handle labels cleanly */
-  .key-row-item {
-    position: absolute;
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-  }
+    .key-row-item {
+      position: absolute;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
 
     /* Individual item offsets calculated to reflect standard layout grids */
-  .key-row-item:nth-child(1) { top: 0; }
-  .key-row-item:nth-child(2) { top: 86px; }
-  .key-row-item:nth-child(3) { top: 172px; }
-  .key-row-item:nth-child(4) { top: 258px; }
-  .key-row-item:nth-child(5) { top: 344px; }
+    .key-row-item:nth-child(1) { top: 0; }
+    .key-row-item:nth-child(2) { top: 86px; }
+    .key-row-item:nth-child(3) { top: 172px; }
+    .key-row-item:nth-child(4) { top: 258px; }
+    .key-row-item:nth-child(5) { top: 344px; }
 
-  .key-symbol-box {
-    box-sizing: border-box;
-    width: 60px;
-    height: 60px;
-    border: 1px solid #14325C;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-origin: content-box;
-  }
+    .key-symbol-box {
+      box-sizing: border-box;
+      width: 60px;
+      height: 60px;
+      border: 1px solid #14325C;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-origin: content-box;
+    }
 
-  .key-symbol-label {
-    margin-left: 24px;
-    font-family: 'IM Fell Double Pica', serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 60px;
-    color: #14325C;
-    letter-spacing: 0.05em;
-  }
+    .key-symbol-label {
+      margin-left: 24px;
+      font-family: 'IM Fell Double Pica', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 60px;
+      color: #14325C;
+      letter-spacing: 0.05em;
+    }
   </style>
 </head>
 <body>
@@ -442,7 +442,10 @@
     const maze = new Uint8Array(ROWS * COLS);
     function idx(r, c) { return r * COLS + c; }
 
-    (function generate() {
+    let spawnRoom = {side:'top', r0:0, c0:0};
+
+    function generateMaze() {
+      maze.fill(0);
       const visited = new Uint8Array(ROWS * COLS);
       const stack = [0]; visited[0] = 1;
       const dirs = [{dr:-1,dc:0,bit:1,ob:4},{dr:0,dc:1,bit:2,ob:8},{dr:1,dc:0,bit:4,ob:1},{dr:0,dc:-1,bit:8,ob:2}];
@@ -458,24 +461,49 @@
         }
         if (!moved) stack.pop();
       }
-    })();
 
-    const _sides = ['top','bottom','left','right'];
-    const _side  = _sides[Math.floor(Math.random()*4)];
-    const _sr0   = _side==='top' ? 0 : _side==='bottom' ? ROWS-2 : Math.floor(Math.random()*(ROWS-1));
-    const _sc0   = _side==='left' ? 0 : _side==='right' ? COLS-2 : Math.floor(Math.random()*(COLS-1));
-    const spawnRoom = {side:_side, r0:_sr0, c0:_sc0};
+      // Braid: knock down most dead ends to add loops so the player has
+      // more routes around the Minotaur instead of getting cornered.
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          const cell = idx(r, c);
+          const degree = (maze[cell]&1?1:0)+(maze[cell]&2?1:0)+(maze[cell]&4?1:0)+(maze[cell]&8?1:0);
+          if (degree !== 1) continue;
+          if (Math.random() < 0.95) continue;
+          const candidates = [];
+          for (const d of DMAP) {
+            const nr = r+d.dr, nc = c+d.dc;
+            if (nr<0||nr>=ROWS||nc<0||nc>=COLS) continue;
+            if (maze[cell] & d.bit) continue;
+            candidates.push(d);
+          }
+          if (!candidates.length) continue;
+          const d = candidates[Math.floor(Math.random()*candidates.length)];
+          const ob = d.bit===1?4 : d.bit===2?8 : d.bit===4?1 : 2;
+          maze[cell] |= d.bit;
+          maze[idx(r+d.dr, c+d.dc)] |= ob;
+        }
+      }
 
-    maze[idx(_sr0,  _sc0)]   |= 2|4;
-    maze[idx(_sr0,  _sc0+1)] |= 4|8;
-    maze[idx(_sr0+1,_sc0)]   |= 1|2;
-    maze[idx(_sr0+1,_sc0+1)] |= 1|8;
-    if(_side==='top')    { maze[idx(_sr0+1,_sc0+1)]|=4; maze[idx(_sr0+2,_sc0+1)]|=1; }
-    if(_side==='bottom') { maze[idx(_sr0,  _sc0+1)]|=1; maze[idx(_sr0-1,_sc0+1)]|=4; }
-    if(_side==='left')   { maze[idx(_sr0+1,_sc0+1)]|=2; maze[idx(_sr0+1,_sc0+2)]|=8; }
-    if(_side==='right')  { maze[idx(_sr0+1,_sc0)]  |=8; maze[idx(_sr0+1,_sc0-1)]|=2; }
+      const _sides = ['top','bottom','left','right'];
+      const _side  = _sides[Math.floor(Math.random()*4)];
+      const _sr0   = _side==='top' ? 0 : _side==='bottom' ? ROWS-2 : Math.floor(Math.random()*(ROWS-1));
+      const _sc0   = _side==='left' ? 0 : _side==='right' ? COLS-2 : Math.floor(Math.random()*(COLS-1));
+      spawnRoom.side = _side; spawnRoom.r0 = _sr0; spawnRoom.c0 = _sc0;
+
+      maze[idx(_sr0,  _sc0)]   |= 2|4;
+      maze[idx(_sr0,  _sc0+1)] |= 4|8;
+      maze[idx(_sr0+1,_sc0)]   |= 1|2;
+      maze[idx(_sr0+1,_sc0+1)] |= 1|8;
+      if(_side==='top')    { maze[idx(_sr0+1,_sc0+1)]|=4; maze[idx(_sr0+2,_sc0+1)]|=1; }
+      if(_side==='bottom') { maze[idx(_sr0,  _sc0+1)]|=1; maze[idx(_sr0-1,_sc0+1)]|=4; }
+      if(_side==='left')   { maze[idx(_sr0+1,_sc0+1)]|=2; maze[idx(_sr0+1,_sc0+2)]|=8; }
+      if(_side==='right')  { maze[idx(_sr0+1,_sc0)]  |=8; maze[idx(_sr0+1,_sc0-1)]|=2; }
+    }
 
     const DMAP = [{dr:-1,dc:0,bit:1},{dr:0,dc:1,bit:2},{dr:1,dc:0,bit:4},{dr:0,dc:-1,bit:8}];
+
+    generateMaze();
 
     function bfs(sr, sc, er, ec) {
       const prev = new Int16Array(ROWS*COLS).fill(-1), vis = new Uint8Array(ROWS*COLS);
@@ -569,8 +597,8 @@
 
     initSpawns();
 
-    const TRIVIA_IMG_QUEENS = "./decorative_assets/queens_megaron.jpg";
-    const TRIVIA_IMG_KINGS = "./decorative_assets/throne_room.jpg";
+    const TRIVIA_IMG_QUEENS = "queens_megaron.jpg";
+    const TRIVIA_IMG_KINGS = "throne_room.jpg";
 
     const TRIVIA_QUESTIONS = [
       { q: 'What does "labrys" refer to?',
@@ -665,6 +693,11 @@
     const swordRightImg = new Image();
     swordRightImg.onload = () => { swordRightLoaded = true; };
     swordRightImg.src = 'theseus_assets/sword_right.png';
+
+    let minotaurImgLoaded = false;
+    const minotaurImg = new Image();
+    minotaurImg.onload = () => { minotaurImgLoaded = true; };
+    minotaurImg.src = 'minotaur.png';
 
     let ariadne = {x:0, y:0, r:PLAYER_R, path:[], pathTimer:0};
     let ariadnePhase = null; // null | 'approach' | 'escape'
@@ -761,7 +794,7 @@
     //   };
     // }
 
-    function restartGame(){initSpawns();initTraps();applySpawns();theseusTimer=0;gameState='PLAYING';
+    function restartGame(){generateMaze();initSpawns();initTraps();applySpawns();theseusTimer=0;gameState='PLAYING';
       updateLayout();
       triviaState=null;dragInput.active = false;}
 
@@ -922,36 +955,36 @@
       for(const t of e.changedTouches){const{x,y}=getPos(t.clientX,t.clientY);handleInteraction(x,y,true,t.identifier);}
       // }
     },{passive:false});
-      canvas.addEventListener('touchmove',e=>{
-        e.preventDefault();
+    canvas.addEventListener('touchmove',e=>{
+      e.preventDefault();
 
-        for(const t of e.changedTouches){
-          const {x,y}=getPos(t.clientX,t.clientY);
-          moveDrag(x,y,t.identifier);
-        }
-      },{passive:false});
+      for(const t of e.changedTouches){
+        const {x,y}=getPos(t.clientX,t.clientY);
+        moveDrag(x,y,t.identifier);
+      }
+    },{passive:false});
 
-      canvas.addEventListener('touchend',e=>{
-        for(const t of e.changedTouches){
-          endDrag(t.identifier);
-        }
-      });
+    canvas.addEventListener('touchend',e=>{
+      for(const t of e.changedTouches){
+        endDrag(t.identifier);
+      }
+    });
 
     let mouseDown=false;
     canvas.addEventListener('mousedown',e=>{
       const{x,y}=getPos(e.clientX,e.clientY);
       handleInteraction(x, y, false, null);
     });
-      window.addEventListener('mouseup',()=>{
-        mouseDown=false;
-        endDrag('mouse');
-      });
-      window.addEventListener('mousemove',e=>{
-        if(mouseDown){
-          const {x,y}=getPos(e.clientX,e.clientY);
-          moveDrag(x,y,'mouse');
-        }
-      });
+    window.addEventListener('mouseup',()=>{
+      mouseDown=false;
+      endDrag('mouse');
+    });
+    window.addEventListener('mousemove',e=>{
+      if(mouseDown){
+        const {x,y}=getPos(e.clientX,e.clientY);
+        moveDrag(x,y,'mouse');
+      }
+    });
 
     const keys={};
     window.addEventListener('keydown',e=>{
@@ -1745,13 +1778,154 @@
       ctx.beginPath();ctx.moveTo(ox-sw*0.5,oy-sw*0.15);ctx.lineTo(ox+sw*0.5,oy-sw*0.15);ctx.stroke();
     }
     function drawMinotaur(x,y,s){
-      ctx.strokeStyle='#c44';ctx.lineWidth=Math.max(1.5,s*0.13);ctx.lineCap='round';
-      ctx.beginPath();ctx.rect(x-s*0.62,y-s*1.1,s*1.24,s*1.35);ctx.stroke();
-      ctx.beginPath();ctx.arc(x,y-s*1.62,s*0.52,0,Math.PI*2);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(x-s*0.42,y-s*2.06);ctx.lineTo(x-s*0.82,y-s*2.68);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(x+s*0.42,y-s*2.06);ctx.lineTo(x+s*0.82,y-s*2.68);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(x-s*0.32,y+s*0.25);ctx.lineTo(x-s*0.32,y+s*1.3);ctx.moveTo(x+s*0.32,y+s*0.25);ctx.lineTo(x+s*0.32,y+s*1.3);ctx.stroke();
+      const size = s * 4.5;
+      if(minotaurImgLoaded){
+        const offscreen = document.createElement('canvas');
+        offscreen.width = size; offscreen.height = size;
+        const octx = offscreen.getContext('2d');
+        octx.drawImage(minotaurImg, 0, 0, size, size);
+        octx.globalCompositeOperation = 'source-atop';
+        octx.fillStyle = 'rgba(180,0,0,0.9)';
+        octx.fillRect(0, 0, size, size);
+        ctx.drawImage(offscreen, x - size/2, y + s*1.5 - size);
+      } else {
+        ctx.strokeStyle='#c44';ctx.lineWidth=Math.max(1.5,s*0.13);ctx.lineCap='round';
+        ctx.beginPath();ctx.rect(x-s*0.62,y-s*1.1,s*1.24,s*1.35);ctx.stroke();
+        ctx.beginPath();ctx.arc(x,y-s*1.62,s*0.52,0,Math.PI*2);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(x-s*0.42,y-s*2.06);ctx.lineTo(x-s*0.82,y-s*2.68);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(x+s*0.42,y-s*2.06);ctx.lineTo(x+s*0.82,y-s*2.68);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(x-s*0.32,y+s*0.25);ctx.lineTo(x-s*0.32,y+s*1.3);ctx.moveTo(x+s*0.32,y+s*0.25);ctx.lineTo(x+s*0.32,y+s*1.3);ctx.stroke();
+      }
     }
+    function drawOrnateGate(x, y, w, h, orient, isClosed) {
+      const gradient = ctx.createLinearGradient(x, y, x + (orient==='horizontal' ? w : 0), y + (orient==='vertical' ? h : 0));
+      gradient.addColorStop(0, '#4A2511');
+      gradient.addColorStop(0.5, '#6B3E23');
+      gradient.addColorStop(1, '#3D1F0F');
+      ctx.fillStyle = gradient;
+      const postW = w * 0.15, postH = h * 0.15;
+      if (isClosed) {
+        if (orient === 'horizontal') {
+          ctx.fillRect(x, y, w, h);
+          ctx.strokeStyle = '#8B5A2B';
+          ctx.lineWidth = 1.5;
+          for (let i = 0; i < 6; i++) {
+            ctx.beginPath();
+            ctx.moveTo(x + (w / 6) * i, y);
+            ctx.lineTo(x + (w / 6) * i, y + h);
+            ctx.stroke();
+          }
+          ctx.fillStyle = '#D4AF37';
+          for (let i = 0; i < 5; i++) {
+            const ox = x + (w / 5) * (i + 0.5);
+            ctx.beginPath();
+            ctx.arc(ox, y + h / 2, h * 0.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#A68A39';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+          ctx.fillRect(x, y + h * 0.7, w, h * 0.3);
+        } else {
+          ctx.fillRect(x, y, w, h);
+          ctx.strokeStyle = '#8B5A2B';
+          ctx.lineWidth = 1.5;
+          for (let i = 0; i < 6; i++) {
+            ctx.beginPath();
+            ctx.moveTo(x, y + (h / 6) * i);
+            ctx.lineTo(x + w, y + (h / 6) * i);
+            ctx.stroke();
+          }
+          ctx.fillStyle = '#D4AF37';
+          for (let i = 0; i < 5; i++) {
+            const oy = y + (h / 5) * (i + 0.5);
+            ctx.beginPath();
+            ctx.arc(x + w / 2, oy, w * 0.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#A68A39';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+          ctx.fillRect(x + w * 0.7, y, w * 0.3, h);
+        }
+      } else {
+        if (orient === 'horizontal') {
+          const post1X = x, post2X = x + w - postW;
+          ctx.fillRect(post1X, y, postW, h);
+          ctx.fillRect(post2X, y, postW, h);
+          ctx.strokeStyle = '#8B5A2B';
+          ctx.lineWidth = 1;
+          for (let p of [post1X, post2X]) {
+            for (let i = 0; i < 3; i++) {
+              ctx.beginPath();
+              ctx.moveTo(p, y + (h / 3) * (i + 1));
+              ctx.lineTo(p + postW, y + (h / 3) * (i + 1));
+              ctx.stroke();
+            }
+          }
+          ctx.fillStyle = '#D4AF37';
+          ctx.beginPath();
+          ctx.moveTo(post1X - postW * 0.3, y - postW * 0.2);
+          ctx.lineTo(post1X + postW * 1.3, y - postW * 0.2);
+          ctx.lineTo(post1X + postW * 0.9, y);
+          ctx.lineTo(post1X + postW * 0.1, y);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(post2X - postW * 0.3, y - postW * 0.2);
+          ctx.lineTo(post2X + postW * 1.3, y - postW * 0.2);
+          ctx.lineTo(post2X + postW * 0.9, y);
+          ctx.lineTo(post2X + postW * 0.1, y);
+          ctx.fill();
+          ctx.shadowColor = 'rgba(212, 175, 55, 0.6)';
+          ctx.shadowBlur = 8;
+          ctx.strokeStyle = '#FFD700';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(x + w * 0.15, y + h * 0.3);
+          ctx.lineTo(x + w * 0.85, y + h * 0.3);
+          ctx.stroke();
+        } else {
+          const post1Y = y, post2Y = y + h - postH;
+          ctx.fillRect(x, post1Y, w, postH);
+          ctx.fillRect(x, post2Y, w, postH);
+          ctx.strokeStyle = '#8B5A2B';
+          ctx.lineWidth = 1;
+          for (let p of [post1Y, post2Y]) {
+            for (let i = 0; i < 3; i++) {
+              ctx.beginPath();
+              ctx.moveTo(x + (w / 3) * (i + 1), p);
+              ctx.lineTo(x + (w / 3) * (i + 1), p + postH);
+              ctx.stroke();
+            }
+          }
+          ctx.fillStyle = '#D4AF37';
+          ctx.beginPath();
+          ctx.moveTo(x - postH * 0.2, post1Y - postH * 0.3);
+          ctx.lineTo(x - postH * 0.2, post1Y + postH * 1.3);
+          ctx.lineTo(x, post1Y + postH * 0.9);
+          ctx.lineTo(x, post1Y + postH * 0.1);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(x - postH * 0.2, post2Y - postH * 0.3);
+          ctx.lineTo(x - postH * 0.2, post2Y + postH * 1.3);
+          ctx.lineTo(x, post2Y + postH * 0.9);
+          ctx.lineTo(x, post2Y + postH * 0.1);
+          ctx.fill();
+          ctx.shadowColor = 'rgba(212, 175, 55, 0.6)';
+          ctx.shadowBlur = 8;
+          ctx.strokeStyle = '#FFD700';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(x + w * 0.3, y + h * 0.15);
+          ctx.lineTo(x + w * 0.3, y + h * 0.85);
+          ctx.stroke();
+        }
+      }
+      ctx.shadowColor = 'transparent';
+    }
+
     function drawSwordItem(x,y,size){
       ctx.shadowColor='rgba(252,176,117,0.7)';ctx.shadowBlur=10;
       ctx.strokeStyle='#FCB075';ctx.lineWidth=3;ctx.lineCap='round';
@@ -1869,6 +2043,34 @@
     // }
 
     const DRAG_DEADZONE = 12;
+    const JOY_RADIUS = 55;
+
+    function drawVirtualJoystick(){
+      if(!dragInput.active) return;
+
+      const dx = dragInput.curX - dragInput.startX;
+      const dy = dragInput.curY - dragInput.startY;
+      const dist = Math.hypot(dx, dy);
+      const clamped = Math.min(dist, JOY_RADIUS);
+      const angle = Math.atan2(dy, dx);
+      const knobX = dist > 0 ? dragInput.startX + Math.cos(angle) * clamped : dragInput.startX;
+      const knobY = dist > 0 ? dragInput.startY + Math.sin(angle) * clamped : dragInput.startY;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(213,230,237,0.18)';
+      ctx.strokeStyle = 'rgba(213,230,237,0.5)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(dragInput.startX, dragInput.startY, JOY_RADIUS, 0, Math.PI*2);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(252,176,117,0.85)';
+      ctx.beginPath();
+      ctx.arc(knobX, knobY, JOY_RADIUS*0.45, 0, Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    }
 
     let dragInput = {
       active:false,
@@ -1924,6 +2126,7 @@
       const btnY = QUEUE_H + 20;
 
       ctx.save();
+      ctx.globalAlpha = 0.5;
       ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
       ctx.shadowBlur = 8;
       ctx.shadowOffsetY = 4;
@@ -1962,6 +2165,7 @@
       const btnY = QUEUE_H + 20;
 
       ctx.save();
+      ctx.globalAlpha = 0.5;
       ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
       ctx.shadowBlur = 10;
       ctx.shadowOffsetY = 5;
@@ -2015,6 +2219,7 @@
       const btnY = QUEUE_H + 20;
 
       ctx.save();
+      ctx.globalAlpha = 0.5;
       ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
       ctx.shadowBlur = 10;
       ctx.shadowOffsetY = 5;
@@ -2077,24 +2282,14 @@
       }
 
       {
-        ctx.fillStyle='#5C3317';
         const {side:ds,r0:dr,c0:dc}=spawnRoom;
         const dx=dc*CELL, dy=dr*CELL;
-        const off=CELL*0.18, thick=CELL*0.3, post=CELL*0.14;
+        const off=CELL*0.18;
         const doorOpen=minoKilled||ariadnePhase==='escape';
-        if(ds==='top'){
-          if(!doorOpen){ ctx.fillRect(dx,-off,2*CELL,thick); }
-          else { ctx.fillRect(dx,-off,post,thick); ctx.fillRect(dx+2*CELL-post,-off,post,thick); }
-        } else if(ds==='bottom'){
-          if(!doorOpen){ ctx.fillRect(dx,MAZE_H+off-thick,2*CELL,thick); }
-          else { ctx.fillRect(dx,MAZE_H+off-thick,post,thick); ctx.fillRect(dx+2*CELL-post,MAZE_H+off-thick,post,thick); }
-        } else if(ds==='left'){
-          if(!doorOpen){ ctx.fillRect(-off,dy,thick,2*CELL); }
-          else { ctx.fillRect(-off,dy,thick,post); ctx.fillRect(-off,dy+2*CELL-post,thick,post); }
-        } else {
-          if(!doorOpen){ ctx.fillRect(MAZE_W+off-thick,dy,thick,2*CELL); }
-          else { ctx.fillRect(MAZE_W+off-thick,dy,thick,post); ctx.fillRect(MAZE_W+off-thick,dy+2*CELL-post,thick,post); }
-        }
+        if(ds==='top')         drawOrnateGate(dx, -off, 2*CELL, CELL*0.3, 'horizontal', !doorOpen);
+        else if(ds==='bottom') drawOrnateGate(dx, MAZE_H+off-CELL*0.3, 2*CELL, CELL*0.3, 'horizontal', !doorOpen);
+        else if(ds==='left')   drawOrnateGate(-off, dy, CELL*0.3, 2*CELL, 'vertical', !doorOpen);
+        else                   drawOrnateGate(MAZE_W+off-CELL*0.3, dy, CELL*0.3, 2*CELL, 'vertical', !doorOpen);
       }
 
       if(!swordCollected) drawSwordItem(SWORD_X,SWORD_Y,CELL*0.30);
@@ -2231,6 +2426,7 @@
         drawFloatingPauseButton();
         drawFloatingShareButton();
         drawFloatingQuitButton();
+        drawVirtualJoystick();
       }
     }
 
@@ -2247,3 +2443,4 @@
 </div>
 </body>
 </html>
+
