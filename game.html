@@ -1479,25 +1479,27 @@
       if (!triviaState) return;
 
       const { question, selectedIdx, answered } = triviaState;
-      const pad = W * 0.06;
+
+      const pad = W * 0.04; // was 0.06
       const maxW = W - pad * 2;
 
-      // Light full-screen tint so maze stays visible
       ctx.fillStyle = 'rgba(10, 20, 38, 0.38)';
       ctx.fillRect(0, QUEUE_H, W, GAME_H - QUEUE_H);
 
       ctx.textAlign = 'center';
 
-      let y = QUEUE_H + Math.floor(GAME_H * 0.04);
+      let y = QUEUE_H + Math.floor(GAME_H * 0.035);
 
+      // TRAP HEADER
       ctx.fillStyle = '#cc2200';
-      ctx.font = `bold ${Math.floor(W * 0.078)}px Georgia,serif`;
-      ctx.fillText('⚠  TRAP!', W / 2, y + 22);
+      ctx.font = `bold ${Math.floor(W * 0.09)}px Georgia,serif`;
+      ctx.fillText('⚠  TRAP!', W / 2, y + 26);
 
-      y += 56;
+      y += 68;
 
+      // SUBTITLE
       ctx.fillStyle = '#D5E6ED';
-      ctx.font = `${Math.floor(W * 0.046)}px Georgia,serif`;
+      ctx.font = `${Math.floor(W * 0.052)}px Georgia,serif`;
 
       if (!(answered && triviaState.correct)) {
         const attemptsLeft = 2 - triviaState.attempts;
@@ -1511,34 +1513,35 @@
         );
       }
 
-      y += Math.floor(GAME_H * 0.03);
+      y += Math.floor(GAME_H * 0.04);
 
-      ctx.fillStyle = '#FCB075';
-
+      // QUESTION
       const hasImg = !!question.img;
 
+      ctx.fillStyle = '#FCB075';
       ctx.font = `bold ${Math.floor(
-              W * (hasImg ? 0.050 : 0.056)
+              W * (hasImg ? 0.058 : 0.064)
       )}px Georgia,serif`;
 
       y = wrapText(
               question.q,
               maxW,
-              Math.floor(W * (hasImg ? 0.060 : 0.066)),
+              Math.floor(W * (hasImg ? 0.068 : 0.074)),
               y
       );
 
-      y += Math.floor(GAME_H * (hasImg ? 0.010 : 0.018));
+      y += Math.floor(GAME_H * 0.02);
 
+      // IMAGE
       if (hasImg) {
         const entry = getTriviaImg(question.img);
 
-        const imgH = Math.floor(GAME_H * 0.22);
+        const imgH = Math.floor(GAME_H * 0.28); // was 0.22
         const imgW = maxW;
 
         ctx.fillStyle = 'rgba(0,0,0,0.3)';
         ctx.beginPath();
-        ctx.roundRect(pad, y, imgW, imgH, 8);
+        ctx.roundRect(pad, y, imgW, imgH, 10);
         ctx.fill();
 
         const imgReady =
@@ -1565,7 +1568,7 @@
           );
         } else {
           ctx.fillStyle = 'rgba(213,230,237,0.4)';
-          ctx.font = `${Math.floor(W * 0.040)}px Georgia,serif`;
+          ctx.font = `${Math.floor(W * 0.045)}px Georgia,serif`;
 
           ctx.fillText(
                   entry.error
@@ -1576,14 +1579,15 @@
           );
         }
 
-        y += imgH + Math.floor(GAME_H * 0.012);
+        y += imgH + Math.floor(GAME_H * 0.018);
       }
 
+      // ANSWERS
       const btnH = Math.floor(
-              GAME_H * (hasImg ? 0.105 : 0.118)
+              GAME_H * (hasImg ? 0.125 : 0.14)
       );
 
-      const btnGap = Math.floor(GAME_H * 0.016);
+      const btnGap = Math.floor(GAME_H * 0.018);
 
       triviaState.btnRects = [];
 
@@ -1623,54 +1627,55 @@
 
         ctx.fillStyle = bg;
         ctx.beginPath();
-        ctx.roundRect(bx, by, maxW, btnH, 10);
+        ctx.roundRect(bx, by, maxW, btnH, 12);
         ctx.fill();
 
         ctx.strokeStyle = border;
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.roundRect(bx, by, maxW, btnH, 10);
+        ctx.roundRect(bx, by, maxW, btnH, 12);
         ctx.stroke();
 
         ctx.fillStyle = tc;
-        ctx.font = `${Math.floor(W * 0.048)}px Georgia,serif`;
+        ctx.font = `${Math.floor(W * 0.055)}px Georgia,serif`;
 
         ctx.fillText(
                 question.opts[i],
                 W / 2,
-                by + btnH * 0.68
+                by + btnH * 0.66
         );
 
         y += btnH + btnGap;
       }
 
+      // RESTART BUTTON
       if (
               answered &&
               !triviaState.correct &&
               triviaState.attempts >= 2
       ) {
-        y += 4;
+        y += 6;
 
-        const cbtnH = Math.floor(GAME_H * 0.11);
+        const cbtnH = Math.floor(GAME_H * 0.13);
 
         ctx.fillStyle = 'rgba(100, 35, 35, 0.82)';
         ctx.beginPath();
-        ctx.roundRect(pad, y, maxW, cbtnH, 10);
+        ctx.roundRect(pad, y, maxW, cbtnH, 12);
         ctx.fill();
 
         ctx.strokeStyle = '#cc2200';
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.roundRect(pad, y, maxW, cbtnH, 10);
+        ctx.roundRect(pad, y, maxW, cbtnH, 12);
         ctx.stroke();
 
         ctx.fillStyle = '#fff';
-        ctx.font = `bold ${Math.floor(W * 0.052)}px Georgia,serif`;
+        ctx.font = `bold ${Math.floor(W * 0.06)}px Georgia,serif`;
 
         ctx.fillText(
-                '✗  Restarting...',
+                '✗ Restarting...',
                 W / 2,
-                y + cbtnH * 0.68
+                y + cbtnH * 0.66
         );
       }
     }
