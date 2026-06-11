@@ -146,6 +146,42 @@
         .menu-action-btn:hover {
             opacity: 0.9;
         }
+
+        .position-header-text {
+            font-size: 20px;
+            line-height: 10px;
+            text-align: center;
+            color: #14325C;
+            margin-bottom: 12px;
+        }
+
+        .queue-badge-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin-bottom: auto; /* pushes buttons toward bottom */
+            flex-shrink: 0;
+        }
+
+        .queue-badge-box {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            background: #C16868;
+            border: 5px solid rgba(255,255,255,0.15);
+            box-shadow: 0 2px 1px rgba(0,0,0,0.25);
+            border-radius: 30px;
+        }
+
+        .queue-position-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            line-height: 10px;
+            color: #410C0C;
+        }
     </style>
 </head>
 <body>
@@ -159,9 +195,20 @@
 
         <h1 class="game-over-title" data-i18n="game_over_title">GAME OVER</h1>
 
-        <p class="defeat-status-text" data-i18n="defeat_status">The Minotaur has defeated you! Fight again or give up?</p>
+        <p class="defeat-status-text">
+            The Minotaur has defeated you! Fight again or give up?
+        </p>
 
         <div class="decorative-graphic-layer"></div>
+
+        <div class="position-header-text">
+            YOU ARE POSITION
+        </div>
+
+        <div class="queue-badge-container">
+            <div class="queue-badge-box"></div>
+            <div class="queue-position-number">29</div>
+        </div>
 
         <div class="action-button-stack">
             <a href="initial-beginnings.html" class="menu-action-btn">REPLAY</a>
