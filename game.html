@@ -1307,7 +1307,7 @@
         }
       }
 
-      if(!minoKilled){
+      if(!minoKilled && gameState !== 'TRIVIA'){
         const heartDist = dist(player.x, player.y, mino.x, mino.y);
         const heartT = 1 - Math.min(1, heartDist / (CELL * 14));
         const bps = 0.1 + heartT * 3.4;
