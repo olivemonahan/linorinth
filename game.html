@@ -696,8 +696,14 @@
 
     let minotaurImgLoaded = false;
     const minotaurImg = new Image();
+
+    const isStephen = Math.random() < 0.05;
+
+    minotaurImg.src = isStephen
+            ? 'decorative_assets/stephen.JPG'
+            : 'decorative_assets/minotaur.png';
+
     minotaurImg.onload = () => { minotaurImgLoaded = true; };
-    minotaurImg.src = 'decorative_assets/minotaur.png';
 
     let ariadne = {x:0, y:0, r:PLAYER_R, path:[], pathTimer:0};
     let ariadnePhase = null; // null | 'approach' | 'escape'
@@ -1790,9 +1796,14 @@
         offscreen.width = size; offscreen.height = size;
         const octx = offscreen.getContext('2d');
         octx.drawImage(minotaurImg, 0, 0, size, size);
-        octx.globalCompositeOperation = 'source-atop';
-        octx.fillStyle = 'rgba(180,0,0,0.9)';
-        octx.fillRect(0, 0, size, size);
+
+        // Don't tint Stephen red
+        if (!isStephen) {
+          octx.globalCompositeOperation = 'source-atop';
+          octx.fillStyle = 'rgba(180,0,0,0.9)';
+          octx.fillRect(0, 0, size, size);
+        }
+
         ctx.drawImage(offscreen, x - size/2, y + s*1.5 - size);
       } else {
         ctx.strokeStyle='#c44';ctx.lineWidth=Math.max(1.5,s*0.13);ctx.lineCap='round';
