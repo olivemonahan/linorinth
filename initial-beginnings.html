@@ -171,6 +171,123 @@
         .play-game-action-btn:hover {
             opacity: 0.9;
         }
+
+        .view-key-btn {
+            position: absolute;
+            bottom: 145px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 240px;
+            height: 44px;
+            background: #14325C;
+            color: #C1DEE4;
+            border: none;
+            border-radius: 22px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-size: 17px;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 130;
+        }
+
+        .view-key-btn:hover {
+            background: #1c437a;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Structural wrapper matches .paused-container */
+        .key-page-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #C1DEE4;
+            overflow: hidden;
+            font-family: 'IM Fell Double Pica', serif;
+        }
+
+        /* Text header properties matching .game-paused-title */
+        .key-text-header {
+            position: absolute;
+            width: 260px;
+            height: 40px;
+            left: calc(50% - 260px/2);
+            top: 115px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 40px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #14325C;
+        }
+
+        .key-text-sub {
+            position: absolute;
+            width: 260px;
+            height: 25px;
+            left: calc(50% - 260px/2);
+            top: 160px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 25px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            color: #14325C;
+        }
+
+        /* List Container absolute tracking positions (Matches your Step Texts vertical flow) */
+        .key-list-wrapper {
+            position: absolute;
+            width: 260px;
+            height: 430px;
+            left: calc(50% - 260px/2);
+            top: 220px;
+        }
+
+        /* Explicit item block rows separated symmetrically to handle labels cleanly */
+        .key-row-item {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Individual item offsets calculated to reflect standard layout grids */
+        .key-row-item:nth-child(1) { top: 0; }
+        .key-row-item:nth-child(2) { top: 86px; }
+        .key-row-item:nth-child(3) { top: 172px; }
+        .key-row-item:nth-child(4) { top: 258px; }
+        .key-row-item:nth-child(5) { top: 344px; }
+
+        .key-symbol-box {
+            box-sizing: border-box;
+            width: 60px;
+            height: 60px;
+            border: 1px solid #14325C;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-origin: content-box;
+        }
+
+        .key-symbol-label {
+            margin-left: 24px;
+            font-family: 'IM Fell Double Pica', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 60px;
+            color: #14325C;
+            letter-spacing: 0.05em;
+        }
     </style>
 </head>
 <body>
@@ -205,10 +322,82 @@
             <div class="graphic-step-frame graphic-step-four"></div>
         </div>
 
+        <button class="view-key-btn" onclick="openSymbolsKey(event)" data-i18n="view_key">
+            VIEW SYMBOLS KEY
+        </button>
+
         <a href="game.html" class="play-game-action-btn" data-i18n="play_btn">PLAY</a>
 
     </div>
+
+    <div class="key-page-container hidden" id="symbols-screen">
+
+        <div class="inner-panel-card">
+
+            <div class="header-navigation-row">
+                <button class="back-nav-button" onclick="closeSymbolsKey()">←</button>
+                <img src="logo.svg" alt="LINORINTH" class="logo-vector">
+            </div>
+
+            <div class="key-text-header" data-i18n="key_header">KEY</div>
+            <div class="key-text-sub" data-i18n="key_sub">TO GAME SYMBOLS</div>
+
+            <div class="key-list-wrapper">
+
+                <div class="key-row-item">
+                    <div class="key-symbol-box"
+                         style="background-image:url('decorative_assets/symbols_assets/minitheseus.png');">
+                    </div>
+                    <span class="key-symbol-label" data-i18n="symbol_you">YOU</span>
+                </div>
+
+                <div class="key-row-item">
+                    <div class="key-symbol-box"
+                         style="background-image:url('decorative_assets/symbols_assets/minitaur.png');">
+                    </div>
+                    <span class="key-symbol-label" data-i18n="symbol_minotaur">MINOTAUR</span>
+                </div>
+
+                <div class="key-row-item">
+                    <div class="key-symbol-box"
+                         style="background-image:url('decorative_assets/symbols_assets/traps.png');">
+                    </div>
+                    <span class="key-symbol-label" data-i18n="symbol_traps">TRAPS</span>
+                </div>
+
+                <div class="key-row-item">
+                    <div class="key-symbol-box"
+                         style="background-image:url('decorative_assets/symbols_assets/sword.png');">
+                    </div>
+                    <span class="key-symbol-label" data-i18n="symbol_sword">SWORD</span>
+                </div>
+
+                <div class="key-row-item">
+                    <div class="key-symbol-box"
+                         style="background-image:url('decorative_assets/symbols_assets/thread.png');">
+                    </div>
+                    <span class="key-symbol-label" data-i18n="symbol_thread">THREAD</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </div>
+
+<script>
+    function openSymbolsKey(event) {
+        if (event) event.preventDefault();
+
+        document.querySelector('.inner-panel-card').style.display = 'none';
+        document.getElementById('symbols-screen').classList.remove('hidden');
+    }
+
+    function closeSymbolsKey() {
+        document.querySelector('.inner-panel-card').style.display = 'flex';
+        document.getElementById('symbols-screen').classList.add('hidden');
+    }
+</script>
 
 </body>
 </html>
