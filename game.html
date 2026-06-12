@@ -731,7 +731,13 @@
     applySpawns();
     startIntro();
 
-    let queuePos = Math.floor(Math.random() * 21) + 20;
+    let queuePos = localStorage.getItem("queuePos");
+
+    if (!queuePos) {
+      queuePos = (Math.floor(Math.random() * 21) + 20).toString();
+      localStorage.setItem("queuePos", queuePos);
+    }
+
     let queueTimer = 15 + Math.random() * 25;
 
     function cellWalls(r, c) {

@@ -207,7 +207,7 @@
 
         <div class="queue-badge-container">
             <div class="queue-badge-box"></div>
-            <div class="queue-position-number">29</div>
+            <div class="queue-position-number" id="queuePos"></div>
         </div>
 
         <div class="action-button-stack">
@@ -218,5 +218,11 @@
     </div>
 </div>
 
+<script>
+    const queuePos = localStorage.getItem("queuePos");
+
+    document.getElementById("queuePos").textContent =
+        queuePos || "?";
+</script>
 </body>
 </html>
